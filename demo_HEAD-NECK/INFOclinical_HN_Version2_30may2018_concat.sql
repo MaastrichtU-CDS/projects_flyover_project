@@ -1,32 +1,35 @@
-CREATE TABLE "INFOclinical_HN_Version2_30may2018_concat" (
-    "Patient" TEXT,
-    "Sex" TEXT,
-    "Age" INT,
-    "Primary_Site" TEXT,
-    "T_stage" TEXT,
-    "N_stage" TEXT,
-    "M_stage" TEXT,
-    "TNM_group_stage" TEXT,
-    "HPV_status" TEXT,
-    "Time_diagnosis_to_diagnosis_days" INT,
-    "Time_diagnosis_to_PET_days" INT,
-    "Time_diagnosis_to_CT_sim_days" TEXT,
-    "Time_diagnosis_to_start_treatment_days" INT,
-    "Time_diagnosis_to_end_treatment_days" INT,
-    "Therapy" TEXT,
-    "Surgery" TEXT,
-    "Time_diagnosis_to_last_follow_up_days" INT,
-    "Locoregional" INT,
-    "Distant" INT,
-    "Death" INT,
-    "Time_diagnosis_to_LR_days" INT,
-    "Time_diagnosis_to_DM_days" INT,
-    "Time_diagnosis_to_Death_days" INT,
-    "" INT,
-    ""_1 INT,
-    ""_2 INT
+CREATE DATABASE head_neck;
+\c head_neck;
+
+CREATE TABLE "infoclinical_hn_version2_30may2018_concat" (
+    "patient" TEXT,
+    "sex" TEXT,
+    "age" INT,
+    "primary_site" TEXT,
+    "t_stage" TEXT,
+    "n_stage" TEXT,
+    "m_stage" TEXT,
+    "tnm_group_stage" TEXT,
+    "hpv_status" TEXT,
+    "time_diagnosis_to_diagnosis_days" INT,
+    "time_diagnosis_to_pet_days" INT,
+    "time_diagnosis_to_ct_sim_days" TEXT,
+    "time_diagnosis_to_start_treatment_days" INT,
+    "time_diagnosis_to_end_treatment_days" INT,
+    "therapy" TEXT,
+    "surgery" TEXT,
+    "time_diagnosis_to_last_follow_up_days" INT,
+    "locoregional" INT,
+    "distant" INT,
+    "death" INT,
+    "time_diagnosis_to_lr_days" INT,
+    "time_diagnosis_to_dm_days" INT,
+    "time_diagnosis_to_death_days" INT,
+    "_0" INT,
+    "_1" INT,
+    "_2" INT
 );
-INSERT INTO "INFOclinical_HN_Version2_30may2018_concat" VALUES
+INSERT INTO "infoclinical_hn_version2_30may2018_concat" VALUES
     ('HN-HGJ-001','M',79,'Larynx','T3','N0','M0','stage III','-',0,71,'64',97,140,'chemo radiation','0',2123,1,0,0,692,NULL,NULL,NULL,NULL,NULL),
     ('HN-HGJ-002','M',41,'Nasopharynx','T1','N1','M0','stage IIB','-',0,37,'35',63,108,'chemo radiation','0',2114,1,0,0,918,NULL,NULL,NULL,NULL,NULL),
     ('HN-HGJ-003','M',75,'Larynx','T3','N2b','M0','stage IVA','N/A',0,49,'51',65,113,'chemo radiation','0',1098,1,1,1,441,441,1098,NULL,NULL,NULL),
@@ -277,7 +280,7 @@ INSERT INTO "INFOclinical_HN_Version2_30may2018_concat" VALUES
     ('HN-CHUM-015','M',59,'Oropharynx','T1','N1','M0','Stage III','N/A',0,42,'TBD',54,99,'chemo radiation','N/A',1470,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL),
     ('HN-CHUM-016','M',58,'Oropharynx','T2','N2','M0','Stage IV','+',0,44,'TBD',56,101,'chemo radiation','N/A',1511,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL),
     ('HN-CHUM-017','M',77,'Oropharynx','T3','N2','M0','Stage IV','N/A',0,39,'TBD',91,136,'chemo radiation','N/A',1233,0,1,0,NULL,1233,NULL,NULL,NULL,NULL);
-INSERT INTO "INFOclinical_HN_Version2_30may2018_concat" VALUES
+INSERT INTO "infoclinical_hn_version2_30may2018_concat" VALUES
     ('HN-CHUM-018','F',57,'Oropharynx','T2','N0','M0','StageII','N/A',0,39,'TBD',104,152,'radiation','N/A',1449,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL),
     ('HN-CHUM-019','M',62,'Oropharynx','T2','N2','M0','Stage IV','N/A',0,42,'TBD',53,98,'chemo radiation','N/A',1272,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL),
     ('HN-CHUM-020','M',67,'Nasopharynx','T3','N3','M0','Stage IV','N/A',0,108,'TBD',119,164,'chemo radiation','N/A',350,1,0,1,186,NULL,350,NULL,NULL,NULL),

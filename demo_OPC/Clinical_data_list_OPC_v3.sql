@@ -1,40 +1,43 @@
-CREATE TABLE IF NOT EXISTS "Clinical_data_list_OPC_v3" (
-    "Trial_PatientID" TEXT,
-    "Age_at_diagnosis" NUMERIC(5, 3),
-    "Sex" TEXT,
-    "ECOG_Performance_Status_Scale" TEXT,
-    "Smoking_PY" NUMERIC(4, 1),
-    "Smoking_Hx" TEXT,
-    "Drinking_hx" TEXT,
-    "Ds_Site" TEXT,
-    "Subsite" TEXT,
-    "T" TEXT,
-    "N" TEXT,
-    "M" TEXT,
-    "Stage_AJCC_7th_Edition" TEXT,
-    "Path" TEXT,
-    "HPV_p16_status_IHC" TEXT,
-    "Primary_Treatment" TEXT,
-    "Chemotherapy" TEXT,
-    "interval_from_the_date_of_diagnosis_to_the_RT_start_date_days" INT,
-    "Time_interval_from_the_date_of_diagnosis_to_the_RT_end_date_days" INT,
-    "Dose_gy" NUMERIC(3, 1),
-    "Number_of_fractions" INT,
-    "RT_Tech" TEXT,
-    "interval_from_the_date_of_diagnosis_to_the_date_of_last_FU_days" INT,
-    "Status" TEXT,
-    "Cause_of_Death" TEXT,
-    "Local_Failure" TEXT,
-    "from_the_date_of_diagnosis_to_the_date_of_local_failure_days" INT,
-    "Regional_Failure" TEXT,
-    "from_the_date_of_diagnosis_to_the_date_of_regional_failure_days" INT,
-    "Distant_Failure" TEXT,
-    "from_the_date_of_diagnosis_to_the_date_of_distant_failure_days" INT,
-    "Second_Primary" TEXT,
-    "from_the_date_of_diagnosis_to_the_date_of_2nd_cancer_days" INT,
-    "PMID_29506884_DOI_10_1016_j_ijrobp_2018_01_057" TEXT
+CREATE DATABASE opc;
+\c opc;
+
+CREATE TABLE IF NOT EXISTS "clinical_data_list_opc_v3" (
+    "trial_patientid" text,
+    "age_at_diagnosis" numeric(5, 3),
+    "sex" text,
+    "ecog_performance_status_scale" text,
+    "smoking_py" numeric(4, 1),
+    "smoking_hx" text,
+    "drinking_hx" text,
+    "ds_site" text,
+    "subsite" text,
+    "t" text,
+    "n" text,
+    "m" text,
+    "stage_ajcc_7th_edition" text,
+    "path" text,
+    "hpv_p16_status_ihc" text,
+    "primary_treatment" text,
+    "chemotherapy" text,
+    "interval_from_the_date_of_diagnosis_to_the_rt_start_date_days" int,
+    "time_interval_from_the_date_of_diagnosis_to_the_rt_end_date_days" int,
+    "dose_gy" numeric(3, 1),
+    "number_of_fractions" int,
+    "rt_tech" text,
+    "interval_from_the_date_of_diagnosis_to_the_date_of_last_fu_days" int,
+    "status" text,
+    "cause_of_death" text,
+    "local_failure" text,
+    "from_the_date_of_diagnosis_to_the_date_of_local_failure_days" int,
+    "regional_failure" text,
+    "from_the_date_of_diagnosis_to_the_date_of_regional_failure_days" int,
+    "distant_failure" text,
+    "from_the_date_of_diagnosis_to_the_date_of_distant_failure_days" int,
+    "second_primary" text,
+    "from_the_date_of_diagnosis_to_the_date_of_2nd_cancer_days" int,
+    "pmid_29506884_doi_10_1016_j_ijrobp_2018_01_057" text
 );
-INSERT INTO "Clinical_data_list_OPC_v3" VALUES
+INSERT INTO "clinical_data_list_opc_v3" VALUES
     ('OPC-00001', 62.57 ,'Female','ECOG 0',50,'Ex-smoker','heavy','Oropharynx','post wall','T4b','N2c','M0','IVB','Squamous Cell Carcinoma','  Negative','Radiation Therapy','none',35,70,60,25,'IMRT',481,'Dead','Other Cause',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
     ('OPC-00002', 59.75 ,'Female','ECOG 0',0,'Non-smoker','non-drinker','Oropharynx','Tonsillar Fossa','T4b','N0','M0','IVB','Squamous Cell Carcinoma','  Negative','Radiation Therapy','none',28,55,64,40,'IMRT',3472,'Alive',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
     ('OPC-00003', 60.96 ,'Male','ECOG 0',5,'Current','light','Oropharynx','Tonsillar Fossa','T2','N2a','M0','IVA','Squamous Cell Carcinoma','  positive','Radiation Therapy','none',28,63,60,25,'IMRT',4335,'Alive',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -285,7 +288,7 @@ INSERT INTO "Clinical_data_list_OPC_v3" VALUES
     ('OPC-00248', 54.99 ,'Male','ECOG 1',18,'Current','light','Oropharynx','Soft Palate','T3','N2a','M0','IVA','Squamous Cell Carcinoma','  Negative','Radiation Therapy','none',54,86,67.6,41,'IMRT',244,'Dead','Index Cancer',NULL,NULL,'Persistent',54,'Yes',235,NULL,NULL,NULL),
     ('OPC-00249', 59.86 ,'Male','ECOG 1',35,'Current','heavy','Oropharynx','post wall','T4a','N0','M0','IVA','Squamous Cell Carcinoma','  Negative','Radiation Therapy','Yes',91,137,70,35,'IMRT',3641,'Alive',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
     ('OPC-00250', 71.63 ,'Male','ECOG 2',30,'Ex-smoker','light','Oropharynx','Base of Tongue','T3','N2b','M0','IVA','Squamous Cell Carcinoma','  positive','Radiation Therapy','none',27,66,70,35,'IMRT',849,'Dead','Other cause - Tx related',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Yes');
-INSERT INTO "Clinical_data_list_OPC_v3" VALUES
+INSERT INTO "clinical_data_list_opc_v3" VALUES
     ('OPC-00251', 58.48 ,'Male','ECOG 0',2,'Ex-smoker','Moderate','Oropharynx','Tonsillar Fossa','T1','N1','M0','III','Squamous Cell Carcinoma','  positive','Radiation Therapy','none',32,62,64,40,'IMRT',4095,'Alive',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Yes'),
     ('OPC-00252', 63.03 ,'Female','ECOG 0',40,'Current','heavy','Oropharynx','Tonsil Pillar','T3','N2a','M0','IVA','Squamous Cell Carcinoma','  positive','Radiation Therapy','Yes',42,90,70,35,'IMRT',4065,'Alive',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Yes'),
     ('OPC-00253', 68.78 ,'Male','ECOG 0',0,'Non-smoker','light','Oropharynx','Tonsillar Fossa','T3','N2c','M0','IVA','Squamous Cell Carcinoma',NULL,'Radiation Therapy','Yes',49,94,68,34,'IMRT',1021,'Dead','Index Cancer',NULL,NULL,NULL,NULL,'Yes',954,NULL,NULL,NULL),
@@ -536,7 +539,7 @@ INSERT INTO "Clinical_data_list_OPC_v3" VALUES
     ('OPC-00498', 56.53 ,'Male','ECOG 1',40,'Current','light','Oropharynx','Tonsillar Fossa','T2','N0','M0','II','Squamous Cell Carcinoma','  Negative','Radiation Therapy','none',48,90,70,35,'IMRT',1005,'Dead','Other Cause',NULL,NULL,NULL,NULL,NULL,NULL,'Yes',261,NULL),
     ('OPC-00499', 45.64 ,'Male','ECOG 2',20,'Ex-smoker','heavy','Oropharynx','Base of Tongue','T4a','N2b','M0','IVA','Squamous Cell Carcinoma','  positive','Radiation Therapy','Yes',31,79,70,35,'IMRT',1302,'Dead','Index Cancer',NULL,NULL,'Yes',NULL,'Yes',1134,NULL,NULL,'Yes'),
     ('OPC-00500', 60.87 ,'Male','ECOG 0',5,'Ex-smoker','Moderate','Oropharynx','Base of Tongue','T2','N2b','M0','IVA','Squamous Cell Carcinoma','  positive','Radiation Therapy','none',33,75,70,35,'IMRT',2291,'Dead','Index Cancer','Yes',1426,NULL,NULL,'Yes',538,NULL,NULL,'Yes');
-INSERT INTO "Clinical_data_list_OPC_v3" VALUES
+INSERT INTO "clinical_data_list_opc_v3" VALUES
     ('OPC-00501', 64.01 ,'Male','ECOG 2',45,'Ex-smoker','ex-drinker','Oropharynx','Base of Tongue','T3','N3','M0','IVB','Squamous Cell Carcinoma','  Negative','Radiation Therapy','none',29,71,70,35,'IMRT',2831,'Alive',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
     ('OPC-00502', 67.50 ,'Male','ECOG 0',100,'Current','Moderate','Oropharynx','Base of Tongue','T1','N2c','M0','IVA','Squamous Cell Carcinoma','  Negative','Radiation Therapy','none',41,76,60,25,'IMRT',324,'Dead','Other Cancer',NULL,NULL,NULL,NULL,NULL,NULL,'Yes',302,NULL),
     ('OPC-00503', 60.57 ,'Male','ECOG 0',44,'Current','ex-drinker','Oropharynx','Tonsil','T1','N1','M0','III','Squamous Cell Carcinoma','  positive','Radiation Therapy','Yes',50,98,70,35,'IMRT',2355,'Alive',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Yes'),

@@ -1,4 +1,7 @@
-CREATE TABLE "HN1_Clinical_data_updated_July_2020" (
+CREATE DATABASE hn_one;
+\c hn_one;
+
+CREATE TABLE "hn1_clinical_data_updated_july_2020" (
     "id" TEXT,
     "index_tumour_location" TEXT,
     "age_at_diagnosis" INT,
@@ -27,7 +30,7 @@ CREATE TABLE "HN1_Clinical_data_updated_July_2020" (
     "event_distant_metastases" INT,
     "distant_metastases_in_days" INT
 );
-INSERT INTO "HN1_Clinical_data_updated_July_2020" VALUES
+INSERT INTO "hn1_clinical_data_updated_july_2020" VALUES
     ('HN1004','oropharynx',56,'male',1,'negative',4,2,0,'iva',7.1,'no','concomitant',46,2,70,35,1,3193,0,3193,0,3193,0,3193,0,3193),
     ('HN1006','oropharynx',63,'female',1,'negative',1,2,0,'iva',NULL,'no','none',37,2,68,34,0,2805,0,1940,0,1940,0,1940,0,1940),
     ('HN1022','oropharynx',56,'male',0,'positive',1,0,0,'i',NULL,'no','none',37,2,68,34,0,3198,0,1269,0,1269,0,1269,0,1269),

@@ -48,8 +48,17 @@ The end result of the main.py process in the Data Descriptor module is :
 ### FAIR Data Dashboard Module
 
 
+## How to run?
+Clone the repository (or download) on your machine. On **windows** please use the WSL2 with Docker, on **macOS/Linux**, you can use docker directly.
 
+To execute the complete workflow, please execute the following commands:
+```
+docker-compose up -d
+```
 
+Afterwards you can find the following systems:
+* Postgres web admin: [[http://localhost/]]
+* RDF repository: [[http://localhost:7200]]
 
 
 

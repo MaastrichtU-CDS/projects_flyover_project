@@ -1,35 +1,38 @@
-CREATE TABLE IF NOT EXISTS "HNSCC_Clinical_Data" (
-    "TCIA_Radiomics_ID" TEXT,
-    "Gender" TEXT,
-    "Age_at_Diag" INT,
-    "Smoking_status" TEXT,
-    "Smoking_status_Packs_Years" NUMERIC(4, 1),
-    "Tumor_laterality" TEXT,
-    "Cancer_subsite_of_origin" TEXT,
-    "HPV_Status" TEXT,
-    "T_category" INT,
-    "N_category" INT,
-    "AJCC_Stage_7th_edition" TEXT,
-    "Therapeutic_Combination" TEXT,
-    "Radiation_Treatment_duration" INT,
-    "Total_prescribed_Radiation_treatment_dose" NUMERIC(4, 2),
-    "Radiation_treatment_number_of_fractions" INT,
-    "Radiation_treatment_dose_per_fraction" NUMERIC(3, 2),
-    "Vital_status" TEXT,
-    "Overall_survival_duration" INT,
-    "Local_control" TEXT,
-    "Local_control_duration" INT,
-    "Regional_control" TEXT,
-    "Regional_control_duration" INT,
-    "Locoregional_control" TEXT,
-    "Locoregional_control_duration" INT,
-    "Freedom_from_distant_metastasis" TEXT,
-    "Freedom_from_distant_metastasis_duration" NUMERIC(4, 1),
-    "Relapse_free_survival" TEXT,
-    "Days_to_last_FU" INT,
-    "Neck_Dissection_after_IMRT" TEXT
+CREATE DATABASE hnscc;
+\c hnscc;
+
+CREATE TABLE IF NOT EXISTS "hnscc_clinical_data" (
+    "tcia_radiomics_id" text,
+    "gender" text,
+    "age_at_diag" int,
+    "smoking_status" text,
+    "smoking_status_packs_years" numeric(4, 1),
+    "tumor_laterality" text,
+    "cancer_subsite_of_origin" text,
+    "hpv_status" text,
+    "t_category" int,
+    "n_category" int,
+    "ajcc_stage_7th_edition" text,
+    "therapeutic_combination" text,
+    "radiation_treatment_duration" int,
+    "total_prescribed_radiation_treatment_dose" numeric(4, 2),
+    "radiation_treatment_number_of_fractions" int,
+    "radiation_treatment_dose_per_fraction" numeric(3, 2),
+    "vital_status" text,
+    "overall_survival_duration" int,
+    "local_control" text,
+    "local_control_duration" int,
+    "regional_control" text,
+    "regional_control_duration" int,
+    "locoregional_control" text,
+    "locoregional_control_duration" int,
+    "freedom_from_distant_metastasis" text,
+    "freedom_from_distant_metastasis_duration" numeric(4, 1),
+    "relapse_free_survival" text,
+    "days_to_last_fu" int,
+    "neck_dissection_after_imrt" text
 );
-INSERT INTO "HNSCC_Clinical_Data" VALUES
+INSERT INTO "hnscc_clinical_data" VALUES
     ('HNSCC-01-0242','Male',57,'Current',38,'R','Base of tongue','Unknown',4,2,'IV','Concurrent chemoradiotherapy',36,72,40,1.8,'Dead',223,'Yes',223,'Yes',223,'Yes',223,'Yes',7.3,'Yes',220,'No'),
     ('HNSCC-01-0228','Male',48,'Never',0,'R','Base of tongue','Unknown',1,1,'IV','Concurrent chemoradiotherapy',45,69.96,33,2.12,'Alive',924,'Yes',924,'Yes',924,'Yes',924,'Yes',30.4,'Yes',913,'No'),
     ('HNSCC-01-0053','Male',54,'Current',30,'R','Tonsil','Unknown',2,2,'IV','Concurrent chemoradiotherapy',42,72,40,1.8,'Alive',3770,'Yes',3770,'No',3770,'No',3770,'Yes',123.9,'No',3717,'Yes'),
@@ -280,7 +283,7 @@ INSERT INTO "HNSCC_Clinical_Data" VALUES
     ('HNSCC-01-0401','Male',75,'Former',90,'R','Base of tongue','Unknown',2,2,'IV','Induction chemotherapy+Radiation alone',44,69,33,2.09,'Dead',1216,'Yes',1216,'Yes',1216,'Yes',1216,'No',39.4,'No',1200,'No'),
     ('HNSCC-01-0405','Male',69,'Current',14,'R','Base of tongue','P',3,2,'IV','Concurrent chemoradiotherapy',49,70,33,2.12,'Dead',2551,'Yes',2551,'Yes',2551,'Yes',2551,'Yes',83.9,'Yes',2516,'No'),
     ('HNSCC-01-0398','Male',45,'Current',15,'L','Tonsil','Unknown',2,2,'IV','Concurrent chemoradiotherapy',44,70,33,2.12,'Alive',2997,'Yes',2997,'Yes',2997,'Yes',2997,'Yes',98.6,'Yes',2957,'No');
-INSERT INTO "HNSCC_Clinical_Data" VALUES
+INSERT INTO "hnscc_clinical_data" VALUES
     ('HNSCC-01-0407','Male',58,'Never',0,'L','Glossopharyngeal sulcus','N',3,2,'IV','Induction chemotherapy + concurrent chemoradiotherapy',44,70,33,2.12,'Alive',2766,'Yes',2766,'Yes',2766,'Yes',2766,'Yes',91,'Yes',2730,'No'),
     ('HNSCC-01-0399','Female',59,'NA',0,'R','Base of tongue','N',2,2,'IV','Induction chemotherapy + concurrent chemoradiotherapy',49,63,35,1.8,'Dead',568,'Yes',568,'Yes',568,'Yes',568,'No',13.3,'No',561,'No'),
     ('HNSCC-01-0403','Male',55,'Former',22,'L','Tonsil','P',2,2,'IV','Concurrent chemoradiotherapy',39,72,33,2.18,'Alive',3101,'Yes',3101,'Yes',3101,'Yes',3101,'Yes',101.6,'Yes',3048,'No'),

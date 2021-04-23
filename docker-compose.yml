@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 
 services:
   postgres:
@@ -6,7 +6,10 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - pg-dataset:/var/lib/postgresql/data
+      - ./demo_HEAD-NECK/INFOclinical_HN_Version2_30may2018_concat.sql:/docker-entrypoint-initdb.d/INFOclinical_HN_Version2_30may2018_concat.sql
+      - ./demo_HN1/HN1_Clinical_data_updated_July_2020.sql:/docker-entrypoint-initdb.d/HN1_Clinical_data_updated_July_2020.sql
+      - ./demo_HNSCC/HNSCC_Clinical_Data.sql:/docker-entrypoint-initdb.d/HNSCC_Clinical_Data.sql
+      - ./demo_OPC/Clinical_data_list_OPC_v3.sql:/docker-entrypoint-initdb.d/Clinical_data_list_OPC_v3.sql
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -21,8 +24,9 @@ services:
       PGADMIN_DEFAULT_EMAIL: root@pgadmin.com
       PGADMIN_DEFAULT_PASSWORD: root
 
-  rdf_store:
-    image: jvsoest/graphdb-free:fairstation
+  rdf-store:
+    build:
+      context: ./graphdb
     ports: 
       - "7200:7200"
     environment:
@@ -30,5 +34,27 @@ services:
       - GDB_MIN_MEM=1g
       - GDB_MAX_MEM=2g
 
-volumes:
-  pg-dataset:
+  triplifier_head_neck:
+    image: registry.gitlab.com/um-cds/fair/tools/triplifier:remoteEndpoint
+    # environment:
+      # - SLEEPTIME=360
+    volumes:
+      - ./data_descriptor/triplifier_head_neck.properties:/triplifier.properties
+  triplifier_hn_one:
+    image: registry.gitlab.com/um-cds/fair/tools/triplifier:remoteEndpoint
+    # environment:
+      # - SLEEPTIME=360
+    volumes:
+      - ./data_descriptor/triplifier_hn_one.properties:/triplifier.properties
+  triplifier_hnscc:
+    image: registry.gitlab.com/um-cds/fair/tools/triplifier:remoteEndpoint
+    # environment:
+    #   - SLEEPTIME=360
+    volumes:
+      - ./data_descriptor/triplifier_hnscc.properties:/triplifier.properties
+  triplifier_opc:
+    image: registry.gitlab.com/um-cds/fair/tools/triplifier:remoteEndpoint
+    # environment:
+    #   - SLEEPTIME=360
+    volumes:
+      - ./data_descriptor/triplifier_opc.properties:/triplifier.properties
