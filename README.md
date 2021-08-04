@@ -4,7 +4,7 @@
 
 We have build a dockerized Data FAIR-ification tool that takes four clinical datasets from the The Cancer Imaging Archive (TCIA) and converts them into Resource Descriptor Format (RDF). This conversion is done by an application which parses an entire structured table as a simple flattened RDF object. This so-called "Triplifier" tool works with PostGreSQL and CSV tables.
 
-An additional layer with annotations (using predefined universal Ontologies) are added for the four RDF triple files, since they have a flat schema and do not yet hold any semantics. Both the triples and the annotations are uploaded to a RDF triple store (GraphDB in our case). The ouput of this FAIR-ified Linked Data is shown in a Data visualization Dashboard. 
+An additional layer with annotations (using predefined universal Ontologies) are added for the four RDF triple files, since they have a flat schema and do not yet hold any semantics. Both the triples and the annotations are uploaded to a RDF triple store (GraphDB in our case). The output of this FAIR-ified Linked Data is shown in a Data visualization Dashboard. 
 
 ## Data
 
