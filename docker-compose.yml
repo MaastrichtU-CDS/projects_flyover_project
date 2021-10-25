@@ -39,6 +39,7 @@ services:
       - GDB_MAX_MEM=2g
     networks:
       - proxynet
+    container_name: rdf-store
 
   triplifier_head_neck:
     image: registry.gitlab.com/um-cds/fair/tools/triplifier:1.1.0
