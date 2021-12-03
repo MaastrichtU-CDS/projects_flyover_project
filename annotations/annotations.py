@@ -653,7 +653,7 @@ def addMapping2(localTerm, targetClass, superClass):
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            PREFIX db: <http://hn_one.local/rdf/ontology/>
+            PREFIX db: <http://head_neck.local/rdf/ontology/>
             PREFIX dbo: <http://um-cds/ontologies/databaseontology/>
             INSERT {
                 GRAPH <http://annotation.local/> {
@@ -1057,7 +1057,7 @@ def addMapping3(localTerm, targetClass, superClass):
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            PREFIX db: <http://hn_one.local/rdf/ontology/>
+            PREFIX db: <http://opc.local/rdf/ontology/>
             PREFIX dbo: <http://um-cds/ontologies/databaseontology/>
             INSERT {
                 GRAPH <http://annotation.local/> {
@@ -1431,7 +1431,7 @@ def addMapping4(localTerm, targetClass, superClass):
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            PREFIX db: <http://hn_one.local/rdf/ontology/>
+            PREFIX db: <http://hnscc.local/rdf/ontology/>
             PREFIX dbo: <http://um-cds/ontologies/databaseontology/>
             INSERT {
                 GRAPH <http://annotation.local/> {
