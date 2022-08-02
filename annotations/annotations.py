@@ -2,7 +2,7 @@ import requests
 
 endpoint1 = "http://rdf-store:7200/repositories/hn_one/statements"
 endpoint2 = "http://rdf-store:7200/repositories/head_neck/statements"
-endpoint3 = "http://rdf-store:7200/repositories/opc/statements"
+endpoint3 = "http://rdf-store:7200/repositories/userRepo/statements"
 endpoint4 = "http://rdf-store:7200/repositories/hnscc/statements"
 
 query1 = """
@@ -688,7 +688,7 @@ def addMapping2(localTerm, targetClass, superClass):
     print(annotationResponse.status_code)
 
 # T stage
-addMapping2("Tx", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48719",
+addMapping2("Tx", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48737",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
 addMapping2("T1", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48720",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
