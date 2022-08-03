@@ -500,9 +500,7 @@ INSERT
      ?ageMon roo:P100027 db:infoclinical_hn_version2_30may2018_concat.years.    
         
      ?tablerowMon roo:P100022 ?hpvMon.       #has_finding
-   
-     ?tablerowMon roo:P100229 ?followupMon.
-        
+ 
      ?tablerowMon roo:P100029 ?neoplasmMon.
    
      ?neoplasmMon roo:P100244 ?tstageMon.    #has_T_stage
@@ -546,7 +544,7 @@ INSERT
     
      db:infoclinical_hn_version2_30may2018_concat.hpv_status owl:equivalentClass ncit:C14226.
     
-     db:infoclinical_hn_version2_30may2018_concat.time_diagnosis_to_last_follow_up_days owl:equivalentClass roo:followupdays.
+     db:infoclinical_hn_version2_30may2018_concat.time_diagnosis_to_last_follow_up_days owl:equivalentClass roo:overallsurvivaldays.
         
      db:infoclinical_hn_version2_30may2018_concat.t_stage owl:equivalentClass ncit:C48885.
      
@@ -569,8 +567,6 @@ INSERT
      db:infoclinical_hn_version2_30may2018_concat.time_diagnosis_to_dm_days owl:equivalentClass roo:metastasisdays.
         
      db:infoclinical_hn_version2_30may2018_concat.death owl:equivalentClass ncit:C25717.
-
-     db:infoclinical_hn_version2_30may2018_concat.time_diagnosis_to_death_days owl:equivalentClass roo:overallsurvivaldays.
         
      db:infoclinical_hn_version2_30may2018_concat.therapy owl:equivalentClass ncit:C15632.
 
@@ -599,7 +595,7 @@ WHERE
 {  
     ?tablerowMon rdf:type db:infoclinical_hn_version2_30may2018_concat.
     
-    ?tablerowMon dbo:has_column ?patientIDMon, ?genderMon, ?ageMon, ?tumourMon, ?hpvMon, ?tstageMon, ?nstageMon, ?mstageMon, ?surgeryMon, ?survivalMon, ?overallsurvivaldaysMon, ?regionalrecurrenceMon, ?regionalrecurrencedaysMon, ?metastasisMon, ?metastasisdaysMon, ?followupMon, ?neoplasmMon, ?radiotherapyMon, ?ajccMon, ?chemoMon.
+    ?tablerowMon dbo:has_column ?patientIDMon, ?genderMon, ?ageMon, ?tumourMon, ?hpvMon, ?tstageMon, ?nstageMon, ?mstageMon, ?surgeryMon, ?survivalMon, ?overallsurvivaldaysMon, ?regionalrecurrenceMon, ?regionalrecurrencedaysMon, ?metastasisMon, ?metastasisdaysMon, ?neoplasmMon, ?radiotherapyMon, ?ajccMon, ?chemoMon.
           
     ?neoplasmMon rdf:type db:infoclinical_hn_version2_30may2018_concat.neoplasmClass.
     
@@ -615,7 +611,7 @@ WHERE
     
     ?hpvMon rdf:type db:infoclinical_hn_version2_30may2018_concat.hpv_status.
     
-    ?followupMon rdf:type db:infoclinical_hn_version2_30may2018_concat.time_diagnosis_to_last_follow_up_days.
+    ?overallsurvivaldaysMon rdf:type db:infoclinical_hn_version2_30may2018_concat.time_diagnosis_to_last_follow_up_days.
     
     ?tstageMon rdf:type db:infoclinical_hn_version2_30may2018_concat.t_stage.
     
@@ -630,9 +626,7 @@ WHERE
     ?chemoMon rdf:type db:infoclinical_hn_version2_30may2018_concat.therapy.
  
     ?survivalMon rdf:type db:infoclinical_hn_version2_30may2018_concat.death.
-        
-    ?overallsurvivaldaysMon rdf:type db:infoclinical_hn_version2_30may2018_concat.time_diagnosis_to_death_days.
-  
+          
     ?regionalrecurrenceMon rdf:type db:infoclinical_hn_version2_30may2018_concat.locoregional.
     
     ?regionalrecurrencedaysMon rdf:type db:infoclinical_hn_version2_30may2018_concat.time_diagnosis_to_lr_days.
@@ -653,7 +647,7 @@ def addMapping2(localTerm, targetClass, superClass):
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            PREFIX db: <http://hn_one.local/rdf/ontology/>
+            PREFIX db: <http://head_neck.local/rdf/ontology/>
             PREFIX dbo: <http://um-cds/ontologies/databaseontology/>
             INSERT {
                 GRAPH <http://annotation.local/> {
@@ -688,7 +682,7 @@ def addMapping2(localTerm, targetClass, superClass):
     print(annotationResponse.status_code)
 
 # T stage
-addMapping2("Tx", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48719",
+addMapping2("Tx", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48737",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
 addMapping2("T1", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48720",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
@@ -698,6 +692,10 @@ addMapping2("T3", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48728",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
 addMapping2("T4", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48732",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
+addMapping2("T4a", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48732",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
+addMapping2("T4b", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48732",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
 
 # N stage
 addMapping2("N0", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48705",
@@ -706,7 +704,15 @@ addMapping2("N1", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48706",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48884")
 addMapping2("N2", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48786",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48884")
+addMapping2("N2a", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48786",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48884")
+addMapping2("N2b", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48786",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48884")
+addMapping2("N2c", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48786",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48884")
 addMapping2("N3", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48714",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48884")
+addMapping2("N3b", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48714",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48884")
 
 # M stage
