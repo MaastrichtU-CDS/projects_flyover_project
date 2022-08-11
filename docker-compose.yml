@@ -41,35 +41,35 @@ services:
       - proxynet
     container_name: rdf-store
 
-#  triplifier_head_neck:
-#    image: registry.gitlab.com/um-cds/fair/tools/triplifier:1.1.0
-#    hostname: head_neck.local
+  triplifier_head_neck:
+    image: registry.gitlab.com/um-cds/fair/tools/triplifier:1.1.0
+    hostname: head_neck.local
     # environment:
       # - SLEEPTIME=360
-#    volumes:
-#      - ./data_descriptor/triplifier_head_neck.properties:/triplifier.properties
-#    networks:
-#      - proxynet
+    volumes:
+      - ./data_descriptor/triplifier_head_neck.properties:/triplifier.properties
+    networks:
+      - proxynet
 
-#  triplifier_hn_one:
-#    image: registry.gitlab.com/um-cds/fair/tools/triplifier:1.1.0
-#    hostname: hn_one.local
+  triplifier_hn_one:
+    image: registry.gitlab.com/um-cds/fair/tools/triplifier:1.1.0
+    hostname: hn_one.local
     # environment:
       # - SLEEPTIME=360
-#    volumes:
-#      - ./data_descriptor/triplifier_hn_one.properties:/triplifier.properties
-#    networks:
-#      - proxynet
+    volumes:
+      - ./data_descriptor/triplifier_hn_one.properties:/triplifier.properties
+    networks:
+      - proxynet
 
-#  triplifier_hnscc:
-#    image: registry.gitlab.com/um-cds/fair/tools/triplifier:1.1.0
-#    hostname: hnscc.local
+  triplifier_hnscc:
+    image: registry.gitlab.com/um-cds/fair/tools/triplifier:1.1.0
+    hostname: hnscc.local
     # environment:
     #   - SLEEPTIME=360
-#    volumes:
-#      - ./data_descriptor/triplifier_hnscc.properties:/triplifier.properties
-#    networks:
-#      - proxynet
+    volumes:
+      - ./data_descriptor/triplifier_hnscc.properties:/triplifier.properties
+    networks:
+      - proxynet
 
   triplifier_opc:
     image: registry.gitlab.com/um-cds/fair/tools/triplifier:1.1.0

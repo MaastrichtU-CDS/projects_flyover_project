@@ -2,7 +2,7 @@ import requests
 
 endpoint1 = "http://rdf-store:7200/repositories/hn_one/statements"
 endpoint2 = "http://rdf-store:7200/repositories/head_neck/statements"
-endpoint3 = "http://rdf-store:7200/repositories/userRepo/statements"
+endpoint3 = "http://rdf-store:7200/repositories/opc/statements"
 endpoint4 = "http://rdf-store:7200/repositories/hnscc/statements"
 
 query1 = """
