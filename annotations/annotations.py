@@ -417,8 +417,6 @@ addMapping1("ivc", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27971",
 # chemo
 addMapping1("concomitant", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C94626",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15632")
-addMapping1("concurrent", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C94626",
-           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15632")
 addMapping1("none", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15313",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15632")
 
