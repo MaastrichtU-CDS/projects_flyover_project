@@ -403,35 +403,6 @@ def update_scatter(dataset, columns):
         fig = px.scatter(None)
         return fig
 
-#@app.callback(
-#    Output("box", "figure"),
-#    [Input("dataset", "value"),
-#     Input("columns", "value")])
-#def update_box(dataset, columns):
-#    result = pd.DataFrame()
-#    x = 0
-#    if dataset:
-#        for d in dataset:
-#            result_data = queryresult(d, queryAgeSurv)
-#            data = pd.read_csv(StringIO(result_data))
-#            result = result.append(data)
-#        result['Age_Range'] = pd.cut(result['agevalue'], [0, 40, 50, 60, 70, 80, 90],
-#                                     labels=['0-40', '40-50', '50-60', '60-70', '70-80', '80-90'])
-#        result.dropna(subset=["survivaldays"], inplace=True)  # drops NaN
-#        result = result.sort_values("Age_Range").reset_index(drop=True)
-#        result["survival"].replace(codedict, inplace=True)
-        # print(result)
-#        if (result.empty == False):
-#            fig = px.box(result, x='Age_Range', y='survivaldays', notched=False, color='survival')
-#            fig.update_layout(title_text='Survival days by age', title_x=0.5)
-#            return fig
-#        else:
-#            fig = px.box(None)
-#            return fig
-#    else:
-#        fig = px.box(None)
-#        return fig
-
 @app.callback(
     Output("pie-chart", "figure"),
     [Input("dataset", "value"),
