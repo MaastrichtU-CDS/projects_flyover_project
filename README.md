@@ -14,18 +14,25 @@ For user data, a new module (data_descriptor) is created where the user can desc
 A simple graphical interface tool for helping a local user to describe their own data (in the form of CSV or PostGreSQL). On uploading the data, Triplifier runs and converts this data into RDF triples which is then uploaded to the RDF store, along with an OWL file. The next page displays the list of columns and prompts the user to give some basic information about their data which is then added back to the OWL file in the RDF store.  
 
 #### How to run?
+Clone the repository (or download) on your machine. On windows please use the WSL2 with Docker, on macOS/Linux, you can use docker directly.
 To execute the complete workflow, please execute the following commands from the project folder:
 ```
 docker-compose up -d
 ```
-The end result of the data_descriptor_main.py process in the Data Descriptor module is:
 
-1) An ontology (OWL) file that describes the schema of the structured data but does not contain any data elements in itself, along with the selections and annotations entered by the user through the simple graphical user interface.
+## Docker compose initiates the following
 
-2) A Turtle RDF (TTL) file that contains the data elements in term subject-predicate-object sentences.
+1. Docker compose builds a graphdb and jupyter notebook front end.
+2. Running the user_module notebook from jupyter notebook builds a webUI for user to upload their relational database.
+3. Triplifier fires up, converts the uploaded database to RDF.
+4. Triplifier exits code upon successful completion. The next page lists the columns from the data and requires the user to provide information about the data. 
+5. GraphDB now has a rdf repository called userRepo, with two graphs:
+
+- An ontology (OWL) file <http://ontology.local/> that describes the schema of the structured data but does not contain any data elements in itself, along with the selections and annotations entered by the user through the simple graphical user interface.
+- A Turtle RDF (TTL) file <http://data.local/> that contains the data elements in term subject-predicate-object sentences.
 
 You can find the following systems:
-* Postgres web admin: [[http://localhost/]]
+* Jupyter notebook: [[http://localhost/8881]]
 * RDF repository: [[http://localhost:7200]]
 
 #### Publishing anonyous METADATA
