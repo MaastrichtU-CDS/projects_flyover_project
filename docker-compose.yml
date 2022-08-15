@@ -1,35 +1,6 @@
 version: '3.8'
 
 services:
-  #postgres:
-  #  image: postgres
-  #  ports:
-  #    - "5432:5432"
-  #  volumes:
-  #    - ./demo_HEAD-NECK/INFOclinical_HN_Version2_30may2018_concat.sql:/docker-entrypoint-initdb.d/INFOclinical_HN_Version2_30may2018_concat.sql
-  #    - ./demo_HN1/HN1_Clinical_data_updated_July_2020.sql:/docker-entrypoint-initdb.d/HN1_Clinical_data_updated_July_2020.sql
-  #    - ./demo_HNSCC/HNSCC_Clinical_Data.sql:/docker-entrypoint-initdb.d/HNSCC_Clinical_Data.sql
-  #    - ./demo_OPC/Clinical_data_list_OPC_v3.sql:/docker-entrypoint-initdb.d/Clinical_data_list_OPC_v3.sql
-    #uncomment out the following line if you wish to make the POSTGRESQL databases persistent on your host filesystem
-    #  - ./postgres-data:/var/lib/postgresql/data
-  #  environment:
-  #    POSTGRES_USER: postgres
-  #    POSTGRES_PASSWORD: postgres
-  #  networks:
-  #    - proxynet
-
-  #pgadmin:
-  #  image: dpage/pgadmin4
-  #  depends_on:
-  #    - postgres
-  #  ports:
-  #    - "5050:80"
-  #  environment:
-  #    PGADMIN_DEFAULT_EMAIL: root@pgadmin.com
-  #    PGADMIN_DEFAULT_PASSWORD: root
-  #  networks:
-  #    - proxynet
-
   rdf-store:
     build:
       context: ./graphdb
