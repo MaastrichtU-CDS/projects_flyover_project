@@ -37,7 +37,7 @@ docker-compose up -d
     <<http://data.local/>> with the RDF triples.
     <<http://ontology.local/>> with a data specific ontology.
 
-In graphdb, you can now visualize knowledge graphs of patient data. The below figure shows the knowledge graph of a patient with flat schema from triplifier.
+In graphdb, you can see visual graphs of patient data. The below figure shows the knowledge graph of a patient with flat schema from triplifier.
 
 ![](Images/Triplfier_graph.png "Schema from triplifier")
 
