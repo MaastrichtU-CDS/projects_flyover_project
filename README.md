@@ -40,6 +40,7 @@ docker-compose up -d
 ![](C:/Users/P70070487/Pictures/Screenshots/Screenshot_graph.png "Schema from triplifier")
 
 
+
 #### Step 2
 Navigate to the annotations folder of the project and execute the command:
 ```
