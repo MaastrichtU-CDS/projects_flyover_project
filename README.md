@@ -37,6 +37,9 @@ docker-compose up -d
     <<http://data.local/>> with the RDF triples.
     <<http://ontology.local/>> with a data specific ontology.
 
+![](C:\\Users\\P70070487\\Pictures\\Screenshots\\Screenshot (7).png)
+
+
 #### Step 2
 Navigate to the annotations folder of the project and execute the command:
 ```
