@@ -37,7 +37,7 @@ docker-compose up -d
     <<http://data.local/>> with the RDF triples.
     <<http://ontology.local/>> with a data specific ontology.
 
-![]("C:\\Users\\P70070487\\Pictures\\Screenshots\\Screenshot_graph.png")
+![](C:/Users/P70070487/Pictures/Screenshots/Screenshot_graph.png "Schema from triplifier")
 
 
 #### Step 2
