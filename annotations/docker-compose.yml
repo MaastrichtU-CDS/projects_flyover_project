@@ -8,13 +8,13 @@ services:
     networks:
       - my-proxy-net
 
-  #dashoard:
-  #  build: ./demo_dash
-  #  ports:
-  #    - "8050:8050"
-  #  container_name: dashboard
-  #  networks:
-  #    - my-proxy-net
+  dashoard:
+    build: ./demo_dash
+    ports:
+      - "8050:8050"
+    container_name: dashboard
+    networks:
+      - my-proxy-net
 
 networks:
   my-proxy-net:

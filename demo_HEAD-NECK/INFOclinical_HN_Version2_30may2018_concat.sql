@@ -246,7 +246,7 @@ INSERT INTO "infoclinical_hn_version2_30may2018_concat" VALUES
     ('HN-HMR-022','M',68,'Larynx','T3','N2c','M0','Stage IVA','N/A',0,23,'35',48,94,'chemo radiation','N/A',731,1,0,0,216,NULL,NULL,NULL,NULL,NULL),
     ('HN-HMR-023','M',51,'Oropharynx','T4','N2c','M0','Stage IVA','N/A',0,3,'18',36,84,'chemo radiation','N/A',1633,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL),
     ('HN-HMR-024','F',64,'Oropharynx','T3','N2c','M0','Stage IVA','N/A',0,60,'78',94,141,'chemo radiation','N/A',1937,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL),
-    ('HN-HMR-025','m',58,'Oropharynx','T4','N2b','M0','Stage IVA','+',0,8,'16',34,82,'chemo radiation','N/A',1106,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL),
+    ('HN-HMR-025','M',58,'Oropharynx','T4','N2b','M0','Stage IVA','+',0,8,'16',34,82,'chemo radiation','N/A',1106,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL),
     ('HN-HMR-026','M',60,'Hypopharynx','T4b','N2c','M0','stage IVB','N/A',0,-29,'-5',13,58,'chemo radiation','N/A',426,0,1,1,NULL,202,437,NULL,NULL,NULL),
     ('HN-HMR-027','M',58,'Nasopharynx','T3','N1','M0','Stage III','N/A',0,16,'18',69,115,'chemo radiation','N/A',918,0,1,1,NULL,434,968,NULL,NULL,NULL),
     ('HN-HMR-028','M',73,'Oropharynx','T4','N2c','M0','Stage IVA','N/A',0,-8,'52',72,121,'chemo radiation','N/A',491,0,0,1,NULL,NULL,540,NULL,NULL,NULL),
@@ -328,5 +328,4 @@ INSERT INTO "infoclinical_hn_version2_30may2018_concat" VALUES
     ('HN-CHUM-062','M',72,'Oropharynx','T3','N1','M0','Stage III','N/A',0,69,'TBD',81,130,'chemo radiation','N/A',1379,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL),
     ('HN-CHUM-063','M',77,'Oropharynx','T3','N2','M0','Stage IV','N/A',0,4,'TBD',30,84,'chemo radiation','N/A',2012,1,1,0,832,832,NULL,NULL,NULL,NULL),
     ('HN-CHUM-064','M',73,'Oropharynx','T3','N3','M0','Stage IV','N/A',0,44,'TBD',56,100,'chemo radiation','N/A',870,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL),
-    ('HN-CHUM-065','M',81,'Oropharynx','T3','N0','M0','Stage IV','N/A',0,14,'TBD',73,118,'chemo radiation','N/A',788,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL),
-    ('/A','788',0,'0','0',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+    ('HN-CHUM-065','M',81,'Oropharynx','T3','N0','M0','Stage IV','N/A',0,14,'TBD',73,118,'chemo radiation','N/A',788,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL)

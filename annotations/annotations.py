@@ -284,8 +284,33 @@ WHERE
     ?metastasisdays rdf:type db:hn1_clinical_data_updated_july_2020.distant_metastases_in_days.
  
 }
+"""
+
+queryUnknown1 = """
+PREFIX db: <http://hn_one.local/rdf/ontology/>
+PREFIX dbo: <http://um-cds/ontologies/databaseontology/>
+PREFIX roo: <http://www.cancerdata.org/roo/>
+PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+INSERT 
+{
+    GRAPH <http://annotation.local/>
+    {  
+       ?hpvv dbo:has_cell ?hpvcell.
+       ?hpvcell dbo:has_value "Unknown".
+    }
+}
+    WHERE { 
+            ?tablerow roo:P100022 ?hpvv.
+            FILTER NOT EXISTS {?hpvv dbo:has_cell ?hpvcell}
+            BIND(IRI(CONCAT(str(?hpvv), "/value")) as ?hpvcell).
+}
 
 """
+
 def runQuery(endpoint, query):
     annotationResponse = requests.post(endpoint,
                                    data="update=" + query,
@@ -298,6 +323,7 @@ def runQuery(endpoint, query):
 
 runQuery(endpoint1, query1)
 runQuery(endpoint1, query2)
+runQuery(endpoint1, queryUnknown1)
 
 def addMapping1(localTerm, targetClass, superClass):
     query3 = """
@@ -399,6 +425,8 @@ addMapping1("positive", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C128
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C14226")
 addMapping1("negative", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C131488",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C14226")
+addMapping1("Unknown", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C10000",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C14226")
 
 # ajcc
 addMapping1("i", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27966",
@@ -416,6 +444,8 @@ addMapping1("ivc", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27971",
 
 # chemo
 addMapping1("concomitant", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C94626",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15632")
+addMapping1("concurrent", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C94626",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15632")
 addMapping1("none", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15313",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15632")
@@ -698,6 +728,10 @@ addMapping2("T3", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48728",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
 addMapping2("T4", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48732",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
+addMapping2("T4a", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48732",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
+addMapping2("T4b", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48732",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
 
 # N stage
 addMapping2("N0", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48705",
@@ -706,13 +740,21 @@ addMapping2("N1", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48706",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48884")
 addMapping2("N2", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48786",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48884")
+addMapping2("N2a", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48786",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48884")
+addMapping2("N2b", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48786",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48884")
+addMapping2("N2c", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48786",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48884")
 addMapping2("N3", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48714",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48884")
+addMapping2("N3b", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48714",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48884")
 
 # M stage
 addMapping2("M0", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48699",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48883")
-addMapping2("M1", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48700",
+addMapping2("Mx", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48704",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48883")
 
 # gender
@@ -736,14 +778,20 @@ addMapping2("Hypopharynx", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263")
 addMapping2("Nasopharynx", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12423",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263")
+addMapping2("unknown", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C00000",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263")
 
 # hpv
 addMapping2("%2B", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C128839",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C14226")
 addMapping2("-", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C131488",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C14226")
+addMapping2("N/A", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C10000",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C14226")
 
 # ajcc
+addMapping2("N/A", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C00000",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38027")
 addMapping2("stage I", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27966",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38027")
 addMapping2("Stade I", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27966",
@@ -1048,8 +1096,34 @@ WHERE
    
 }
 """
+queryUnknown2 = """
+
+PREFIX db: <http://opc.local/rdf/ontology/>
+PREFIX dbo: <http://um-cds/ontologies/databaseontology/>
+PREFIX roo: <http://www.cancerdata.org/roo/>
+PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+INSERT 
+{
+    GRAPH <http://annotation.local/>
+    {  
+       ?hpvv dbo:has_cell ?hpvcell.
+       ?hpvcell dbo:has_value "Unknown".
+    }
+}
+    WHERE { 
+            ?tablerow roo:P100022 ?hpvv.
+            FILTER NOT EXISTS {?hpvv dbo:has_cell ?hpvcell}
+            BIND(IRI(CONCAT(str(?hpvv), "/value")) as ?hpvcell).
+}
+
+"""
 runQuery(endpoint3, query7)
 runQuery(endpoint3, query8)
+runQuery(endpoint3, queryUnknown2)
 
 def addMapping3(localTerm, targetClass, superClass):
     query9 = """
@@ -1100,6 +1174,8 @@ addMapping3("T1", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48720",
 addMapping3("T2", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48724",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
 addMapping3("T3", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48728",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
+addMapping3("T3 (2)", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48728",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
 addMapping3("T4a", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48732",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48885")
@@ -1157,7 +1233,12 @@ addMapping3("Positive -Strong", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.
 addMapping3("Positive -focal", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C128839", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C14226")
 addMapping3("Negative", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C131488", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C14226")
 addMapping3("  Negative", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C131488", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C14226")
-
+addMapping3("Unknown", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C10000",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C14226")
+addMapping3("no tissue", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C10000",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C14226")
+addMapping3("Not tested", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C10000",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C14226")
 
 # ajcc
 addMapping3("I", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27966",
@@ -1218,6 +1299,22 @@ INSERT
      ?neoplasmHous rdf:type db:hnscc_clinical_data.neoplasmClass.
     
      ?radiotherapyHous rdf:type db:hnscc_clinical_data.radiotherapyClass.
+     
+     db:hnscc_clinical_data.clin_m rdf:type owl:Class.
+    
+     db:hnscc_clinical_data.clin_m dbo:table db:hnscc_clinical_data.
+    
+     db:hnscc_clinical_data.clin_m rdfs:label "Clin_m".
+    
+     ?tablerowHous dbo:has_column ?clin_m.
+
+     ?clin_m dbo:has_cell ?mvalue.
+
+     ?mvalue dbo:has_value "M0".
+    
+     ?clin_m rdf:type db:hnscc_clinical_data.clin_m.  
+        
+     ?mvalue rdf:type dbo:Cell.
         
     } 
 }
@@ -1228,6 +1325,10 @@ where
     BIND(IRI(CONCAT(str(?tablerowHous), "/radiotherapy")) as ?radiotherapyHous).
     
     ?tablerowHous rdf:type db:hnscc_clinical_data.
+    
+    BIND(IRI(CONCAT(str(?tablerowHous), "/clin_m")) as ?clin_m).
+
+    BIND(IRI(CONCAT(str(?clin_m), "/value")) as ?mvalue).
    
 }
         """
@@ -1262,6 +1363,8 @@ INSERT
      ?neoplasmHous roo:P100244 ?tstageHous.     
         
      ?neoplasmHous roo:P100242 ?nstageHous. 
+     
+     ?neoplasmHous roo:P100241 ?mstageHous.
         
      ?neoplasmHous roo:P100202 ?tumourHous.
     
@@ -1319,6 +1422,8 @@ INSERT
      db:hnscc_clinical_data.t_category owl:equivalentClass ncit:C48885.
      
      db:hnscc_clinical_data.n_category owl:equivalentClass ncit:C48884.
+     
+     db:hnscc_clinical_data.clin_m owl:equivalentClass ncit:C48883.
     
      db:hnscc_clinical_data.radiation_treatment_duration owl:equivalentClass roo:rttotaldays.
     
@@ -1371,7 +1476,7 @@ WHERE
 {  
     ?tablerowHous rdf:type db:hnscc_clinical_data.
     
-    ?tablerowHous dbo:has_column ?patientIDHous, ?ageHous, ?genderHous, ?hpvHous, ?ajccHous, ?tumourHous, ?neoplasmHous, ?radiotherapyHous, ?tstageHous, ?nstageHous, ?rttotaldaysHous, ?graytotaldoseHous, ?graydoseperfractionHous, ?rtfractionsHous, ?survivalHous, ?overallsurvivaldaysHous, ?metastasisHous, ?localrecurrenceHous, ?localrecurrencedaysHous, ?regionalrecurrenceHous, ?regionalrecurrencedaysHous, ?metastasisdaysHous, ?followupHous, ?chemoHous.
+    ?tablerowHous dbo:has_column ?patientIDHous, ?ageHous, ?genderHous, ?hpvHous, ?ajccHous, ?tumourHous, ?neoplasmHous, ?radiotherapyHous, ?tstageHous, ?nstageHous, ?mstageHous, ?rttotaldaysHous, ?graytotaldoseHous, ?graydoseperfractionHous, ?rtfractionsHous, ?survivalHous, ?overallsurvivaldaysHous, ?metastasisHous, ?localrecurrenceHous, ?localrecurrencedaysHous, ?regionalrecurrenceHous, ?regionalrecurrencedaysHous, ?metastasisdaysHous, ?followupHous, ?chemoHous.
     
     ?neoplasmHous rdf:type db:hnscc_clinical_data.neoplasmClass.
     
@@ -1392,6 +1497,8 @@ WHERE
     ?tstageHous rdf:type db:hnscc_clinical_data.t_category.
         
     ?nstageHous rdf:type db:hnscc_clinical_data.n_category.
+    
+    ?mstageHous rdf:type db:hnscc_clinical_data.clin_m.
     
     ?rttotaldaysHous rdf:type db:hnscc_clinical_data.radiation_treatment_duration. 
     
@@ -1491,9 +1598,7 @@ addMapping4("3", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48714",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48884")
 
 # M stage
-addMapping4("0", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48699",
-           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48883")
-addMapping4("1", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48700",
+addMapping4("M0", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48699",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48883")
 
 # gender
@@ -1519,11 +1624,15 @@ addMapping4("Soft palate", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263")
 addMapping4("Glossopharyngeal sulcus", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12762",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263")
+addMapping4("NOS", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12762",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263")
 
 # hpv
 addMapping4("P", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C128839",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C14226")
 addMapping4("N", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C131488",
+           "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C14226")
+addMapping4("Unknown", "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C10000",
            "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C14226")
 
 # ajcc
