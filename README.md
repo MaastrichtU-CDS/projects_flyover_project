@@ -37,9 +37,9 @@ docker-compose up -d
     <<http://data.local/>> with the RDF triples.
     <<http://ontology.local/>> with a data specific ontology.
 
-![](C:/Users/P70070487/Pictures/Screenshots/Screenshot_graph.png "Schema from triplifier")
+In graphdb, you can see visual graphs of patient data. The below figure shows the knowledge graph of a patient with flat schema from triplifier.
 
-
+![](Images/Triplfier_graph.png "Schema from triplifier")
 
 #### Step 2
 Navigate to the annotations folder of the project and execute the command:
@@ -49,6 +49,10 @@ docker-compose up -d
 #### Docker compose initiates the following
 1. Annotations app builds and adds a new <<http://annotation.local/>> graph in each of the four graphDB repositories. This graph contains semantics for the flat RDF triples from the Triplifier.
 2. Finally, the user is able to visualize the data from all the four annotated datasets (now linked together via their semantics) in a dashboard. This dashboard uses SPARQL queries to retrieve the triples from graphDB.
+
+This below image is the knowledge graph of the same patient after annotating the triples with semantics from cancer ontologies like NCIT and ROO.
+
+![](Images/Semantic_graph.png "Annotated schema")
 
 Afterwards you can find the following systems:
 * Postgres web admin: [[http://localhost/]]
