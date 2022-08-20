@@ -531,7 +531,9 @@ INSERT
         
      ?tablerowMon roo:P100022 ?hpvMon.       #has_finding
    
-     ?tablerowMon roo:P100229 ?followupMon.
+     ?tablerowMon roo:has ?followupMon.
+     
+     ?followupMon roo:P100027 db:infoclinical_hn_version2_30may2018_concat.days.
         
      ?tablerowMon roo:P100029 ?neoplasmMon.
    
@@ -559,10 +561,6 @@ INSERT
      
      ?tablerowMon roo:P100254 ?survivalMon.    #has_death_finding 
         
-     ?tablerowMon roo:has ?overallsurvivaldaysMon.
-        
-     ?overallsurvivaldaysMon roo:P100027 db:infoclinical_hn_version2_30may2018_concat.days.
-        
      ?tablerowMon roo:P100231 ?chemoMon. 
     
     
@@ -576,7 +574,7 @@ INSERT
     
      db:infoclinical_hn_version2_30may2018_concat.hpv_status owl:equivalentClass ncit:C14226.
     
-     db:infoclinical_hn_version2_30may2018_concat.time_diagnosis_to_last_follow_up_days owl:equivalentClass roo:followupdays.
+     db:infoclinical_hn_version2_30may2018_concat.time_diagnosis_to_last_follow_up_days owl:equivalentClass roo:overallsurvivaldays.
         
      db:infoclinical_hn_version2_30may2018_concat.t_stage owl:equivalentClass ncit:C48885.
      
@@ -599,8 +597,6 @@ INSERT
      db:infoclinical_hn_version2_30may2018_concat.time_diagnosis_to_dm_days owl:equivalentClass roo:metastasisdays.
         
      db:infoclinical_hn_version2_30may2018_concat.death owl:equivalentClass ncit:C25717.
-
-     db:infoclinical_hn_version2_30may2018_concat.time_diagnosis_to_death_days owl:equivalentClass roo:overallsurvivaldays.
         
      db:infoclinical_hn_version2_30may2018_concat.therapy owl:equivalentClass ncit:C15632.
 
@@ -629,7 +625,7 @@ WHERE
 {  
     ?tablerowMon rdf:type db:infoclinical_hn_version2_30may2018_concat.
     
-    ?tablerowMon dbo:has_column ?patientIDMon, ?genderMon, ?ageMon, ?tumourMon, ?hpvMon, ?tstageMon, ?nstageMon, ?mstageMon, ?surgeryMon, ?survivalMon, ?overallsurvivaldaysMon, ?regionalrecurrenceMon, ?regionalrecurrencedaysMon, ?metastasisMon, ?metastasisdaysMon, ?followupMon, ?neoplasmMon, ?radiotherapyMon, ?ajccMon, ?chemoMon.
+    ?tablerowMon dbo:has_column ?patientIDMon, ?genderMon, ?ageMon, ?tumourMon, ?hpvMon, ?tstageMon, ?nstageMon, ?mstageMon, ?surgeryMon, ?survivalMon, ?regionalrecurrenceMon, ?regionalrecurrencedaysMon, ?metastasisMon, ?metastasisdaysMon, ?followupMon, ?neoplasmMon, ?radiotherapyMon, ?ajccMon, ?chemoMon.
           
     ?neoplasmMon rdf:type db:infoclinical_hn_version2_30may2018_concat.neoplasmClass.
     
@@ -660,9 +656,7 @@ WHERE
     ?chemoMon rdf:type db:infoclinical_hn_version2_30may2018_concat.therapy.
  
     ?survivalMon rdf:type db:infoclinical_hn_version2_30may2018_concat.death.
-        
-    ?overallsurvivaldaysMon rdf:type db:infoclinical_hn_version2_30may2018_concat.time_diagnosis_to_death_days.
-  
+          
     ?regionalrecurrenceMon rdf:type db:infoclinical_hn_version2_30may2018_concat.locoregional.
     
     ?regionalrecurrencedaysMon rdf:type db:infoclinical_hn_version2_30may2018_concat.time_diagnosis_to_lr_days.
