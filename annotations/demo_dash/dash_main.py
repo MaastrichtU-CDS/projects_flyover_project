@@ -1,13 +1,21 @@
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 from dash.dependencies import Input, Output
 import pandas as pd
 import plotly.express as px
 import requests
 from io import StringIO
 import time
+import numpy as np
 
+queryPatient = """
+    PREFIX roo: <http://www.cancerdata.org/roo/>
+    SELECT (COUNT(*) AS ?count)
+    WHERE {
+        ?tablerow roo:P100061 ?patient.
+    }
+"""
 queryT = """
     PREFIX dbo: <http://um-cds/ontologies/databaseontology/>
     PREFIX roo: <http://www.cancerdata.org/roo/>
@@ -21,7 +29,7 @@ queryT = """
         ?neoplasm roo:P100244 ?tstagev.
         ?tstagev dbo:has_cell ?cell.
         ?cell a ?t.
-        FILTER regex(str(?t), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48719|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48720|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48724|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48728|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48732"))
+        FILTER regex(str(?t), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48737|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48719|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48720|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48724|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48728|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48732"))
         BIND(strafter(str(?t), "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#") AS ?tstage)
     }
     }
@@ -63,7 +71,7 @@ queryN = """
     }
 """
 queryM = """
-    PREFIX dbo: <http://um-cds/ontologies/databaseontology/>
+     PREFIX dbo: <http://um-cds/ontologies/databaseontology/>
     PREFIX roo: <http://www.cancerdata.org/roo/>
     PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -75,7 +83,7 @@ queryM = """
         ?neoplasm roo:P100241 ?mstagev.
         ?mstagev dbo:has_cell ?cell.
         ?cell a ?m.
-        FILTER regex(str(?m), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48699|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48700"))
+        FILTER regex(str(?m), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48699|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48700|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48704"))
         BIND(strafter(str(?m), "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#") AS ?mstage)
     }
     }
@@ -131,8 +139,8 @@ queryAjccSex = """
     ?tumourcell a ?t.
 
     FILTER regex(str(?g), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16576|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C20197"))
-    FILTER regex(str(?a), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27966|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28054|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27970|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27971"))
-    FILTER regex(str(?t), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12762|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12246|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12420|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12423"))
+    FILTER regex(str(?a), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C00000|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27966|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28054|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27970|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27971"))
+    FILTER regex(str(?t), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12762|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12246|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12420|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12423|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C00000"))
 
     BIND(strafter(str(?g), "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#") AS ?Gender)
     BIND(strafter(str(?a), "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#") AS ?AJCC)
@@ -151,7 +159,7 @@ queryAjcc = """
     ?neoplasm roo:P100219 ?ajccv.
     ?ajccv dbo:has_cell ?ajcccell.
     ?ajcccell a ?a.
-    FILTER regex(str(?a), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27966|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28054|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27970|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27971"))
+    FILTER regex(str(?a), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C00000|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27966|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28054|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27970|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27971"))
     BIND(strafter(str(?a), "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#") AS ?ajcc)   
     } 
 }
@@ -168,7 +176,7 @@ queryTumour = """
     ?neoplasm roo:P100202 ?tumour. 
     ?tumour dbo:has_cell ?tumourcell. 
     ?tumourcell a ?t.
-    FILTER regex(str(?t), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12762|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12246|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12420|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12423"))
+    FILTER regex(str(?t), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C00000|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12762|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12246|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12420|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12423"))
     BIND(strafter(str(?t), "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#") AS ?TumourLocation)
     }
 }
@@ -184,7 +192,7 @@ queryHpv = """
     ?tablerow roo:P100022 ?hpvv.
     ?hpvv dbo:has_cell ?hpvcell.
     ?hpvcell a ?h.
-    FILTER regex(str(?h), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C128839|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C131488"))
+    FILTER regex(str(?h), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C128839|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C131488|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C10000"))
     BIND(strafter(str(?h), "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#") AS ?hpv)
    }
 }
@@ -265,9 +273,13 @@ app.layout = html.Div([
         html.Div(children=[
             dcc.Graph(id="pie-chart")]),
 
+    ]),
+    html.Div([
+        html.Button('Click to download Demographics', id='table-but', n_clicks=0),
+        dcc.Download(id="download-dataframe-csv")
     ])
 ])
-
+mydict = {}
 result_hnscc = pd.DataFrame()
 result_hn_one = pd.DataFrame()
 result_hn = pd.DataFrame()
@@ -275,37 +287,58 @@ result_opc = pd.DataFrame()
 codedict = {
         "C16576": "Female", "C20197": "Male", "C27966": "Stage I", "C28054": "Stage II",
         "C27970": "Stage III", "C27971": "Stage IV", "C12762": "Oropharynx", "C12420": "Larynx",
-        "C12246": "Hypopharynx", "C12423": "Nasopharynx", "C48719": "T0", "C48720": "T1", "C48724": "T2",
+        "C12246": "Hypopharynx", "C12423": "Nasopharynx", "C00000": "Unknown", "C48737": "Tx", "C48719": "T0", "C48720": "T1", "C48724": "T2",
         "C48728": "T3", "C48732": "T4", "C48705": "N0", "C48706": "N1", "C48786": "N2", "C48714": "N3",
-        "C48699": "M0", "C48700": "M1", "C28554": "Dead", "C37987": "Alive", "C128839": "HPV Positive",
-        "C131488": "HPV Negative", "C94626": "ChemoRadiotherapy", "C15313": "Radiotherapy"
+        "C48704": "Mx", "C48699": "M0", "C48700": "M1", "C28554": "Dead", "C37987": "Alive", "C128839": "HPV Positive",
+        "C131488": "HPV Negative", "C10000": "Unknown", "C94626": "ChemoRadiotherapy", "C15313": "Radiotherapy"
     }
+repolists = ['hnscc', 'hn_one', 'head_neck', 'opc']
 querylists = [queryT, queryG, queryN, queryM, queryS,
               queryAjcc, queryTumour, queryHpv, queryChemo]
+
+for repos in repolists:     
+    mydict[repos] = {}
+    result_data = queryresult(repos, queryPatient)
+    patientCount = pd.read_csv(StringIO(result_data))
+    x = patientCount['count'][0]
+    mydict[repos]['NumberOfPatients'] = str(x)
+
 for lists in querylists:
     result_data_hnscc = queryresult('hnscc', lists)
     data_hnscc = pd.read_csv(StringIO(result_data_hnscc))
     result_hnscc = pd.concat([result_hnscc, data_hnscc], axis=1)
     for col in result_hnscc.columns:
         result_hnscc[col] = result_hnscc[col].map(codedict).fillna(result_hnscc[col])
+        x = result_hnscc.value_counts(result_hnscc[col])
+        y = x.to_dict()
+        mydict['hnscc'][col] = y
 for lists in querylists:
     result_data_hn_one = queryresult('hn_one', lists)
     data_hn_one = pd.read_csv(StringIO(result_data_hn_one))
     result_hn_one = pd.concat([result_hn_one, data_hn_one], axis=1)
     for col in result_hn_one.columns:
         result_hn_one[col] = result_hn_one[col].map(codedict).fillna(result_hn_one[col])
+        x = result_hn_one.value_counts(result_hn_one[col])
+        y = x.to_dict()
+        mydict['hn_one'][col] = y
 for lists in querylists:
     result_data_hn = queryresult('head_neck', lists)
     data_hn = pd.read_csv(StringIO(result_data_hn))
     result_hn = pd.concat([result_hn, data_hn], axis=1)
     for col in result_hn.columns:
         result_hn[col] = result_hn[col].map(codedict).fillna(result_hn[col])
+        x = result_hn.value_counts(result_hn[col])
+        y = x.to_dict()
+        mydict['head_neck'][col] = y
 for lists in querylists:
     result_data_opc = queryresult('opc', lists)
     data_opc = pd.read_csv(StringIO(result_data_opc))
     result_opc = pd.concat([result_opc, data_opc], axis=1)
     for col in result_opc.columns:
         result_opc[col] = result_opc[col].map(codedict).fillna(result_opc[col])
+        x = result_opc.value_counts(result_opc[col])
+        y = x.to_dict()
+        mydict['opc'][col] = y
 
 datalist = {'hnscc', 'hn_one', 'head_neck', 'opc'}
 for lists in datalist:
@@ -332,15 +365,39 @@ for lists in datalist:
 
 result1 = queryresult('hnscc', queryAge)
 result_age_hnscc = pd.read_csv(StringIO(result1))
+maxAge = result_age_hnscc['agevalue'].max()
+minAge = result_age_hnscc['agevalue'].min()
+meanAge = result_age_hnscc['agevalue'].mean()
+mydict['hnscc']['minAge'] = str(minAge)
+mydict['hnscc']['maxAge'] = str(maxAge)
+mydict['hnscc']['meanAge'] = str(meanAge)
 
 result2 = queryresult('hn_one', queryAge)
 result_age_hn_one = pd.read_csv(StringIO(result2))
+maxAge = result_age_hn_one['agevalue'].max()
+minAge = result_age_hn_one['agevalue'].min()
+meanAge = result_age_hn_one['agevalue'].mean()
+mydict['hn_one']['minAge'] = str(minAge)
+mydict['hn_one']['maxAge'] = str(maxAge)
+mydict['hn_one']['meanAge'] = str(meanAge)
 
 result3 = queryresult('head_neck', queryAge)
 result_age_hn = pd.read_csv(StringIO(result3))
+maxAge = result_age_hn['agevalue'].max()
+minAge = result_age_hn['agevalue'].min()
+meanAge = result_age_hn['agevalue'].mean()
+mydict['head_neck']['minAge'] = str(minAge)
+mydict['head_neck']['maxAge'] = str(maxAge)
+mydict['head_neck']['meanAge'] = str(meanAge)
 
 result4 = queryresult('opc', queryAge)
 result_age_opc = pd.read_csv(StringIO(result4))
+maxAge = result_age_opc['agevalue'].max()
+minAge = result_age_opc['agevalue'].min()
+meanAge = result_age_opc['agevalue'].mean()
+mydict['opc']['minAge'] = str(minAge)
+mydict['opc']['maxAge'] = str(maxAge)
+mydict['opc']['meanAge'] = str(meanAge)
 
 @app.callback(
     Output("sunburst", "figure"),
@@ -437,6 +494,23 @@ def generate_chart(dataset, columns):
     Input("dataset", "value"))
 def input_triggers_nested(value):
     time.sleep(2)
+    
+@app.callback(
+    Output("download-dataframe-csv", "data"),
+    Input('table-but', 'n_clicks'),
+    prevent_initial_call=True,)
+
+def search_fi(n_clicks):
+    if n_clicks > 0:
+        dict_json = {}
+        for key in mydict:
+            dict_json[key] = mydict[key]
+        data = np.column_stack((np.arange(10), np.arange(10) * 10))
+        df = pd.DataFrame(dict_json)
+        df = df.astype(str)
+        df = df.replace({'{':''}, regex=True)
+        df = df.replace({'}':''}, regex=True)
+        return dcc.send_data_frame(df.to_csv, "mydf.csv")
 
 if __name__ == '__main__':
     app.run_server(debug=True, host ='0.0.0.0')
