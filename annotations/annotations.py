@@ -82,7 +82,7 @@ INSERT
         
      ?tablerow roo:P100018 ?gender.		 #has_biological_sex
         
-     ?tablerow roo:hasage ?age. 
+     ?tablerow roo:P100000 ?age. 
 
      ?age roo:P100027 db:hn1_clinical_data_updated_july_2020.years.	
         
@@ -525,7 +525,7 @@ INSERT
         
      ?tablerowMon roo:P100018 ?genderMon.        #has_biological_sex
         
-     ?tablerowMon roo:hasage ?ageMon. 
+     ?tablerowMon roo:P100000 ?ageMon. 
     
      ?ageMon roo:P100027 db:infoclinical_hn_version2_30may2018_concat.years.    
         
@@ -910,7 +910,7 @@ INSERT
         
      ?tablerowTor roo:P100018 ?genderTor.        #has_biological_sex
         
-     ?tablerowTor roo:hasage ?ageTor.  
+     ?tablerowTor roo:P100000 ?ageTor.  
     
      ?ageTor roo:P100027 db:clinical_data_list_opc_v3.years.    
         
@@ -1342,7 +1342,7 @@ INSERT
     {      
      ?tablerowHous roo:P100061 ?patientIDHous.   #has_identifier
      
-     ?tablerowHous roo:hasage ?ageHous.  
+     ?tablerowHous roo:P100000 ?ageHous.  
     
      ?ageHous roo:P100027 db:hnscc_clinical_data.years. 
  

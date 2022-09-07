@@ -113,7 +113,7 @@ queryAge = """
     SELECT ?agevalue   
     WHERE 
         {
-        ?tablerow roo:hasage ?age.
+        ?tablerow roo:P100000 ?age.
         ?age dbo:has_cell ?cell.
         ?cell roo:P100042 ?agevalue.  
 	}
