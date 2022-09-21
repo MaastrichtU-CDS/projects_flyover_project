@@ -33,6 +33,7 @@ docker-compose up -d
 
 You can find the following systems:
 * Jupyter notebook: [[http://localhost/8881]]
+  Login password - flyover-1
 * RDF repository: [[http://localhost:7200]]
 
 #### Publishing anonyous METADATA
