@@ -32,7 +32,7 @@ docker-compose up -d
 - A Turtle RDF (TTL) file <http://data.local/> that contains the data elements in term subject-predicate-object sentences.
 
 You can find the following systems:
-* Jupyter notebook: [[http://localhost/8881]] (Login password - flyover-1)
+* Jupyter notebook: [[http://localhost/8881]] (Login password: flyover-1)
 * RDF repository: [[http://localhost:7200]]
 
 #### Publishing anonyous METADATA
