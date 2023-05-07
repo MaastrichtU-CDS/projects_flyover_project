@@ -1,0 +1,11 @@
+id,index_tumour_location,age_at_diagnosis,biological_sex,performance_status_ecog,overall_hpv_p16_status,clin_t,clin_n,clin_m,ajcc_stage,cancer_surgery_performed,chemotherapy_given
+HN1004,oropharynx,56,male,1,negative,4,2,0,iva,no,concomitant
+HN1006,oropharynx,63,female,1,negative,1,2,0,iva,no,none
+HN1022,oropharynx,56,male,0,positive,1,0,0,i,no,none
+HN1026,larynx,67,male,0,,4,0,0,iva,no,none
+HN1029,oropharynx,54,female,0,positive,1,2,0,iva,no,none
+HN1046,oropharynx,66,male,0,negative,2,2,0,iva,no,none
+HN1047,larynx,73,male,0,,1,0,0,i,no,none
+HN1054,oropharynx,64,male,0,positive,2,0,0,ii,no,none
+HN1057,oropharynx,53,female,1,,2,1,0,iii,no,none
+HN1060,oropharynx,44,male,,negative,4,2,0,iva,no,none
