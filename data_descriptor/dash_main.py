@@ -17,8 +17,7 @@ queryT = """
     WHERE {
     OPTIONAL
     {
-        ?tablerow roo:P100029 ?neoplasm.
-        ?neoplasm roo:P100244 ?tstagev.
+        ?patient roo:P100244 ?tstagev.
         ?tstagev dbo:has_cell ?cell.
         ?cell a ?t.
         FILTER regex(str(?t), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48719|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48720|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48724|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48728|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48732"))
@@ -36,7 +35,7 @@ queryG = """
     WHERE {
     OPTIONAL
     {
-        ?tablerow roo:P100018 ?genderv.
+        ?patient roo:P100018 ?genderv.
         ?genderv dbo:has_cell ?cell.
         ?cell a ?g.
         FILTER regex(str(?g), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16576|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C20197"))
@@ -53,8 +52,7 @@ queryN = """
     WHERE {
     OPTIONAL
     {
-        ?tablerow roo:P100029 ?neoplasm.
-        ?neoplasm roo:P100242 ?nstagev.
+        ?patient roo:P100242 ?nstagev.
         ?nstagev dbo:has_cell ?cell.
         ?cell a ?n.
         FILTER regex(str(?n), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48705|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48706|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48786|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48714"))
@@ -71,29 +69,11 @@ queryM = """
     WHERE {
     OPTIONAL
     {
-        ?tablerow roo:P100029 ?neoplasm.
-        ?neoplasm roo:P100241 ?mstagev.
+        ?patient roo:P100241 ?mstagev.
         ?mstagev dbo:has_cell ?cell.
         ?cell a ?m.
         FILTER regex(str(?m), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48699|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48700"))
         BIND(strafter(str(?m), "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#") AS ?mstage)
-    }
-    }
-"""
-queryS = """
-    PREFIX dbo: <http://um-cds/ontologies/databaseontology/>
-    PREFIX roo: <http://www.cancerdata.org/roo/>
-    PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
-    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    SELECT ?survival
-    WHERE {
-    OPTIONAL
-    {
-        ?tablerow roo:P100254 ?survivalv.
-        ?survivalv dbo:has_cell ?cell.
-        ?cell a ?s.
-        FILTER regex(str(?s), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28554|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C37987"))
-        BIND(strafter(str(?s), "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#") AS ?survival)
     }
     }
 """
@@ -105,7 +85,7 @@ queryAge = """
     SELECT ?agevalue   
     WHERE 
         {
-        ?tablerow roo:hasage ?age.
+        ?patient roo:P100000 ?age.
         ?age dbo:has_cell ?cell.
         ?cell roo:P100042 ?agevalue.  
 	}
@@ -117,10 +97,9 @@ queryAjccSex = """
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     SELECT ?Gender ?AJCC ?TumourLocation
     WHERE {
-    ?tablerow roo:P100018 ?genderv.
-    ?tablerow roo:P100029 ?neoplasm.
-    ?neoplasm roo:P100219 ?ajccv.
-    ?neoplasm roo:P100202 ?tumourv.
+    ?patient roo:P100018 ?genderv.
+    ?patient roo:P100219 ?ajccv.
+    ?patient roo:P100202 ?tumourv.
 
     ?genderv dbo:has_cell ?gendercell.
     ?ajccv dbo:has_cell ?ajcccell.
@@ -147,8 +126,7 @@ queryAjcc = """
     SELECT ?ajcc
     WHERE {
     OPTIONAL {
-    ?tablerow roo:P100029 ?neoplasm.
-    ?neoplasm roo:P100219 ?ajccv.
+    ?patient roo:P100219 ?ajccv.
     ?ajccv dbo:has_cell ?ajcccell.
     ?ajcccell a ?a.
     FILTER regex(str(?a), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27966|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28054|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27970|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27971"))
@@ -164,8 +142,7 @@ queryTumour = """
     SELECT ?TumourLocation
     WHERE {
     OPTIONAL {
-    ?tablerow roo:P100029 ?neoplasm.
-    ?neoplasm roo:P100202 ?tumour. 
+    ?patient roo:P100202 ?tumour. 
     ?tumour dbo:has_cell ?tumourcell. 
     ?tumourcell a ?t.
     FILTER regex(str(?t), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12762|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12246|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12420|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C12423"))
@@ -181,7 +158,7 @@ queryHpv = """
     SELECT ?hpv
     WHERE {
     OPTIONAL {
-    ?tablerow roo:P100022 ?hpvv.
+    ?patient roo:P100022 ?hpvv.
     ?hpvv dbo:has_cell ?hpvcell.
     ?hpvcell a ?h.
     FILTER regex(str(?h), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C128839|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C131488"))
@@ -197,7 +174,7 @@ queryChemo = """
     SELECT ?therapy
     WHERE {
     OPTIONAL {
-    ?tablerow roo:P100231 ?chemov.
+    ?patient roo:P100231 ?chemov.
     ?chemov dbo:has_cell ?chemocell.
     ?chemocell a ?c.
     FILTER regex(str(?c), ("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C94626|http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15313"))
@@ -248,7 +225,6 @@ app.layout = html.Div([
                      {'label': 'T stage', 'value': 'tstage'},
                      {'label': 'N stage', 'value': 'nstage'},
                      {'label': 'M stage', 'value': 'mstage'},
-                     {'label': 'Survival Status', 'value': 'survival'},
                      {'label': 'HPV Status', 'value': 'hpv'},
                      {'label': 'AJCC Stage', 'value': 'ajcc'},
                      {'label': 'Tumour Location', 'value': 'TumourLocation'},
@@ -288,8 +264,8 @@ def update_sun(userRepo, columns):
             result = userRepodata
             # print(result)
             if (result.empty == False):
-                fig = px.sunburst(result, path=['Gender', 'AJCC', 'TumourLocation'], color='AJCC')
-                fig.update_layout(title_text='Gender & Stage-wise Tumour Location', title_x=0.5)
+                fig = px.sunburst(result, path=['Gender', 'TumourLocation', 'AJCC'], color='AJCC')
+                fig.update_layout(title_text='Gender & Tumour-location wise AJCC Staging', title_x=0.5)
                 return fig
             else:
                 fig = px.sunburst(None)
@@ -349,8 +325,6 @@ def generate_chart(userRepo, columns):
                 result_data = queryresult(userRepo, queryN)
             elif columns == "mstage":
                 result_data = queryresult(userRepo, queryM)
-            elif columns == "survival":
-                result_data = queryresult(userRepo, queryS)
             elif columns == "hpv":
                 result_data = queryresult(userRepo, queryHpv)
             elif columns == "ajcc":
