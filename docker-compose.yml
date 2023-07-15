@@ -1,31 +1,65 @@
-version: '3.8'
+version: '3.7'
 
 services:
-  rdf-store:
+
+  xnat-web:
     build:
-      context: ./graphdb
-    ports: 
-      - "7200:7200"
+      context: ./xnat
+      args:
+        XNAT_VERSION: ${XNAT_VERSION}
+        XNAT_SMTP_ENABLED: ${XNAT_SMTP_ENABLED}
+        XNAT_SMTP_HOSTNAME: ${XNAT_SMTP_HOSTNAME}
+        XNAT_SMTP_PORT: ${XNAT_SMTP_PORT}
+        XNAT_SMTP_AUTH: ${XNAT_SMTP_AUTH}
+        XNAT_SMTP_USERNAME: ${XNAT_SMTP_USERNAME}
+        XNAT_SMTP_PASSWORD: ${XNAT_SMTP_PASSWORD}
+        XNAT_DATASOURCE_DRIVER: ${XNAT_DATASOURCE_DRIVER}
+        XNAT_DATASOURCE_URL: ${XNAT_DATASOURCE_URL}
+        XNAT_DATASOURCE_USERNAME: ${XNAT_DATASOURCE_USERNAME}
+        XNAT_DATASOURCE_PASSWORD: ${XNAT_DATASOURCE_PASSWORD}
+        TOMCAT_XNAT_FOLDER: ${TOMCAT_XNAT_FOLDER}
+        XNAT_ROOT: ${XNAT_ROOT}
+        XNAT_HOME: ${XNAT_HOME}
+        XNAT_EMAIL: ${XNAT_EMAIL}
+    ports:
+      - 8104:8104
+    volumes:
+      - ./xnat/plugins:/data/xnat/home/plugins
+      - ./xnat-data/home/logs:/data/xnat/home/logs
+      - ./xnat-data/archive:/data/xnat/archive
+      - ./xnat-data/build:/data/xnat/build
+      - ./xnat-data/cache:/data/xnat/cache
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - xnat-db
     environment:
-      - GDB_HEAP_SIZE=2g
-      - GDB_MIN_MEM=1g
-      - GDB_MAX_MEM=2g
+      - CATALINA_OPTS=-Xms${XNAT_MIN_HEAP} -Xmx${XNAT_MAX_HEAP} -Dxnat.home=${XNAT_HOME}
+      - XNAT_HOME=${XNAT_HOME}
     networks:
       - proxynet
 
-  jupyter-note:
+  xnat-db:
     build:
-      context: ./jupyter
-      #dockerfile: Dockerfile
-    ports:
-      - 8881:8888
-      - 8050:8050
-      - 5000:5000
+      context: ./postgres
+      args:
+        XNAT_DATASOURCE_PASSWORD: ${XNAT_DATASOURCE_PASSWORD}
+    expose:
+      - "5432"
     volumes:
-      - ./data_descriptor:/home/jovyan/work/user_module
+      - ./postgres-data:/var/lib/postgresql/data
     environment:
-      - JUPYTER_TOKEN=flyover-1
-    hostname: "data.local"
+      POSTGRES_PASSWORD: ${XNAT_DATASOURCE_ADMIN_PASSWORD}
+    networks:
+      - proxynet
+
+  xnat-nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    expose:
+      - "80"
+    links:
+      - xnat-web
     networks:
       - proxynet
 
