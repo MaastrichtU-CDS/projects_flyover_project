@@ -1,0 +1,4 @@
+Subject;is_female;clinical_t_stage;clinical_n_stage;clinical_m_stage;age_at_diagnosis;overall_ajcc_stage;histology;survival_time_in_days;death_status_event
+LUNG1-001;0;2;3;0;78.7;IIIb;large_cell;2165;1
+LUNG1-002;0;2;0;0;83.8;I;squamous_cell_carcinoma;155;1
+LUNG1-003;0;2;3;0;68.2;IIIb;large_cell;256;1

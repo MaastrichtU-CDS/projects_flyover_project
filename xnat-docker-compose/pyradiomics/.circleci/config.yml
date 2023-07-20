@@ -1,0 +1,183 @@
+# To test:
+# docker pull circleci/picard
+# docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):$(pwd) -v ~/.circleci/:/root/.circleci --workdir $(pwd) circleci/picard circleci build
+
+version: 2
+jobs:
+  test-notebooks:
+    working_directory: /pyradiomics
+    docker:
+      - image: jupyter/datascience-notebook
+        user: root
+    steps:
+      - run:
+          # CircleCI says we need SSH and the docker doesn't have it installed
+          name: Update
+          command: |
+            apt-get update
+            apt-get install -y openssh-client openssh-server
+      - run:
+          name: Avoid hosts unknown for github
+          command: echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > /etc/ssh/ssh_config
+      - checkout
+      - run:
+          name: Install pyradiomics in Python 3
+          command: |
+            source activate root
+            python -m pip install --no-cache-dir -r requirements.txt
+            python -m pip install --no-cache-dir -r requirements-dev.txt
+            python setup.py install
+      - run:
+          name: test notebooks in python 3
+          command: |
+            jupyter nbconvert --ExecutePreprocessor.kernel_name=python3 --ExecutePreprocessor.timeout=-1 --to notebook --output-dir /tmp --execute  notebooks/helloRadiomics.ipynb notebooks/helloFeatureClass.ipynb notebooks/PyRadiomicsExample.ipynb
+
+  build-3.5: &build_template
+    working_directory: /pyradiomics
+    docker:
+      - image: circleci/python:3.5-jessie
+        user: root
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /pyradiomics
+      - run:
+          name: Setup SciKit-CI
+          command: |
+            pip install scikit-ci==0.13.0 scikit-ci-addons==0.11.0
+            ci_addons --install ../addons
+      - run:
+          name: Install
+          command: ci install
+      - run:
+          name: Test
+          command: ci test
+      - run:
+          name: Build Distribution
+          command: ci after_test
+      - persist_to_workspace:
+          root: .
+          paths: dist
+
+  build-3.6:
+    <<: *build_template
+    docker:
+      - image: circleci/python:3.6-jessie
+        user: root
+
+  build-3.7:
+    <<: *build_template
+    docker:
+    - image: circleci/python:3.7
+      user: root
+
+  deploy:
+    working_directory: /pyradiomics
+    docker:
+      - image: circleci/python:3.6-jessie
+        user: root
+    steps:
+      - run:
+          name: Check Repo User
+          command: if [[ $CIRCLE_PROJECT_USERNAME != "Radiomics" ]]; then circleci step halt; fi
+      - checkout
+      - run:
+          name: Setup SciKit-CI
+          command: |
+            pip install scikit-ci==0.13.0 scikit-ci-addons==0.11.0
+            ci_addons --install ../addons
+      - run:
+          name: Install
+          command: ci install
+      - run:
+          name: Install patchelf auditwheel, twine
+          command: |
+            apt-get install patchelf  # needed to run auditwheel
+            python -m pip install auditwheel
+            python -m pip install twine
+      # only attach the workspace at this point to prevent the removal of source distributions
+      - attach_workspace:
+          at: /pyradiomics
+      - run:
+          name: Create sdist
+          command: python setup.py sdist
+      - run:
+          name: Fix Distribution Wheels
+          command: |
+            ls ./dist/*-linux_$(uname -m).whl  # This will prevent further deployment if no wheels are found
+            # Since there are no external shared libraries to bundle into the wheels
+            # this step will fixup the wheel switching from 'linux' to 'manylinux1' tag
+            for whl in $(ls ./dist/*-linux_$(uname -m).whl); do
+                auditwheel repair $whl -w ./dist/
+                rm $whl
+            done
+      - run:
+          name: Deploy source and linux wheels
+          command: twine upload ./dist/*.whl ./dist/*.tar.gz -u $PYPI_USER -p $PYPI_PASSWORD
+
+  deploy_conda:
+    working_directory: /pyradiomics
+    docker:
+      - image: circleci/python:3.6-jessie
+        user: root
+    steps:
+      - run:
+          name: Check Repo User
+          command: if [[ $CIRCLE_PROJECT_USERNAME != "Radiomics" ]]; then circleci step halt; fi
+      - checkout
+      - run:
+          name: Install Miniconda
+          command: |
+            wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+            bash miniconda.sh -b -p $HOME/miniconda
+            hash -r
+            echo 'export PATH=$HOME/miniconda/bin:$PATH' >> $BASH_ENV
+      - run:
+          name: Configure Miniconda
+          command: |
+            conda install gcc_linux-64 libgcc
+            bash ./conda/configure_conda.sh
+      - run:
+          name: Build Conda packages
+          command: |
+            mkdir  /conda-bld
+            conda build ./conda --python=3.5 --croot /conda-bld
+            conda build ./conda --python=3.6 --croot /conda-bld
+            conda build ./conda --python=3.7 --croot /conda-bld
+      - run:
+          name: Deploy Conda packages
+          command: |
+            anaconda -t $ANACONDA_TOKEN upload -u Radiomics /conda-bld/linux-64/pyradiomics-*.tar.bz2 --force
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build-3.5: &build_job_template
+          filters:
+            tags:
+              only:
+                - /^v?[0-9]+(\.[0-9]+)*(rc[0-9]+)?/
+      - build-3.6:
+          <<: *build_job_template
+      - build-3.7:
+          <<: *build_job_template
+      - test-notebooks:
+          requires:
+            - build-3.5
+            - build-3.6
+            - build-3.7
+      - deploy: &deploy_template
+          requires:
+            - build-3.5
+            - build-3.6
+            - build-3.7
+          filters:
+            branches:
+              ignore:
+                - /.*/
+            tags:
+              only:
+                - /^v?[0-9]+(\.[0-9]+)*(rc[0-9]+)?/
+      - deploy_conda:
+          <<: *deploy_template

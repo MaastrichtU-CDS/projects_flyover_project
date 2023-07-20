@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  rdf-store:
+    build:
+        context: ./graphdb
+    ports:
+      - "7200:7200"
+    volumes:
+      - ./graphdb/data:/opt/graphdb/home
+    environment:
+      - GDB_HEAP_SIZE=4g
+      - GDB_MIN_MEM=2g
+      - GDB_MAX_MEM=4g
+    networks:
+      - proxynet
+    container_name: rdf-store
+
+networks:
+  proxynet:
+    name: custom_network
