@@ -1,0 +1,304 @@
+Feature Name,Ontology Concept
+Fmorph.vol,ro:RNU0
+Fmorph.approx.vol,ro:YEKZ
+Fmorph.area,ro:C0JK
+Fmorph.av,ro:2PR5
+Fmorph.comp.1,ro:SKGS
+Fmorph.comp.2,ro:BQWJ
+Fmorph.sph.dispr,ro:KRCK
+Fmorph.sph.sphericity,ro:QCFX
+Fmorph.sphericity,ro:QCFX
+Fmorph.sph.asph,ro:25C7
+Fmorph.com,ro:KLMA
+Fmorph.diam,ro:L0JK
+Fmorph.pca.major,ro:TDIC
+Fmorph.pca.minor,ro:P9VJ
+Fmorph.pca.least,ro:7J51
+Fmorph.pca.elongation,ro:Q3CK
+Fmorph.pca.flatness,ro:N17B
+Fmorph.v.dens.aabb,ro:PBX1
+Fmorph.a.dens.aabb,ro:R59B
+Fmorph.v.dens.ombb,ro:ZH1A
+Fmorph.a.dens.ombb,ro:IQYR
+Fmorph.v.dens.aee,ro:6BDE
+Fmorph.a.dens.aee,ro:RDD2
+Fmorph.v.dens.mvee,ro:SWZ1
+Fmorph.a.dens.mvee,ro:BRI8
+Fmorph.v.dens.conv.hull,ro:R3ER
+Fmorph.a.dens.conv.hull,ro:BRI8
+Fmorph.integ.int,ro:99N0
+Fmorph.moran.i,ro:N365
+Fmorph.geary.c,ro:NPT7
+Fmorph.pyrad.diam.max2Dslice,ro:4S59
+Fmorph.pyrad.diam.max2Dcolumn,ro:5ABU
+Fmorph.pyrad.diam.max2Drow,ro:9SCJ
+Floc.peak.local,ro:VJGA
+Floc.peak.global,ro:0F91
+Fstat.mean,ro:Q4LE
+Fstat.var,ro:ECT3
+Fstat.skew,ro:KE2A
+Fstat.kurt,ro:IPH6
+Fstat.median,ro:Y12H
+Fstat.min,ro:1GSF
+Fstat.P10,ro:QG58
+Fstat.P90,ro:8DWT
+Fstat.max,ro:84IY
+Fstat.iqr,ro:SALO
+Fstat.range,ro:2OJQ
+Fstat.mad,ro:4FUA
+Fstat.rmad,ro:1128
+Fstat.medad,ro:N72L
+Fstat.cov,ro:7TET
+Fstat.qcod,ro:9S40
+Fstat.energy,ro:N8CA
+Fstat.pyrad.totalenergy,ro:URTB
+Fstat.rms,ro:5ZWQ
+Fih.mean,ro:X6K6
+Fih.var,ro:CH89
+Fih.skew,ro:88K1
+Fih.kurt,ro:C3I7
+Fih.median,ro:WIFQ
+Fih.min,ro:1PR8
+Fih.P10,ro:GPMT
+Fih.P90,ro:OZ0C
+Fih.max,ro:3NCY
+Fih.mode,ro:AMMC
+Fih.iqr,ro:WR0O
+Fih.range,ro:5Z3W
+Fih.mad,ro:D2ZX
+Fih.rmad,ro:WRZB
+Fih.medad,ro:4RNL
+Fih.cov,ro:CWYJ
+Fih.qcod,ro:SLWD
+Fih.entropy,ro:TLU2
+Fih.uniformity,ro:BJ5W
+Fih.max.grad,ro:12CE
+Fih.max.grad.gl,ro:8E6O
+Fih.min.grad,ro:VQB3
+Fih.min.grad.gl,ro:RHQZ
+Fih.pyrad.std,ro:GF95
+Fivh.V10,ro:8WT9
+Fivh.V90,ro:0PPY
+Fivh.I10,ro:UWA7
+Fivh.I90,ro:WBIZ
+Fivh.V10minusV90,ro:SOIR
+Fivh.I10minusI90,ro:EGSX
+Fivh.auc,ro:9CMM
+Fcm.joint.max,ro:GYBY
+Fcm.joint.avg,ro:60VM
+Fcm.joint.var,ro:UR99
+Fcm.joint.entr,ro:TU9B
+Fcm.diff.avg,ro:TF7R
+Fcm.diff.var,ro:D3YU
+Fcm.diff.entr,ro:NTRS
+Fcm.sum.avg,ro:ZGXS
+Fcm.sum.var,ro:OEEB
+Fcm.sum.entr,ro:P6QZ
+Fcm.sum.energy,ro:8ZQL
+Fcm.sum.contrast,ro:ACUI
+Fcm.sum.dissimilarity,ro:8S9J
+Fcm.inv.diff,ro:IB1Z
+Fcm.inv.diff.norm,ro:NDRX
+Fcm.inv.diff.mom,ro:WF0Z
+Fcm.inv.diff.mom.norm,ro:1QCO
+Fcm.inv.var,ro:E8JP
+Fcm.corr,ro:NI2N
+Fcm.auto.corr,ro:QWB0
+Fcm.clust.tend,ro:DG8W
+Fcm.clust.shade,ro:7NFM
+Fcm.clust.prom,ro:AE86
+Fcm.info.corr.1,ro:R8DG
+Fcm.info.corr.2,ro:JN9H
+Fcm.pyrad.hom1,ro:26200
+Fcm.pyrad.hom2,ro:26201
+Frlm.sre,ro:22OV
+Frlm.lre,ro:W4KF
+Frlm.lgre,ro:V3SW
+Frlm.hgre,ro:G3QZ
+Frlm.srlge,ro:HTZT
+Frlm.srhge,ro:GD3A
+Frlm.lrlge,ro:IVPO
+Frlm.lrhge,ro:3KUM
+Frlm.glnu,ro:R5YN
+Frlm.glnu.norm,ro:OVBL
+Frlm.rlnu,ro:W92Y
+Frlm.rlnu.norm,ro:IC23
+Frlm.r.perc,ro:9ZK5
+Frlm.gl.var,ro:8CE5
+Frlm.rl.var,ro:SXLW
+Frlm.rl.entr,ro:HJ9O
+Fszm.sze,ro:GU8N
+Fszm.lze,ro:48P8
+Fszm.lgze,ro:XMSY
+Fszm.hgze,ro:5GN9
+Fszm.szlge,ro:5RAI
+Fszm.szhge,ro:HW1V
+Fszm.lzlge,ro:YH51
+Fszm.lzhge,ro:0130
+Fszm.glnu,ro:0131
+Fszm.glnu.norm,ro:Y1RO
+Fszm.zlnu,ro:4JP3
+Fszm.zlnu.norm,ro:VB3A
+Fszm.z.perc,ro:P30P
+Fszm.gl.var,ro:BYLV
+Fszm.zs.var,ro:3NSA
+Fszm.zs.entr,ro:GU8N
+Fdzm.sde,ro:0GBI
+Fdzm.lde,ro:MB4I
+Fdzm.lgze,ro:S1RA
+Fdzm.hgze,ro:K26C
+Fdzm.sdlge,ro:RUVG
+Fdzm.sdhge,ro:DKNJ
+Fdzm.ldlge,ro:A7WM
+Fdzm.ldhge,ro:KLTH
+Fdzm.glnu,ro:VFT7
+Fdzm.glnu.norm,ro:7HP3
+Fdzm.zdnu,ro:V294
+Fdzm.zdnu.norm,ro:IATH
+Fdzm.z.perc,ro:VIWW
+Fdzm.gl.var,ro:QK93
+Fdzm.zd.var,ro:VIWW
+Fdzm.zd.entr,ro:GBDU
+Fngt.coarseness,ro:QCDE
+Fngt.contrast,ro:65HE
+Fngt.busyness,ro:NQ30
+Fntg.complexity,ro:HDEZ
+Fngt.strength,ro:1X9X
+Fngl.lde,ro:SODN
+Fngl.hde,ro:IMOQ
+Fngl.lgce,ro:TL9H
+Fngl.hgce,ro:OAE7
+Fngl.ldlge,ro:EQ3F
+Fngl.ldhge,ro:JA6D
+Fngl.hdlge,ro:NBZI
+Fngl.hdhge,ro:9QMG
+Fngl.glnu,ro:FP8K
+Fngl.glnu.norm,ro:5SPA
+Fngl.dcnu,ro:Z87G
+Fngl.dcnu.norm,ro:OKJI
+Fngl.dc.perc,ro:6XV8
+Fngl.gl.var,ro:1PFV
+Fngl.dc.var,ro:DNX2
+Fngl.dc.entr,ro:FCBV
+Fngl.dc.energy,ro:CAS9
+0,ncit:C37987
+1,ncit:C28554
+"0"";		d2rq:rdfValue ncit:C28051; ];	# Stage 0
+	d2rq:translation [ d2rq:databaseValue ""Occult"";	d2rq:rdfValue ncit:C141461; ];	# Occult Stage
+	d2rq:translation [ d2rq:databaseValue ""I"";		d2rq:rdfValue ncit:C27966; ];	# Stage I
+    d2rq:translation [ d2rq:databaseValue ""IA"";		d2rq:rdfValue ncit:C27975; ];	# Stage IA
+    d2rq:translation [ d2rq:databaseValue ""IA1"";	d2rq:rdfValue ncit:C27983; ];	# Stage IA1
+    d2rq:translation [ d2rq:databaseValue ""IA2"";	d2rq:rdfValue ncit:C27984; ];	# Stage IA2
+    d2rq:translation [ d2rq:databaseValue ""IA3"";	d2rq:rdfValue ncit:C136485; ];	# Stage IA3
+	d2rq:translation [ d2rq:databaseValue ""IB""; 	d2rq:rdfValue ncit:C27976; ];	# Stage IB
+    d2rq:translation [ d2rq:databaseValue ""II"";		d2rq:rdfValue ncit:C28054; ];	# Stage II
+    d2rq:translation [ d2rq:databaseValue ""IIA"";	d2rq:rdfValue ncit:C27967; ];	# Stage IIA
+	d2rq:translation [ d2rq:databaseValue ""IIB"";	d2rq:rdfValue ncit:C27968; ];	# Stage IIB
+	d2rq:translation [ d2rq:databaseValue ""III"";	d2rq:rdfValue ncit:C27970; ];	# Stage III
+    d2rq:translation [ d2rq:databaseValue ""IIIA"";	d2rq:rdfValue ncit:C27977; ]; 	# Stage IIIA
+    d2rq:translation [ d2rq:databaseValue ""IIIB"";	d2rq:rdfValue ncit:C27978; ];	# Stage IIIB
+	d2rq:translation [ d2rq:databaseValue ""IIIC"";	d2rq:rdfValue ncit:C27982; ];	# Stage IIIC
+	d2rq:translation [ d2rq:databaseValue ""IV"";		d2rq:rdfValue ncit:C27971; ];	# Stage IV
+    d2rq:translation [ d2rq:databaseValue ""IVA"";	d2rq:rdfValue ncit:C27979; ]; 	# Stage IVA
+    d2rq:translation [ d2rq:databaseValue ""IVB"";	d2rq:rdfValue ncit:C27980; ];	# Stage IVB
+	.
+
+# value overallStage
+map:overallStagevalue a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:overallStage;
+	d2rq:property roo:P100042;				#has_value
+	d2rq:column ""clinical_data.stage"";
+	d2rq:datatype xsd:str;
+	.
+	
+############################################
+# clinical T stage
+############################################
+
+# define clinT classmap
+map:clinT a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern ""clinT_@@clinical_data.CS@@"";
+	d2rq:join ""clinical_data.CS => Feature_table_new.PatientID"";
+  	d2rq:class ncit:C48885;															# Generic Primary Tumor TNM Finding
+	.
+
+# link disease and clinT via diseaseHasClinT
+    map:diseaseHasClinT a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:disease;
+	d2rq:property roo:P100244;														# has_clinical_t_stage
+	d2rq:refersToClassMap map:clinT;
+	.
+
+# link clinT and clinTmapping translation table via clinThasMapping
+map:clinThasMapping a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:clinT;
+	d2rq:property rdf:type;
+	d2rq:uriColumn ""clinical_data.t"";
+	d2rq:translateWith map:clinTmapping;
+	.
+
+# define clinTmapping translation table
+map:clinTmapping a d2rq:TranslationTable;
+    d2rq:translation [ d2rq:databaseValue ""T0"";   d2rq:rdfValue ncit:C48719; ];		# T0 Stage Finding
+	d2rq:translation [ d2rq:databaseValue ""Tis"";  d2rq:rdfValue ncit:C48738; ];		# Tis Stage Finding
+	d2rq:translation [ d2rq:databaseValue ""T1"";   d2rq:rdfValue ncit:C48720; ];		# T1 Stage Finding
+    d2rq:translation [ d2rq:databaseValue ""T1a"";  d2rq:rdfValue ncit:C48721; ];		# T1a Stage Finding
+    d2rq:translation [ d2rq:databaseValue ""T1b"";  d2rq:rdfValue ncit:C48722; ];		# T1b Stage Finding
+    d2rq:translation [ d2rq:databaseValue ""T1c"";  d2rq:rdfValue ncit:C48723; ];		# T1c Stage Finding
+    d2rq:translation [ d2rq:databaseValue ""T1mi",ncit:C95805
+"T2"";   d2rq:rdfValue ncit:C48724; ];		# T2 Stage Finding
+    d2rq:translation [ d2rq:databaseValue ""T2a"";  d2rq:rdfValue ncit:C48725; ];		# T2a Stage Finding
+    d2rq:translation [ d2rq:databaseValue ""T2b"";  d2rq:rdfValue ncit:C48726; ];		# T2b Stage Finding
+	d2rq:translation [ d2rq:databaseValue ""T3"";   d2rq:rdfValue ncit:C48728; ];		# T3 Stage Finding
+	d2rq:translation [ d2rq:databaseValue ""T4"";   d2rq:rdfValue ncit:C48732; ];		# T4 Stage Finding
+    d2rq:translation [ d2rq:databaseValue ""Tx"";   d2rq:rdfValue ncit:C48737; ];		# TX Stage Finding
+    .
+
+# value clinT
+map:clinTvalue a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:clinT;
+	d2rq:property roo:P100042;				#has_value
+	d2rq:column ""clinical_data.t"";
+	d2rq:datatype xsd:str;
+	.
+
+############################################
+# clinical N stage
+############################################
+
+# define clinN classmap
+map:clinN a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern ""clinN_@@clinical_data.CS@@"";
+	d2rq:join ""clinical_data.CS => Feature_table_new.PatientID"";
+  	d2rq:class ncit:C48884;															# Generic Regional Lymph Nodes TNM Finding
+	.
+
+# link disease and clinN via diseaseHasClinN
+map:diseaseHasClinN a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:disease;
+	d2rq:property roo:P100242;														# has_clinical_n_stage
+	d2rq:refersToClassMap map:clinN;
+	.
+
+# link clinN and clinNmapping translation table via clinNhasMapping
+map:clinNhasMapping a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:clinN;
+	d2rq:property rdf:type;
+	d2rq:uriColumn ""clinical_data.n"";
+	d2rq:translateWith map:clinNmapping;
+	.
+
+# define clinNmapping translation table
+map:clinNmapping a d2rq:TranslationTable;
+	d2rq:translation [ d2rq:databaseValue ""N0",ncit:C48705
+N1,ncit:C48706
+N2,ncit:C48786
+N3,ncit:C48714
+Nx,ncit:C48718
+"M0"";  d2rq:rdfValue ncit:C48699; ];		# M0 Stage Finding
+	d2rq:translation [ d2rq:databaseValue ""M1"";  d2rq:rdfValue ncit:C48700; ];		# M1 Stage Finding
+	d2rq:translation [ d2rq:databaseValue ""M1a",ncit:C48701
+M1b,ncit:C48702
+M1c,ncit:C48703

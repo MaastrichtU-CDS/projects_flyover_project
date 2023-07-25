@@ -17,8 +17,9 @@ USER root
 
 RUN apt-get update && \
 	apt-get clean && \
+	apt-get install -y openjdk-11-jdk && \
 	rm -rf var/lib/apt/lists/* && \
-	apt-get install -y plastimatch gcc dcmtk
+	apt-get install -y plastimatch gcc dcmtk python3 python3-pip python3-dev libpq-dev
 
 ADD . /root/pyradiomics
 

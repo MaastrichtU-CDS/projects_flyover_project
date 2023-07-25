@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Data description</title>
+</head>
+<body>
+     <h3 class="col-lg-10 control-label">Specify units for continuous columns, if any</h3><br>
+     <form method="POST" action="end">
+        {% for item in variable %}
+            <label for= "{{ item }}" class="col-lg-4 control-label">{{item}}</label>
+            <input id= "{{ item }}" type="text" name= "{{ item }}" placeholder="type unit here"><br><br></input>
+        {% endfor %}
+         <p><input type="submit" value="Submit" ></p>
+    </form>
+</body>
+</html>

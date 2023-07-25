@@ -1,0 +1,104 @@
+Feature Name,Ontology Concept,Pyradiomics_Stem_Name,IBSI_Feature_Name,Unit,Feature type
+Fmorph.vol,ro:RNU0,original_shape_MeshVolume,Fmorph.vol,mm(3),Morphologic features
+Fmorph.area,ro:C0JK,original_shape_SurfaceArea,Fmorph.area,mm(2),Morphologic features
+Fmorph.av,ro:2PR5,original_shape_SurfaceVolumeRatio,Fmorph.av,mm(2/3),Morphologic features
+Fmorph.sph.sphericity,ro:QCFX,original_shape_Sphericity,Fmorph.sph.sphericity,,Morphologic features
+Fmorph.diam,ro:L0JK,original_shape_Maximum3DDiameter,Fmorph.diam,mm,Morphologic features
+Fmorph.pca.major,ro:TDIC,original_shape_MajorAxisLength,Fmorph.pca.major,,Morphologic features
+Fmorph.pca.minor,ro:P9VJ,original_shape_MinorAxisLength,Fmorph.pca.minor,mm,Morphologic features
+Fmorph.pca.least,ro:7J51,original_shape_LeastAxisLength,Fmorph.pca.least,,Morphologic features
+Fmorph.pca.elongation,ro:Q3CK,original_shape_Elongation,Fmorph.pca.elongation,,Morphologic features
+Fmorph.pca.flatness,ro:N17B,original_shape_Flatness,Fmorph.pca.flatness,,Morphologic features
+Fmorph.pyrad.diam.max2Dslice,ro:4S59,original_shape_Maximum2DDiameterSlice,Fmorph.pyrad.diam.max2Dslice,mm,Morphologic features
+Fmorph.pyrad.diam.max2Dcolumn,ro:5ABU,original_shape_Maximum2DDiameterColumn,Fmorph.pyrad.diam.max2Dcolumn,mm,Morphologic features
+Fmorph.pyrad.diam.max2Drow,ro:9SCJ,original_shape_Maximum2DDiameterRow,Fmorph.pyrad.diam.max2Drow,mm,Morphologic features
+Fstat.mean,ro:Q4LE,original_firstorder_Mean,Fstat.mean,HU,Intensity-based statistical features
+Fstat.var,ro:ECT3,original_firstorder_Variance,Fstat.var,HU(2),Intensity-based statistical features
+Fstat.skew,ro:KE2A,original_firstorder_Skewness,Fstat.skew,,Intensity-based statistical features
+Fstat.kurt,ro:IPH6,original_firstorder_Kurtosis,Fstat.kurt,,Intensity-based statistical features
+Fstat.median,ro:Y12H,original_firstorder_Median,Fstat.median,HU,Intensity-based statistical features
+Fstat.min,ro:1GSF,original_firstorder_Minimum,Fstat.min,HU,Intensity-based statistical features
+Fstat.P10,ro:QG58,original_firstorder_10Percentile,Fstat.P10,HU,Intensity-based statistical features
+Fstat.P90,ro:8DWT,original_firstorder_90Percentile,Fstat.P90,HU,Intensity-based statistical features
+Fstat.iqr,ro:SALO,original_firstorder_InterquartileRange,Fstat.iqr,HU,Intensity-based statistical features
+Fstat.range,ro:2OJQ,original_firstorder_Range,Fstat.range,HU,Intensity-based statistical features
+Fstat.mad,ro:4FUA,original_firstorder_MeanAbsoluteDeviation,Fstat.mad,HU,Intensity-based statistical features
+Fstat.rmad,ro:1128,original_firstorder_RobustMeanAbsoluteDeviation,Fstat.rmad,HU,Intensity-based statistical features
+Fstat.energy,ro:N8CA,original_firstorder_Energy,Fstat.energy,HU(2),Intensity-based statistical features
+Fstat.rms,ro:5ZWQ,original_firstorder_RootMeanSquared,Fstat.rms,,Intensity-based statistical features
+Fih.max,ro:3NCY,original_firstorder_Maximum,Fih.max,HU,Intensity histogram features
+Fih.entropy,ro:TLU2,original_firstorder_Entropy,Fih.entropy,,Intensity histogram features
+Fih.uniformity,ro:BJ5W,original_firstorder_Uniformity,Fih.uniformity,,Intensity histogram features
+Fcm.joint.max,ro:GYBY,original_glcm_MaximumProbability,Fcm.joint.max,,Gray-level co-occurrence matrix
+Fcm.joint.avg,ro:60VM,original_glcm_JointAverage,Fcm.joint.avg,,Gray-level co-occurrence matrix
+Fcm.joint.entr,ro:TU9B,original_glcm_JointEntropy,Fcm.joint.entr,,Gray-level co-occurrence matrix
+Fcm.diff.avg,ro:TF7R,original_glcm_DifferenceAverage,Fcm.diff.avg,,Gray-level co-occurrence matrix
+Fcm.diff.var,ro:D3YU,original_glcm_DifferenceVariance,Fcm.diff.var,,Gray-level co-occurrence matrix
+Fcm.diff.entr,ro:NTRS,original_glcm_DifferenceEntropy,Fcm.diff.entr,,Gray-level co-occurrence matrix
+Fcm.sum.var,ro:OEEB,original_glcm_SumSquares,Fcm.sum.var,,Gray-level co-occurrence matrix
+Fcm.sum.entr,ro:P6QZ,original_glcm_SumEntropy,Fcm.sum.entr,,Gray-level co-occurrence matrix
+Fcm.sum.energy,ro:8ZQL,original_glcm_JointEnergy,Fcm.sum.energy,,Gray-level co-occurrence matrix
+Fcm.sum.contrast,ro:ACUI,original_glcm_Contrast,Fcm.sum.contrast,,Gray-level co-occurrence matrix
+Fcm.inv.diff,ro:IB1Z,original_glcm_Id,Fcm.inv.diff,,Gray-level co-occurrence matrix
+Fcm.inv.diff.norm,ro:NDRX,original_glcm_Idn,Fcm.inv.diff.norm,,Gray-level co-occurrence matrix
+Fcm.inv.diff.mom,ro:WF0Z,original_glcm_Idm,Fcm.inv.diff.mom,,Gray-level co-occurrence matrix
+Fcm.inv.diff.mom.norm,ro:1QCO,original_glcm_Idmn,Fcm.inv.diff.mom.norm,,Gray-level co-occurrence matrix
+Fcm.inv.var,ro:E8JP,original_glcm_InverseVariance,Fcm.inv.var,,Gray-level co-occurrence matrix
+Fcm.corr,ro:NI2N,original_glcm_Correlation,Fcm.corr,,Gray-level co-occurrence matrix
+Fcm.auto.corr,ro:QWB0,original_glcm_Autocorrelation,Fcm.auto.corr,,Gray-level co-occurrence matrix
+Fcm.clust.tend,ro:DG8W,original_glcm_ClusterTendency,Fcm.clust.tend,,Gray-level co-occurrence matrix
+Fcm.clust.shade,ro:7NFM,original_glcm_ClusterShade,Fcm.clust.shade,,Gray-level co-occurrence matrix
+Fcm.clust.prom,ro:AE86,original_glcm_ClusterProminence,Fcm.clust.prom,,Gray-level co-occurrence matrix
+Fcm.info.corr.1,ro:R8DG,original_glcm_Imc1,Fcm.info.corr.1,,Gray-level co-occurrence matrix
+Fcm.info.corr.2,ro:JN9H,original_glcm_Imc2,Fcm.info.corr.2,,Gray-level co-occurrence matrix
+Frlm.sre,ro:22OV,original_glrlm_ShortRunEmphasis,Frlm.sre,,Gray-level run-length matrix
+Frlm.lgre,ro:W4KF,original_glrlm_LongRunEmphasis,Frlm.lgre,,Gray-level run-length matrix
+Frlm.lgre,ro:V3SW,original_glrlm_LowGrayLevelRunEmphasis,Frlm.lgre,,Gray-level run-length matrix
+Frlm.hgre,ro:G3QZ,original_glrlm_HighGrayLevelRunEmphasis,Frlm.hgre,,Gray-level run-length matrix
+Frlm.srlge,ro:HTZT,original_glrlm_ShortRunLowGrayLevelEmphasis,Frlm.srlge,,Gray-level run-length matrix
+Frlm.srhge,ro:GD3A,original_glrlm_ShortRunHighGrayLevelEmphasis,Frlm.srhge,,Gray-level run-length matrix
+Frlm.lrlge,ro:IVPO,original_glrlm_LongRunLowGrayLevelEmphasis,Frlm.lrlge,,Gray-level run-length matrix
+Frlm.lrhge,ro:3KUM,original_glrlm_LongRunHighGrayLevelEmphasis,Frlm.lrhge,,Gray-level run-length matrix
+Frlm.glnu,ro:R5YN,original_glrlm_GrayLevelNonUniformity,Frlm.glnu,,Gray-level run-length matrix
+Frlm.glnu.norm,ro:OVBL,original_glrlm_GrayLevelNonUniformityNormalized,Frlm.glnu.norm,,Gray-level run-length matrix
+Frlm.rlnu,ro:W92Y,original_glrlm_RunLengthNonUniformity,Frlm.rlnu,,Gray-level run-length matrix
+Frlm.rlnu.norm,ro:IC23,original_glrlm_RunLengthNonUniformityNormalized,Frlm.rlnu.norm,,Gray-level run-length matrix
+Frlm.r.perc,ro:9ZK5,original_glrlm_RunPercentage,Frlm.r.perc,,Gray-level run-length matrix
+Frlm.rl.var,ro:8CE5,original_glrlm_GrayLevelVariance,Frlm.rl.var,,Gray-level run-length matrix
+Frlm.rl.var,ro:SXLW,original_glrlm_RunVariance,Frlm.rl.var,,Gray-level run-length matrix
+Frlm.rl.entr,ro:HJ9O,original_glrlm_RunEntropy,Frlm.rl.entr,,Gray-level run-length matrix
+Fszm.sze,ro:5QRC,original_glszm_SmallAreaEmphasis,Fszm.sze,,Gray-level size-zone matrix
+Fszm.lze,ro:48P8,original_glszm_LargeAreaEmphasis,Fszm.lze,,Gray-level size-zone matrix
+Fszm.lgze,ro:XMSY,original_glszm_LowGrayLevelZoneEmphasis,Fszm.lgze,,Gray-level size-zone matrix
+Fszm.hgze,ro:5GN9,original_glszm_HighGrayLevelZoneEmphasis,Fszm.hgze,,Gray-level size-zone matrix
+Fszm.szlge,ro:5RAI,original_glszm_SmallAreaLowGrayLevelEmphasis,Fszm.szlge,,Gray-level size-zone matrix
+Fszm.szhge,ro:HW1V,original_glszm_SmallAreaHighGrayLevelEmphasis,Fszm.szhge,,Gray-level size-zone matrix
+Fszm.lzlge,ro:YH51,original_glszm_LargeAreaLowGrayLevelEmphasis,Fszm.lzlge,,Gray-level size-zone matrix
+Fszm.lzhge,ro:0130,original_glszm_LargeAreaHighGrayLevelEmphasis,Fszm.lzhge,,Gray-level size-zone matrix
+Fszm.glnu,ro:0131,original_glszm_GrayLevelNonUniformity,Fszm.glnu,,Gray-level size-zone matrix
+Fszm.glnu.norm,ro:Y1RO,original_glszm_GrayLevelNonUniformityNormalized,Fszm.glnu.norm,,Gray-level size-zone matrix
+Fszm.zlnu,ro:4JP3,original_glszm_SizeZoneNonUniformity,Fszm.zlnu,,Gray-level size-zone matrix
+Fszm.zlnu.norm,ro:VB3A,original_glszm_SizeZoneNonUniformityNormalized,Fszm.zlnu.norm,,Gray-level size-zone matrix
+Fszm.z.perc,ro:P30P,original_glszm_ZonePercentage,Fszm.z.perc,,Gray-level size-zone matrix
+Fszm.gl.var,ro:BYLV,original_glszm_GrayLevelVariance,Fszm.gl.var,,Gray-level size-zone matrix
+Fszm.zs.var,ro:3NSA,original_glszm_ZoneVariance,Fszm.zs.var,,Gray-level size-zone matrix
+Fszm.zs.entr,ro:GU8N,original_glszm_ZoneEntropy,Fszm.zs.entr,,Gray-level size-zone matrix
+Fdzm.sde,ro:0GBI,original_gldm_SmallDependenceEmphasis,Fdzm.sde,,Gray-level distance-zone matrix
+Fdzm.lde,ro:MB4I,original_gldm_LargeDependenceEmphasis,Fdzm.lde,,Gray-level distance-zone matrix
+Fdzm.lgze,ro:S1RA,original_gldm_LowGrayLevelEmphasis,Fdzm.lgze,,Gray-level distance-zone matrix
+Fdzm.hgze,ro:K26C,original_gldm_HighGrayLevelEmphasis,Fdzm.hgze,,Gray-level distance-zone matrix
+Fdzm.sdlge,ro:RUVG,original_gldm_SmallDependenceLowGrayLevelEmphasis,Fdzm.sdlge,,Gray-level distance-zone matrix
+Fdzm.sdhge,ro:DKNJ,original_gldm_SmallDependenceHighGrayLevelEmphasis,Fdzm.sdhge,,Gray-level distance-zone matrix
+Fdzm.ldlge,ro:A7WM,original_gldm_LargeDependenceLowGrayLevelEmphasis,Fdzm.ldlge,,Gray-level distance-zone matrix
+Fdzm.ldhge,ro:KLTH,original_gldm_LargeDependenceHighGrayLevelEmphasis,Fdzm.ldhge,,Gray-level distance-zone matrix
+Fdzm.glnu,ro:VFT7,original_gldm_GrayLevelNonUniformity,Fdzm.glnu,,Gray-level distance-zone matrix
+Fdzm.zdnu,ro:V294,original_gldm_DependenceNonUniformity,Fdzm.zdnu,,Gray-level distance-zone matrix
+Fdzm.zdnu.norm,ro:IATH,original_gldm_DependenceNonUniformityNormalized,Fdzm.zdnu.norm,,Gray-level distance-zone matrix
+Fdzm.gl.var,ro:QK93,original_gldm_GrayLevelVariance,Fdzm.gl.var,,Gray-level distance-zone matrix
+Fdzm.zd.var,ro:VIWW,original_gldm_DependenceVariance,Fdzm.zd.var,,Gray-level distance-zone matrix
+Fdzm.zd.entr,ro:GBDU,original_gldm_DependenceEntropy,Fdzm.zd.entr,,Gray-level distance-zone matrix
+Fngt.coarseness,ro:QCDE,original_ngtdm_Coarseness,Fngt.coarseness,,Neighborhood gray tone difference matrix
+Fngt.contrast,ro:65HE,original_ngtdm_Contrast,Fngt.contrast,,Neighborhood gray tone difference matrix
+Fngt.busyness,ro:NQ30,original_ngtdm_Busyness,Fngt.busyness,,Neighborhood gray tone difference matrix
+Fntg.complexity,ro:HDEZ,original_ngtdm_Complexity,Fntg.complexity,,Neighborhood gray tone difference matrix
+Fngt.strength,ro:1X9X,original_ngtdm_Strength,Fngt.strength,,Neighborhood gray tone difference matrix
