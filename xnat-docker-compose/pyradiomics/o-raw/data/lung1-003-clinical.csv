@@ -1,0 +1,2 @@
+PatientID,age,clinical.T.Stage,Clinical.N.Stage,Clinical.M.Stage,Overall.Stage,Histology,gender,Survival.time,deadstatus.event
+LUNG1-003,68.1807,2,3,0,IIIb,large cell,male,256,1
