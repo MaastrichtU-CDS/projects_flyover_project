@@ -6,6 +6,8 @@ services:
       context: ./graphdb
     ports: 
       - "7200:7200"
+    volumes:
+      - ./graphdb/data:/opt/graphdb/home
     environment:
       - GDB_HEAP_SIZE=2g
       - GDB_MIN_MEM=1g

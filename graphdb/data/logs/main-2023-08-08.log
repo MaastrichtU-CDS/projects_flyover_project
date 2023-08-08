@@ -1,0 +1,186 @@
+[INFO ] 2023-08-08 12:05:41,476 [main | c.o.g.Config] Using 'jar:file:/opt/graphdb/dist/lib/graphdb-application-common-10.2.2.jar!/com/ontotext/graphdb/logback.xml' as logback's configuration file
+[INFO ] 2023-08-08 12:05:41,794 [main | c.o.g.s.GraphDB] Starting GraphDB in workbench mode.
+[INFO ] 2023-08-08 12:05:48,455 [main | c.o.g.Config] GraphDB Home directory: /opt/graphdb/home
+[INFO ] 2023-08-08 12:05:48,457 [main | c.o.g.Config] GraphDB Config directory: /opt/graphdb/home/conf
+[INFO ] 2023-08-08 12:05:48,459 [main | c.o.g.Config] GraphDB Data directory: /opt/graphdb/home/data
+[INFO ] 2023-08-08 12:05:48,461 [main | c.o.g.Config] GraphDB Work directory: /opt/graphdb/home/work
+[INFO ] 2023-08-08 12:05:48,462 [main | c.o.g.Config] GraphDB Logs directory: /opt/graphdb/home/logs
+[INFO ] 2023-08-08 12:05:48,858 [main | c.o.g.r.s.SecurityUtil] Cluster gRPC server security is disabled
+[INFO ] 2023-08-08 12:05:49,085 [main | c.o.f.c.s.r.GraphDBRpcServer] Started gRPC server on port 7300 successfully
+[INFO ] 2023-08-08 12:05:51,325 [main | c.o.g.s.GraphDB] Started GraphDB in workbench mode at port 7200.
+[INFO ] 2023-08-08 12:07:17,566 [Thread-3 | c.o.g.s.GraphDB] Stopping GraphDB.
+[INFO ] 2023-08-08 12:07:46,061 [main | c.o.g.Config] Using 'jar:file:/opt/graphdb/dist/lib/graphdb-application-common-10.2.2.jar!/com/ontotext/graphdb/logback.xml' as logback's configuration file
+[INFO ] 2023-08-08 12:07:46,387 [main | c.o.g.s.GraphDB] Starting GraphDB in workbench mode.
+[INFO ] 2023-08-08 12:07:52,252 [main | c.o.g.Config] GraphDB Home directory: /opt/graphdb/home
+[INFO ] 2023-08-08 12:07:52,255 [main | c.o.g.Config] GraphDB Config directory: /opt/graphdb/home/conf
+[INFO ] 2023-08-08 12:07:52,258 [main | c.o.g.Config] GraphDB Data directory: /opt/graphdb/home/data
+[INFO ] 2023-08-08 12:07:52,261 [main | c.o.g.Config] GraphDB Work directory: /opt/graphdb/home/work
+[INFO ] 2023-08-08 12:07:52,262 [main | c.o.g.Config] GraphDB Logs directory: /opt/graphdb/home/logs
+[INFO ] 2023-08-08 12:07:52,677 [main | c.o.g.r.s.SecurityUtil] Cluster gRPC server security is disabled
+[INFO ] 2023-08-08 12:07:52,876 [main | c.o.f.c.s.r.GraphDBRpcServer] Started gRPC server on port 7300 successfully
+[INFO ] 2023-08-08 12:07:55,483 [main | c.o.g.s.GraphDB] Started GraphDB in workbench mode at port 7200.
+[INFO ] 2023-08-08 12:08:05,432 [Thread-3 | c.o.g.s.GraphDB] Stopping GraphDB.
+[INFO ] 2023-08-08 13:23:32,841 [main | c.o.g.Config] Using 'jar:file:/opt/graphdb/dist/lib/graphdb-application-common-10.2.2.jar!/com/ontotext/graphdb/logback.xml' as logback's configuration file
+[INFO ] 2023-08-08 13:23:33,139 [main | c.o.g.s.GraphDB] Starting GraphDB in workbench mode.
+[INFO ] 2023-08-08 13:23:38,933 [main | c.o.g.Config] GraphDB Home directory: /opt/graphdb/home
+[INFO ] 2023-08-08 13:23:38,935 [main | c.o.g.Config] GraphDB Config directory: /opt/graphdb/home/conf
+[INFO ] 2023-08-08 13:23:38,936 [main | c.o.g.Config] GraphDB Data directory: /opt/graphdb/home/data
+[INFO ] 2023-08-08 13:23:38,938 [main | c.o.g.Config] GraphDB Work directory: /opt/graphdb/home/work
+[INFO ] 2023-08-08 13:23:38,940 [main | c.o.g.Config] GraphDB Logs directory: /opt/graphdb/home/logs
+[INFO ] 2023-08-08 13:23:39,306 [main | c.o.g.r.s.SecurityUtil] Cluster gRPC server security is disabled
+[INFO ] 2023-08-08 13:23:39,481 [main | c.o.f.c.s.r.GraphDBRpcServer] Started gRPC server on port 7300 successfully
+[INFO ] 2023-08-08 13:23:41,438 [main | c.o.g.s.GraphDB] Started GraphDB in workbench mode at port 7200.
+[INFO ] 2023-08-08 13:23:42,489 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Version: 10.2, revision: -97571582
+[INFO ] 2023-08-08 13:23:42,491 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Build date: Wed Jun 07 08:15:37 GMT 2023
+[INFO ] 2023-08-08 13:23:42,498 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Started repository userRepo in READ/WRITE mode.
+[INFO ] 2023-08-08 13:23:42,503 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'partialRDFS' to default value 'false'
+[INFO ] 2023-08-08 13:23:42,504 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'transaction-isolation' to default value 'true'
+[INFO ] 2023-08-08 13:23:42,504 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'checkForValidPropertiesAndClasses' to default value 'false'
+[INFO ] 2023-08-08 13:23:42,505 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'transaction-mode' to default value 'safe'
+[INFO ] 2023-08-08 13:23:42,505 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'entity-pool-implementation' to default value 'transactional'
+[INFO ] 2023-08-08 13:23:42,506 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'useShutdownHooks' to default value 'true'
+[INFO ] 2023-08-08 13:23:42,511 [repository-manager-0 | c.o.GraphDBConfigParameters] Cache pages for tuples: 7829
+[INFO ] 2023-08-08 13:23:42,512 [repository-manager-0 | c.o.GraphDBConfigParameters] Cache pages for predicates: 1118
+[INFO ] 2023-08-08 13:23:42,514 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'graphdb.global.page.cache' to default value 'true'
+[INFO ] 2023-08-08 13:23:42,566 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'graphdb.epool.onheap' to default value 'false'
+[INFO ] 2023-08-08 13:23:42,566 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'graphdb.page.cache.size' to default value '512.0M'
+[INFO ] 2023-08-08 13:23:42,567 [repository-manager-0 | c.o.t.MemoryConfig] Configured global page cache size to 512.0M
+[INFO ] 2023-08-08 13:23:42,569 [repository-manager-0 | c.o.t.e.EntityPoolFactory] Using entity pool implementation: transactional-disk
+[INFO ] 2023-08-08 13:23:42,572 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'epool.connection.cache.size' to default value '2000'
+[INFO ] 2023-08-08 13:23:42,580 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'graphdb.epool.onheap' to default value 'false'
+[INFO ] 2023-08-08 13:23:42,594 [repository-manager-0 | c.o.t.e.i.m.PersistedHashMap] Restoring entity hash table...
+[INFO ] 2023-08-08 13:23:42,706 [repository-manager-0 | c.o.t.e.i.m.PersistedHashMap] Restored 15525 entities allocating 12.0 MB
+[INFO ] 2023-08-08 13:23:42,709 [repository-manager-0 | c.o.t.e.i.m.PersistedHashMap] Done in 112 ms.
+[INFO ] 2023-08-08 13:23:42,759 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'enable-pool-reversecache' to default value 'true'
+[INFO ] 2023-08-08 13:23:42,788 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'allow-system-entities-as-data' to default value 'false'
+[INFO ] 2023-08-08 13:23:42,790 [repository-manager-0 | c.o.t.u.l.LimitedObjectCacheFactory] Using LRU cache type: synch
+[INFO ] 2023-08-08 13:23:42,795 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'cache-ratio-so-os-cso-cos' to default value '[50, 50, 50]'
+[INFO ] 2023-08-08 13:23:42,813 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'graphdb.global.page.cache' to default value 'true'
+[INFO ] 2023-08-08 13:23:42,816 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'graphdb.page.cache.size' to default value '512.0M'
+[INFO ] 2023-08-08 13:23:42,949 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'virtual.repository.mode' to default value 'false'
+[WARN ] 2023-08-08 13:23:43,041 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Rule list configuration present, it will override all other rule sets parameters!
+[INFO ] 2023-08-08 13:23:43,058 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'epool.journal.buffer.size' to default value '1024'
+[INFO ] 2023-08-08 13:23:43,074 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'enable-debug-rules' to default value 'false'
+[INFO ] 2023-08-08 13:23:43,177 [repository-manager-0 | c.o.t.InferencerFactory] ruleSet=owl2-rl-optimized, partialRdfs=false
+[INFO ] 2023-08-08 13:23:43,183 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'filter.obj.only.hint' to default value 'true'
+[INFO ] 2023-08-08 13:23:43,238 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'check.pred.stats' to default value 'false'
+[INFO ] 2023-08-08 13:23:43,369 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'disable-plugins' to default value '[]'
+[INFO ] 2023-08-08 13:23:43,370 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'skip-default-plugins' to default value 'false'
+[INFO ] 2023-08-08 13:23:43,370 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Searching for plugins available in the classpath...
+[INFO ] 2023-08-08 13:23:43,384 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin direct
+[INFO ] 2023-08-08 13:23:43,385 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin notifications
+[INFO ] 2023-08-08 13:23:43,386 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin expose-entity
+[INFO ] 2023-08-08 13:23:43,386 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin literals-index
+[INFO ] 2023-08-08 13:23:43,387 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin script
+[INFO ] 2023-08-08 13:23:43,387 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin utils
+[INFO ] 2023-08-08 13:23:43,387 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin plugincontrol
+[INFO ] 2023-08-08 13:23:43,388 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin magic-predicates
+[INFO ] 2023-08-08 13:23:43,388 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin sparql-template
+[INFO ] 2023-08-08 13:23:43,389 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'register-plugins' to default value '[]'
+[INFO ] 2023-08-08 13:23:43,391 [repository-manager-0 | c.o.GraphDBConfigParameters] Reading external plugins from /opt/graphdb/dist/lib/plugins
+[INFO ] 2023-08-08 13:23:43,392 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'register-external-plugins' to default value '[/opt/graphdb/dist/lib/plugins]'
+[INFO ] 2023-08-08 13:23:43,392 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Registering external plugins...
+[INFO ] 2023-08-08 13:23:43,393 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/dependencies-plugin for plugins
+[INFO ] 2023-08-08 13:23:43,398 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin dependencies-plugin
+[INFO ] 2023-08-08 13:23:43,398 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/geosparql-plugin for plugins
+[INFO ] 2023-08-08 13:23:43,418 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin GeoSPARQL
+[INFO ] 2023-08-08 13:23:43,418 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/mongodb-plugin for plugins
+[INFO ] 2023-08-08 13:23:43,423 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin mongodb
+[INFO ] 2023-08-08 13:23:43,423 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/notifications-logger-plugin for plugins
+[INFO ] 2023-08-08 13:23:43,425 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin notifications-logger
+[INFO ] 2023-08-08 13:23:43,425 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/autocomplete-plugin for plugins
+[INFO ] 2023-08-08 13:23:43,428 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin autocomplete
+[INFO ] 2023-08-08 13:23:43,428 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/tx-rollback-plugin for plugins
+[INFO ] 2023-08-08 13:23:43,429 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin tx-rollback
+[INFO ] 2023-08-08 13:23:43,430 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/entity-change-connector for plugins
+[INFO ] 2023-08-08 13:23:43,446 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin entity-change
+[INFO ] 2023-08-08 13:23:43,447 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/history-plugin for plugins
+[INFO ] 2023-08-08 13:23:43,450 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin history
+[INFO ] 2023-08-08 13:23:43,451 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/geospatial-plugin for plugins
+[WARN ] 2023-08-08 13:23:43,497 [repository-manager-0 | o.e.r.q.a.e.f.FunctionRegistry] New service class com.ontotext.trree.query.functions.afn.old.Localname replaces existing service class org.eclipse.rdf4j.spin.function.Localname
+[INFO ] 2023-08-08 13:23:43,505 [repository-manager-0 | c.o.t.p.g.FunctionLoader] Registered 1 functions from package com.ontotext.trree.plugin.geo.
+[INFO ] 2023-08-08 13:23:43,505 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin geospatial
+[INFO ] 2023-08-08 13:23:43,506 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/kafka-connector for plugins
+[INFO ] 2023-08-08 13:23:43,520 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin kafka-connector
+[INFO ] 2023-08-08 13:23:43,520 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/solr-connector for plugins
+[INFO ] 2023-08-08 13:23:43,620 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin solr-connector
+[INFO ] 2023-08-08 13:23:43,621 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/similarity-plugin for plugins
+[INFO ] 2023-08-08 13:23:43,633 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin similarity
+[INFO ] 2023-08-08 13:23:43,634 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/elasticsearch-connector for plugins
+[INFO ] 2023-08-08 13:23:43,652 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin elasticsearch-connector
+[INFO ] 2023-08-08 13:23:43,653 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/sparql-mm for plugins
+[INFO ] 2023-08-08 13:23:43,654 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin sparql-mm
+[INFO ] 2023-08-08 13:23:43,654 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/proof-plugin for plugins
+[INFO ] 2023-08-08 13:23:43,657 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin proof
+[INFO ] 2023-08-08 13:23:43,657 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/rdfrank-plugin for plugins
+[INFO ] 2023-08-08 13:23:43,660 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin rdfrank
+[INFO ] 2023-08-08 13:23:43,661 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/lucene-connector for plugins
+[INFO ] 2023-08-08 13:23:43,678 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin lucene-connector
+[INFO ] 2023-08-08 13:23:43,679 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/sequences-plugin for plugins
+[INFO ] 2023-08-08 13:23:43,682 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin sequences
+[INFO ] 2023-08-08 13:23:43,682 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/change-tracking-plugin for plugins
+[INFO ] 2023-08-08 13:23:43,684 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin change-tracking
+[INFO ] 2023-08-08 13:23:43,685 [repository-manager-0 | c.o.t.OwlimSchemaRepository] Scanning /opt/graphdb/dist/lib/plugins/text-mining-plugin for plugins
+[INFO ] 2023-08-08 13:23:43,688 [repository-manager-0 | c.o.t.s.i.PluginManager] Registering plugin text-mining
+[INFO ] 2023-08-08 13:23:43,689 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugins... (DEFAULT)
+[INFO ] 2023-08-08 13:23:43,695 [repository-manager-0 | c.o.l.LicenseRegistry] License configuration: Embedded license
+[INFO ] 2023-08-08 13:23:43,696 [repository-manager-0 | c.o.l.LicenseRegistry] License file: jar:file:/opt/graphdb/dist/lib/graphdb-runtime-10.2.2.jar!/GRAPHDB_LITE.license
+[INFO ] 2023-08-08 13:23:43,698 [repository-manager-0 | c.o.l.LicenseRegistry] Product:                 GRAPHDB_LITE
+[INFO ] 2023-08-08 13:23:43,698 [repository-manager-0 | c.o.l.LicenseRegistry] Capabilities:            [LUCENE_CONNECTOR]
+[INFO ] 2023-08-08 13:23:43,699 [repository-manager-0 | c.o.l.LicenseRegistry] Usage restriction:       null
+[INFO ] 2023-08-08 13:23:43,699 [repository-manager-0 | c.o.l.LicenseRegistry] Licensee:                Freeware
+[INFO ] 2023-08-08 13:23:43,699 [repository-manager-0 | c.o.l.LicenseRegistry] Permitted use:           THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+[INFO ] 2023-08-08 13:23:43,700 [repository-manager-0 | c.o.l.LicenseRegistry] Version:                 10.2
+[INFO ] 2023-08-08 13:23:43,700 [repository-manager-0 | c.o.l.LicenseRegistry] Expiry date:             none
+[INFO ] 2023-08-08 13:23:43,700 [repository-manager-0 | c.o.l.LicenseRegistry] Latest publication date: none
+[INFO ] 2023-08-08 13:23:43,701 [repository-manager-0 | c.o.l.LicenseRegistry] Max CPU cores:           1
+[INFO ] 2023-08-08 13:23:43,702 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'nonInterpretablePredicates' to default value 'null'
+[INFO ] 2023-08-08 13:23:43,708 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'GeoSPARQL'
+[INFO ] 2023-08-08 13:23:44,227 [repository-manager-0 | c.o.t.g.FunctionLoader] Registered 50 functions from package com.useekm.geosparql.
+[INFO ] 2023-08-08 13:23:44,229 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'autocomplete'
+[INFO ] 2023-08-08 13:23:44,233 [repository-manager-0 | c.o.t.p.a.AutocompletePluginUtils] >>>>>>>> AutocompletePlugin: No configuration file found at /opt/graphdb/home/data/repositories/userRepo/storage/autocomplete/v2/config.properties. Assuming default options for plugin.
+[INFO ] 2023-08-08 13:23:44,238 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'change-tracking'
+[INFO ] 2023-08-08 13:23:44,239 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'dependencies-plugin'
+[INFO ] 2023-08-08 13:23:44,240 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'direct'
+[INFO ] 2023-08-08 13:23:44,241 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'elasticsearch-connector'
+[INFO ] 2023-08-08 13:23:44,255 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'entity-change'
+[INFO ] 2023-08-08 13:23:44,267 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'expose-entity'
+[INFO ] 2023-08-08 13:23:44,269 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'geospatial'
+[INFO ] 2023-08-08 13:23:44,270 [repository-manager-0 | c.o.t.p.g.GeoSpatialPlugin] Plugin:geospatial initialized
+[INFO ] 2023-08-08 13:23:44,271 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'history'
+[INFO ] 2023-08-08 13:23:44,294 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'kafka-connector'
+[INFO ] 2023-08-08 13:23:44,306 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'literals-index'
+[INFO ] 2023-08-08 13:23:44,309 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'enable-fts-index' to default value 'false'
+[INFO ] 2023-08-08 13:23:44,310 [repository-manager-0 | c.o.p.literals-index] Full-text search functionality is disabled
+[INFO ] 2023-08-08 13:23:44,344 [repository-manager-0 | c.o.p.literals-index] Literals indices restored.
+[INFO ] 2023-08-08 13:23:44,344 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'lucene-connector'
+[INFO ] 2023-08-08 13:23:44,356 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'magic-predicates'
+[INFO ] 2023-08-08 13:23:44,356 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'mongodb'
+[INFO ] 2023-08-08 13:23:44,357 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'notifications'
+[INFO ] 2023-08-08 13:23:44,358 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'notifications-logger'
+[INFO ] 2023-08-08 13:23:44,359 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'plugincontrol'
+[INFO ] 2023-08-08 13:23:44,360 [repository-manager-0 | c.o.t.p.p.PluginControlPlugin] Plugin:plugincontrol initialized
+[INFO ] 2023-08-08 13:23:44,360 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'proof'
+[INFO ] 2023-08-08 13:23:44,360 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'rdfrank'
+[INFO ] 2023-08-08 13:23:44,370 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'script'
+[INFO ] 2023-08-08 13:23:44,371 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'sequences'
+[INFO ] 2023-08-08 13:23:44,372 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'similarity'
+[INFO ] 2023-08-08 13:23:44,805 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'solr-connector'
+[INFO ] 2023-08-08 13:23:44,814 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'sparql-mm'
+[INFO ] 2023-08-08 13:23:44,824 [repository-manager-0 | c.o.g.s.FunctionLoader] Registered 58 functions from package com.github.tkurz.sparqlmm.function.
+[INFO ] 2023-08-08 13:23:44,824 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'sparql-template'
+[INFO ] 2023-08-08 13:23:44,825 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'text-mining'
+[INFO ] 2023-08-08 13:23:44,826 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'tx-rollback'
+[INFO ] 2023-08-08 13:23:44,827 [repository-manager-0 | c.o.t.s.i.PluginManager] Initializing plugin 'utils'
+[INFO ] 2023-08-08 13:23:45,034 [repository-manager-0 | c.o.t.s.i.PluginManager] Finished initializing plugins
+[INFO ] 2023-08-08 13:23:45,035 [repository-manager-0 | c.o.t.MemoryConfig] Configured global page cache size to 512.0M
+[INFO ] 2023-08-08 13:23:45,036 [repository-manager-0 | c.o.t.MemoryConfig] Configured global page cache size to 512.0M
+[INFO ] 2023-08-08 13:23:45,331 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'do.resolve.entities' to default value 'true'
+[INFO ] 2023-08-08 13:23:45,332 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'do.load.data' to default value 'true'
+[INFO ] 2023-08-08 13:23:45,332 [repository-manager-0 | c.o.r.p.ParallelLoader] Data will be parsed + resolved + loaded.
+[INFO ] 2023-08-08 13:23:45,333 [repository-manager-0 | c.o.c.AbstractParameter] Configured parameter 'graphdb.persistent.parallel.inferencers' to default value 'false'
+[INFO ] 2023-08-08 13:23:45,345 [repository-manager-0 | c.o.r.p.ParallelLoader] Using 1 threads for inference
+[INFO ] 2023-08-08 13:23:45,721 [repositories/userRepo | o.e.r.h.s.r.n.NamespacesController] GET namespace list
+[INFO ] 2023-08-08 13:23:45,733 [repositories/userRepo | c.o.c.AbstractParameter] Configured parameter 'custom.validation.queries.file' to default value 'null'
+[INFO ] 2023-08-08 13:23:45,776 [repositories/userRepo | o.e.r.h.s.r.TupleQueryResultView] Request for query 3392903 is finished
+[INFO ] 2023-08-08 13:23:45,845 [repositories/userRepo | o.e.r.h.s.r.TupleQueryResultView] Request for query 3392903 is finished
