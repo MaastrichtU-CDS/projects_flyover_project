@@ -12,7 +12,8 @@ services:
       - GDB_MAX_MEM=2g
     networks:
       - proxynet
-
+    container_name: rdf-store
+    
   jupyter-note:
     build:
       context: ./jupyter
