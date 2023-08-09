@@ -4,6 +4,19 @@ SimpleITK>=0.9.1
 PyWavelets>=0.4.0
 pykwalify>=1.6.0
 six>=1.10.0
+Flask>=2.0.1
+idna>=3.2
+MarkupSafe>=2.0.1
+requests>=2.26.0
+urllib3>=1.26.6
+Werkzeug>=2.0.1
+six>=1.16.0
+psycopg2>=2.8.6
+python-dateutil>=2.8.1
+pytz>=2020.5
+retrying>=1.3.3
+scipy>=1.7.0
+SQLAlchemy>=1.3.23
 # 
 # requirements for zhenwei's oraw
 pandas>=0.24.2

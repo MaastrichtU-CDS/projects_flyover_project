@@ -24,7 +24,7 @@ def index():
 def queryresult():
     queryROIs = """
     PREFIX db: <https://johanvansoest.nl/ontologies/LinkedDicom/>
-    select DISTINCT ?ID ?ROI { 
+    select DISTINCT ?ID ?ROI {
         ?patient db:T00100020 ?ID.
         ?a db:T30060026 ?ROI.
     }
@@ -43,13 +43,16 @@ def queryresult():
 
         except Exception as err:
             flash('Connection unsuccessful. Please check your details!')
-            return render_template('index.html')
+            return render_template('initiate.html')
 
     ROIs = queryresult(v.repo, queryROIs)
     df = pd.read_csv(StringIO(ROIs))
-    roi = df['ROI'].values
-    id = df['ID'].values
-    return render_template('roi.html', id=id, variable=roi)
+    if 'ROI' in df.columns:
+        roi = df['ROI'].values
+        id = df['ID'].values
+        return render_template('roi.html', id=id, variable=roi)
+    print('Connection unsuccessful. Please check your details!')
+    return render_template('initiate.html')
 
 @app.route("/rois", methods=['POST'])
 def units():
