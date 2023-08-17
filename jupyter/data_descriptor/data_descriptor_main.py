@@ -6,7 +6,7 @@ from io import StringIO
 import os
 from psycopg2 import connect
 import subprocess
-from pathlib import Path
+import shutil
 
 app = Flask(__name__)
 app.secret_key = "secret_key"
@@ -53,20 +53,21 @@ def uploadFiles():
           return render_template('index.html')
 
       if v.uploaded_file and allowed_log_file(v.uploaded_file.filename):
-          v.file_path = os.path.join(UPLOAD_FOLDER, "data.csv")
+          folder = UPLOAD_FOLDER
+          for filename in os.listdir(folder):
+              file_path = os.path.join(folder, filename)
+              try:
+                  if os.path.isfile(file_path) or os.path.islink(file_path):
+                      os.unlink(file_path)
+                  elif os.path.isdir(file_path):
+                      shutil.rmtree(file_path)
+              except Exception as e:
+                  print('Failed to delete %s. Reason: %s' % (file_path, e))
+          #v.file_path = os.path.join(UPLOAD_FOLDER, "data.csv")
+          v.file_path = os.path.join(UPLOAD_FOLDER, v.uploaded_file.filename)
           # set the file path
           v.uploaded_file.save(v.file_path)
           v.csvPath = True
-          clearquery = """CLEAR GRAPH <http://ontology.local/>;
-                          CLEAR GRAPH <http://data.local/>"""
-          endpoint = "http://rdf-store:7200/repositories/" + v.repo
-          annotationResponse = requests.post(endpoint,
-                                             data="query=" + clearquery,
-                                             headers={
-                                                 "Content-Type": "application/x-www-form-urlencoded",
-                                                 # "Accept": "application/json"
-                                             })
-          output = annotationResponse.text
 
           try:
               args1 = "java -jar javaTool/triplifier.jar -p triplifierCSV.properties"
@@ -80,7 +81,7 @@ def uploadFiles():
               message = "Triplifier run successful!"
           else:
               message = "Triplifier run Unsuccessful!"
-          return render_template('triples.html', variable = message)
+          return render_template('triples.html', variable=message)
 
       else:
           flash('The only allowed file type is CSV!')
@@ -90,7 +91,7 @@ def uploadFiles():
 def getCredentials():
       v.username = request.form.get('username')
       v.password = request.form.get('password')
-      v.url= request.form.get('POSTGRES_URL')
+      v.url = request.form.get('POSTGRES_URL')
       v.db_name = request.form.get('POSTGRES_DB')
       v.table = request.form.get('table')
 
@@ -111,17 +112,6 @@ def getCredentials():
           flash('Connection unsuccessful. Please check your details!')
           return render_template('index.html')
 
-      clearquery = """CLEAR GRAPH <http://ontology.local/>;
-                      CLEAR GRAPH <http://data.local/>"""
-      endpoint = "http://rdf-store:7200/repositories/" + v.repo
-      annotationResponse = requests.post(endpoint,
-                                         data="query=" + clearquery,
-                                         headers={
-                                             "Content-Type": "application/x-www-form-urlencoded",
-                                             # "Accept": "application/json"
-                                         })
-      output = annotationResponse.text
-
       try:
           f = open("triplifierSQL.properties", "w")
           f.write("jdbc.url = jdbc:postgresql://" + v.url + "/" + v.db_name + "\njdbc.user = " + v.username + "\njdbc.password = " + v.password + "\njdbc.driver = org.postgresql.Driver\n\n"
@@ -139,7 +129,7 @@ def getCredentials():
           message = "Triplifier run successful!"
       else:
           message = "Triplifier run Unsuccessful!"
-      return render_template('triples.html', variable = message)
+      return render_template('triples.html', variable=message)
 
 # Get the uploaded files
 @app.route("/repo", methods=['POST'])
@@ -169,7 +159,7 @@ def queryresult():
     columns = queryresult(v.repo, queryColumn)
     hnscc = pd.read_csv(StringIO(columns))
     hnscc = hnscc[hnscc.columns[0]]
-    return render_template('categories.html', variable = hnscc)
+    return render_template('categories.html', variable=hnscc)
 
 @app.route("/units", methods=['POST'])
 def units():

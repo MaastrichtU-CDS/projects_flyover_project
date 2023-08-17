@@ -24,8 +24,8 @@ services:
       - 8881:8888
       - 8050:8050
       - 5000:5000
-    volumes:
-      - ./data_descriptor:/home/jovyan/work/user_module
+    #volumes:
+    #  - ./data_descriptor:/home/jovyan/work/user_module
     environment:
       - JUPYTER_TOKEN=flyover-1
     hostname: "data.local"
