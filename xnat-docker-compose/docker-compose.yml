@@ -69,7 +69,7 @@ services:
       - proxynet
     container_name: xnat-nginx
 
-  jpy-notebooks:
+  jpy-nb:
     build:
         context: ./pyradiomics
         dockerfile: Dockerfile
@@ -78,7 +78,7 @@ services:
       - 8050:8050
       - 5000:5000
     volumes:
- #     - ./pyradiomics/o-raw:/home/jovyan/work
+      - ./pyradiomics/o-raw:/home/jovyan/work/o-raw
  #     - ./pyradiomics/o-raw/data:/home/jovyan/work/data
  #     - ./flyover:/home/jovyan/work/flyover
     environment:
@@ -86,11 +86,9 @@ services:
     hostname: "data.local"
     networks:
       - proxynet
-
+    container_name: jupyter-notebooks
 
 networks:
   proxynet:
     name: custom_network
-
-
 

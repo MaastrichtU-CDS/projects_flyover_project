@@ -39,10 +39,11 @@ ADD notebooks/helloRadiomics.ipynb /home/jovyan/work/notebooks/
 ADD notebooks/helloFeatureClass.ipynb /home/jovyan/work/notebooks/
 ADD notebooks/PyRadiomicsExample.ipynb /home/jovyan/work/notebooks/
 ADD examples/exampleSettings/Params.yaml /home/jovyan/work/examples/exampleSettings/
+ADD o-raw/ /home/jovyan/work/o-raw/
 
 # Make a global directory and link it to the work directory
-RUN mkdir /data
-RUN ln -s /data /home/jovyan/work/data
+#mkdir /data
+#RUN ln -s /data /home/jovyan/work/data
 
 RUN chown -R jovyan:users /home/jovyan/work
 
@@ -54,4 +55,4 @@ RUN jupyter trust /home/jovyan/work/notebooks/*.ipynb
 RUN jupyter nbconvert --ExecutePreprocessor.kernel_name=python3 --ExecutePreprocessor.timeout=-1 --to notebook --execute /home/jovyan/work/notebooks/helloRadiomics.ipynb /home/jovyan/work/notebooks/helloFeatureClass.ipynb /home/jovyan/work/notebooks/PyRadiomicsExample.ipynb
 
 # The user's data will show up as /data
-VOLUME /data
+#VOLUME /data
