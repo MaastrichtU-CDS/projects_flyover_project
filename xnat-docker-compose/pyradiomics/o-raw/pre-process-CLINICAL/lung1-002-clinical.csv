@@ -1,2 +1,0 @@
-PatientID,age,clinical.T.Stage,Clinical.N.Stage,Clinical.M.Stage,Overall.Stage,Histology,gender,Survival.time,deadstatus.event
-LUNG1-002,83.8001,2,0,0,I,squamous cell carcinoma,male,155,1
