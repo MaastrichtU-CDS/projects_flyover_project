@@ -78,9 +78,9 @@ services:
       - 8050:8050
       - 5000:5000
     volumes:
-      - ./pyradiomics/o-raw:/home/jovyan/work
-      - ./pyradiomics/o-raw/data:/home/jovyan/work/data
-      - ./flyover:/home/jovyan/work/flyover
+ #     - ./pyradiomics/o-raw:/home/jovyan/work
+ #     - ./pyradiomics/o-raw/data:/home/jovyan/work/data
+ #     - ./flyover:/home/jovyan/work/flyover
     environment:
     - JUPYTER_TOKEN=tomcat-1
     hostname: "data.local"
