@@ -69,7 +69,7 @@ services:
       - proxynet
     container_name: xnat-nginx
 
-  pyradiomics:
+  jpy-notebooks:
     build:
         context: ./pyradiomics
         dockerfile: Dockerfile
