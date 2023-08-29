@@ -42,7 +42,7 @@ services:
       - "5432"
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
-      # 
+      #
       - ./postgres:/docker-entrypoint-initdb.d
     environment:
       - POSTGRES_PASSWORD=${XNAT_DATASOURCE_ADMIN_PASSWORD}
@@ -79,8 +79,7 @@ services:
       - 5000:5000
     volumes:
       - ./pyradiomics/o-raw:/home/jovyan/work/o-raw
- #     - ./pyradiomics/o-raw/data:/home/jovyan/work/data
- #     - ./flyover:/home/jovyan/work/flyover
+      - ./flyover:/home/jovyan/work/flyover
     environment:
     - JUPYTER_TOKEN=tomcat-1
     hostname: "data.local"
