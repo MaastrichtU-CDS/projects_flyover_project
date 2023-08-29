@@ -1,0 +1,180 @@
+Loading RDD
+Loading RDD complete
+Found RTSTUCT, UID=1.3.6.1.4.1.32722.99.99.217589447746111741056421838759223122712
+Found DCM_ReferencedFrameOfReferenceSequence!
+Found DCM_RTReferencedStudySequence!
+Trying to load rt structure set.
+Adding structure (5), Lung-Right
+Adding structure (6), Lung-Left
+Adding structure (7), Heart
+Adding structure (8), Esophagus
+Adding structure (9), Spinal-Cord
+Adding structure (10), gtv-3
+Adding structure (11), gtv-2
+Adding structure (15), GTV-1
+Structure 5 has color 64\64\255
+Structure 6 has color 64\64\255
+Structure 7 has color 196\255\255
+Structure 8 has color 220\160\120
+Structure 9 has color 255\192\96
+Structure 10 has color 64\64\255
+Structure 11 has color 64\64\255
+Structure 15 has color 64\64\255
+Setting PIH from RDD
+PIH is:
+Origin = -250.1120 -250.1120 -305.9000
+Size = 512 512 107
+Spacing = 0.9770 0.9770 3.0000
+Direction = 1.0000 0.0000 0.0000 0.0000 1.0000 0.0000 0.0000 0.0000 1.0000
+Rt_study_warp: Convert ss_img to cxt.
+Rt_study_warp: Prune empty structures.
+Rt_study_warp: Apply dicom_dir.
+Rt_study_warp: Set geometry from PIH.
+Rt_study_warp: Set rasterization geometry.
+rast_dim = 512 512 106
+rast_offset = -134.728 -182.538 -305.9
+rast_spacing = 0.557669 0.557669 3
+Rt_study_warp: warp and save ss.
+Warp_and_save_ss: seg->rasterize
+Rasterizing...
+Converting...
+Finished rasterization.
+Warp_and_save_ss: save_ss_img
+save_ss_img: save_prefix
+Trying to write image to ./NrrdFolder/Lung-Right.nrrd
+Trying to write image to ./NrrdFolder/Lung-Left.nrrd
+Trying to write image to ./NrrdFolder/Heart.nrrd
+Trying to write image to ./NrrdFolder/Esophagus.nrrd
+Trying to write image to ./NrrdFolder/Spinal-Cord.nrrd
+Trying to write image to ./NrrdFolder/gtv-3.nrrd
+Trying to write image to ./NrrdFolder/gtv-2.nrrd
+Trying to write image to ./NrrdFolder/GTV-1.nrrd
+Finished!
+Subject: LUNG1-003
+Datetime stamp : 23/08/2023 18:56:12
+Setting PIH from RDD
+PIH is:
+Origin = -250.1120 -250.1120 -305.9000
+Size = 512 512 107
+Spacing = 0.9770 0.9770 3.0000
+Direction = 1.0000 0.0000 0.0000 0.0000 1.0000 0.0000 0.0000 0.0000 1.0000
+Rt_study_warp: Saving m_img (./NrrdFolder/ct_image.nrrd)
+Trying to write image to ./NrrdFolder/ct_image.nrrd
+Rt_study_warp: warp and save ss.
+Finished!
+Subject: LUNG1-003
+Datetime stamp : 23/08/2023 18:56:12
+Loading RDD
+Loading RDD complete
+Found RTSTUCT, UID=1.3.6.1.4.1.32722.99.99.227938121586608072508444156170535578236
+Found DCM_ReferencedFrameOfReferenceSequence!
+Found DCM_RTReferencedStudySequence!
+Trying to load rt structure set.
+Adding structure (2), GTV-1
+Adding structure (6), Spinal-Cord
+Adding structure (7), Lung-Left
+Adding structure (8), Lung-Right
+Structure 2 has color 0\255\120
+Structure 6 has color 255\192\96
+Structure 7 has color 64\64\255
+Structure 8 has color 64\64\255
+Setting PIH from RDD
+PIH is:
+Origin = -249.5117 -460.5117 -681.5000
+Size = 512 512 134
+Spacing = 0.9766 0.9766 3.0000
+Direction = 1.0000 0.0000 0.0000 0.0000 1.0000 0.0000 0.0000 0.0000 1.0000
+Rt_study_warp: Convert ss_img to cxt.
+Rt_study_warp: Prune empty structures.
+Rt_study_warp: Apply dicom_dir.
+Rt_study_warp: Set geometry from PIH.
+Rt_study_warp: Set rasterization geometry.
+rast_dim = 512 512 88
+rast_offset = -149.79 -354.415 -612.5
+rast_spacing = 0.613614 0.613614 3
+Rt_study_warp: warp and save ss.
+Warp_and_save_ss: seg->rasterize
+Rasterizing...
+Converting...
+Finished rasterization.
+Warp_and_save_ss: save_ss_img
+save_ss_img: save_prefix
+Trying to write image to ./NrrdFolder/GTV-1.nrrd
+Trying to write image to ./NrrdFolder/Spinal-Cord.nrrd
+Trying to write image to ./NrrdFolder/Lung-Left.nrrd
+Trying to write image to ./NrrdFolder/Lung-Right.nrrd
+Finished!
+Subject: LUNG1-001
+Datetime stamp : 23/08/2023 18:56:57
+Setting PIH from RDD
+PIH is:
+Origin = -249.5117 -460.5117 -681.5000
+Size = 512 512 134
+Spacing = 0.9766 0.9766 3.0000
+Direction = 1.0000 0.0000 0.0000 0.0000 1.0000 0.0000 0.0000 0.0000 1.0000
+Rt_study_warp: Saving m_img (./NrrdFolder/ct_image.nrrd)
+Trying to write image to ./NrrdFolder/ct_image.nrrd
+Rt_study_warp: warp and save ss.
+Finished!
+Subject: LUNG1-001
+Datetime stamp : 23/08/2023 18:56:57
+Loading RDD
+Loading RDD complete
+Found RTSTUCT, UID=1.3.6.1.4.1.32722.99.99.243267551266911245830259417117543245931
+Found DCM_ReferencedFrameOfReferenceSequence!
+Found DCM_RTReferencedStudySequence!
+Trying to load rt structure set.
+Adding structure (1), Lung-Right
+Adding structure (2), Lung-Left
+Adding structure (3), Heart
+Adding structure (4), Esophagus
+Adding structure (5), Spinal-Cord
+Adding structure (6), GTV-1
+Structure 1 has color 64\64\255
+Structure 2 has color 64\64\255
+Structure 3 has color 196\255\255
+Structure 4 has color 32\255\255
+Structure 5 has color 255\192\96
+Structure 6 has color 64\64\255
+Setting PIH from RDD
+PIH is:
+Origin = -250.1120 -250.1120 -133.4000
+Size = 512 512 111
+Spacing = 0.9770 0.9770 3.0000
+Direction = 1.0000 0.0000 0.0000 0.0000 1.0000 0.0000 0.0000 0.0000 1.0000
+Rt_study_warp: Convert ss_img to cxt.
+Rt_study_warp: Prune empty structures.
+Rt_study_warp: Apply dicom_dir.
+Rt_study_warp: Set geometry from PIH.
+Rt_study_warp: Set rasterization geometry.
+rast_dim = 512 512 110
+rast_offset = -142.402 -115.842 -133.4
+rast_spacing = 0.585047 0.585047 3
+Rt_study_warp: warp and save ss.
+Warp_and_save_ss: seg->rasterize
+Rasterizing...
+Converting...
+Finished rasterization.
+Warp_and_save_ss: save_ss_img
+save_ss_img: save_prefix
+Trying to write image to ./NrrdFolder/Lung-Right.nrrd
+Trying to write image to ./NrrdFolder/Lung-Left.nrrd
+Trying to write image to ./NrrdFolder/Heart.nrrd
+Trying to write image to ./NrrdFolder/Esophagus.nrrd
+Trying to write image to ./NrrdFolder/Spinal-Cord.nrrd
+Trying to write image to ./NrrdFolder/GTV-1.nrrd
+Finished!
+Subject: LUNG1-002
+Datetime stamp : 23/08/2023 18:57:36
+Setting PIH from RDD
+PIH is:
+Origin = -250.1120 -250.1120 -133.4000
+Size = 512 512 111
+Spacing = 0.9770 0.9770 3.0000
+Direction = 1.0000 0.0000 0.0000 0.0000 1.0000 0.0000 0.0000 0.0000 1.0000
+Rt_study_warp: Saving m_img (./NrrdFolder/ct_image.nrrd)
+Trying to write image to ./NrrdFolder/ct_image.nrrd
+Rt_study_warp: warp and save ss.
+Finished!
+Subject: LUNG1-002
+Datetime stamp : 23/08/2023 18:57:36
