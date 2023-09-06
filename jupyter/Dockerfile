@@ -23,6 +23,7 @@ RUN pip3 install -r requirements.txt
 
 WORKDIR /home/jovyan
 #RUN groupadd --gid 1024 users
-RUN adduser -u 1024 -G users -h /home/jovyan -D jovyan
-USER jovyan
-COPY --chown=jovyan:users data_descriptor /home/jovyan/work/user_module
+#RUN adduser -u 1024 -G users -h /home/jovyan -D jovyan
+#USER jovyan
+#COPY --chown=jovyan:users data_descriptor /home/jovyan/work/user_module
+COPY data_descriptor /home/jovyan/work/user_module
