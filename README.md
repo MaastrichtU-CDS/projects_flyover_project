@@ -14,8 +14,16 @@ For user data, a new module (data_descriptor) is created where the user can desc
 A simple graphical interface tool for helping a local user to describe their own data (in the form of CSV or PostGreSQL). On uploading the data, Triplifier runs and converts this data into RDF triples which is then uploaded to the RDF store, along with an OWL file. The next page displays the list of columns and prompts the user to give some basic information about their data which is then added back to the OWL file in the RDF store.  
 
 #### How to run?
+
+##### Step 1:
 Clone the repository (or download) on your machine. On windows please use the WSL2 with Docker, on macOS/Linux, you can use docker directly.
-To execute the complete workflow, please execute the following commands from the project folder:
+Set permissions for the downloaded folder for smooth execution of the scripts.
+```
+chmod -R 777 projects_flyover_project
+```
+
+##### Step 2:
+For the complete workflow, please execute the following commands from the project folder:
 ```
 docker-compose up -d
 ```
