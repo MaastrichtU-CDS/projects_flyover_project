@@ -19,7 +19,7 @@ A simple graphical interface tool for helping a local user to describe their own
 Clone the repository (or download) on your machine. On windows please use the WSL2 with Docker, on macOS/Linux, you can use docker directly.
 Set permissions for the downloaded folder for smooth execution of the scripts.
 ```
-chmod -R 777 projects_flyover_project
+sudo chmod -R 777 projects_flyover_project
 ```
 
 ##### Step 2:
