@@ -52,6 +52,7 @@ Depending on your system it could take a few minutes for all the instances to se
 
 <details><summary>Expand step-by-step instructions for data processing in Jupyter notebook:</summary>
 
+
 **IMPORTANT: Create a new project in Xnat if it isn't already created**
 #### Step 1. Uploading imaging data with python batching script
 
@@ -75,22 +76,23 @@ Open a new terminal in the same notebook environment and run the following comma
 ldcm-scp -s http://rdf-store:7200/repositories/userRepo/statements 104
 ```
 
-While this SCP server is open and ready, run the notebook script "xnat_to_ldcm_scp-1.ipynb
-", which sends the Dicom files to this service using storescu commands. On completion, you will find the resultant Dicom triples in the rdf-endpoint running in your machine.
+While this SCP server is open and ready, run the notebook script "xnat_to_ldcm_scp-1.ipynb". This sends the Dicom files to this service using storescu commands. On completion, you will find the resultant Dicom triples in the rdf-endpoint running in your machine.
 
-#### Step 2. Radiomics as semantic data
+#### Step 4. Radiomics as semantic data
 
-A simple graphical interface tool for structured data conversion (CSV or PostGreSQL) into RDF format. From the work directory /home/jovyan/work/flyover, run the notebook script for structured data in "user_module.ipynb". 
+A simple graphical interface tool for structured data conversion (CSV or PostGreSQL) into RDF format is included in this workflow. From the work directory /home/jovyan/work/flyover, run the notebook script for structured data in "user_module.ipynb". 
 
-A web based GUI runs on **port 5000** prompting user to upload their data. Upload the pyradiomic CSV file here. Triplifier runs and converts this data into RDF triples which is then uploaded to the same rdf endpoint, along with a data specific ontology (OWL) file. 
+A web based GUI runs on **port 5000** prompting the user to upload their data. Upload the pyradiomic CSV file here. Triplifier runs and converts this data into RDF triples which is then uploaded to the same rdf endpoint, along with a data specific ontology (OWL) file. 
 The next page displays the list of columns and prompts the user to give some basic information about their data which is then added back to the OWL file (Skip this step for the radiomic file as they are already standardized).
 
-#### Step 4. Clinical data as semantic data
+#### Step 5. Clinical data as semantic data
 
-Using the same GUI, upload your clinical CSV files for them to be converted to rdf triples and pushed to the same rdf endpoint. Use the interface to provide information about your data which can then be used for creating custom annotations for your data.
+Using the same GUI, upload your clinical CSV files for them to be converted to rdf triples and pushed to the same rdf endpoint. Use the interface to provide information about your data columns which can then be used for creating custom annotations for your data.
 </details>
 
+#### Step 6. Annotation of ROIs
 
+From the same notebook script, run the roi_reader which prompts the user to choose the primary and nodal GTVs for each of their DICOM files. Clicking on submit maps the GTVs to semantic codes from domain ontologies.
 
 #### Publishing anonymous METADATA
 The user can publish their OWL files (which doesn't have patient-specific private data) to a private cloud repository, which can then be used to create a customised annotation graph for their data. The usage of metadata for the creation of annotations ensures the privacy of user data.
