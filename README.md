@@ -2,46 +2,98 @@
 
 ## Introduction
 
-We have build a dockerized Data FAIR-ification tool that takes clinical datasets and converts them into Resource Descriptor Format (RDF). This conversion is done by an application which parses an entire structured table as a simple flattened RDF object. This so-called "Triplifier" tool works with PostGreSQL and CSV tables.
-
-For user data, a new module (data_descriptor) is created where the user can describe their own data and provide us with the metadata, which can then be used to create annotations.
+A dockerized Data FAIR-ification tool that processes clinical, radiomics and DICOM metadata and converts them into Resource Descriptor Format (RDF).
 
 ## Components
 
-1. Data_descriptor (For user data)
-
-### 1. Data Descriptor Module
-A simple graphical interface tool for helping a local user to describe their own data (in the form of CSV or PostGreSQL). On uploading the data, Triplifier runs and converts this data into RDF triples which is then uploaded to the RDF store, along with an OWL file. The next page displays the list of columns and prompts the user to give some basic information about their data which is then added back to the OWL file in the RDF store.  
+### 1. xnat-docker-compose
 
 #### How to run?
 Clone the repository (or download) on your machine. On windows please use the WSL2 with Docker, on macOS/Linux, you can use docker directly.
-To execute the complete workflow, please execute the following commands from the project folder:
+To execute the XNAT workflow, please execute the following commands from the xnat-docker-compose folder:
+
+```
+cp default.env .env
+```
+
+```
+chmod a+x xnat/make*.sh
+```
+
+```
+chmod a+x xnat/wait*.sh
+```
+
 ```
 docker-compose up -d
 ```
 
-## Docker compose initiates the following
+### Docker compose initiates the following
 
-1. Docker compose builds a graphdb and jupyter notebook front end.
-2. Running the user_module notebook from jupyter notebook builds a webUI for user to upload their relational database.
-3. Triplifier fires up, converts the uploaded database to RDF.
-4. Triplifier exits code upon successful completion. The next page lists the columns from the data and requires the user to provide information about the data. 
-5. GraphDB now has a rdf repository called userRepo, with two graphs:
+* Jupyter notebook: [[http://localhost/8881]] (Login password: tomcat-1)
+* xnat instance: [[http://localhost:80]]
+* xnat db: [[http://localhost:8104]]
 
-- An ontology (OWL) file <http://ontology.local/> that describes the schema of the structured data but does not contain any data elements in itself, along with the selections and annotations entered by the user through the simple graphical user interface.
-- A Turtle RDF (TTL) file <http://data.local/> that contains the data elements in term subject-predicate-object sentences.
+### 2. graphdb-docker-compose
 
-You can find the following systems:
-* Jupyter notebook: [[http://localhost/8881]] (Login password: flyover-1)
-* RDF repository: [[http://localhost:7200]]
+#### How to run?
 
-#### Publishing anonyous METADATA
-The user can publish their OWL files to a private cloud repository, which can then be used to create a customised annotation graph for their data. The usage of metadata for the creation of annotations ensures the privacy of user data.
+To run a graphdb instance on your machine, please execute the following commands from the graphdb-docker-compose folder:
 
-## Developers
+```
+docker-compose up -d
+```
 
-- Varsha Gouthamchand
-- Leonard Wee
-- Johan van Soest
+### Docker compose initiates the following
+
+* GraphDB instance: [[http://localhost/7200]] 
+
+Depending on your system it could take a few minutes for all the instances to set up. You can check status using the command **docker stats**. Once all five docker images in the XNAT and the Graphdb package are stable at very low load, it probably means everything is up and running nice in the background.
+
+<details><summary>Expand step-by-step instructions for data processing in Jupyter notebook:</summary>
+
+**IMPORTANT: Create a new project in Xnat if it isn't already created**
+#### Step 1. Uploading imaging data with python batching script
+
+This can only work with adequately de-identified and correctly-cleaned DICOM data. 
+
+From the work directory /home/jovyan/work/o-raw, run the python notebook script "upload_dicom_bundles_into_xnat.ipynb" to iterate through every patient folder in a local filesystem directory, that will package each patient folder as a zip object, and then transmit the zip via API into your local XNAT docker instance which will collect it and try to archive it.
+
+(Make sure to change the xnat username, password and project name in the script)
+
+#### Step 2. Generating radiomics data
+
+From the work directory /home/jovyan/work/o-raw, run the python notebook "batch_conv_nrrd_xnat-1.ipynb". This converts the RTSTRUCT to NRRD format which is used by the pyRadiomics package for feature extraction.
+
+As the next step, run the notebook script "download_pyradiomics-2.ipynb", which collects the radiomics results from xnat for each of the Dicom file and saves the merged CSV file locally in the same work folder.
+
+#### Step 3. DICOM headers as semantic data
+
+Open a new terminal in the same notebook environment and run the following command to open a Dicom SCP service. We use a "-s" tag in the command so that users can send data to a specific rdf-endpoint.
+
+```
+ldcm-scp -s http://rdf-store:7200/repositories/userRepo/statements 104
+```
+
+While this SCP server is open and ready, run the notebook script "xnat_to_ldcm_scp-1.ipynb
+", which sends the Dicom files to this service using storescu commands. On completion, you will find the resultant Dicom triples in the rdf-endpoint running in your machine.
+
+#### Step 2. Radiomics as semantic data
+
+A simple graphical interface tool for structured data conversion (CSV or PostGreSQL) into RDF format. From the work directory /home/jovyan/work/flyover, run the notebook script for structured data in "user_module.ipynb". 
+
+A web based GUI runs on **port 5000** prompting user to upload their data. Upload the pyradiomic CSV file here. Triplifier runs and converts this data into RDF triples which is then uploaded to the same rdf endpoint, along with a data specific ontology (OWL) file. 
+The next page displays the list of columns and prompts the user to give some basic information about their data which is then added back to the OWL file (Skip this step for the radiomic file as they are already standardized).
+
+#### Step 4. Clinical data as semantic data
+
+Using the same GUI, upload your clinical CSV files for them to be converted to rdf triples and pushed to the same rdf endpoint. Use the interface to provide information about your data which can then be used for creating custom annotations for your data.
+</details>
+
+
+
+#### Publishing anonymous METADATA
+The user can publish their OWL files (which doesn't have patient-specific private data) to a private cloud repository, which can then be used to create a customised annotation graph for their data. The usage of metadata for the creation of annotations ensures the privacy of user data.
+
 
 
