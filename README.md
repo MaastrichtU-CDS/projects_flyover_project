@@ -88,11 +88,11 @@ The next page displays the list of columns and prompts the user to give some bas
 #### Step 5. Clinical data as semantic data
 
 Using the same GUI, upload your clinical CSV files for them to be converted to rdf triples and pushed to the same rdf endpoint. Use the interface to provide information about your data columns which can then be used for creating custom annotations for your data.
-</details>
 
 #### Step 6. Annotation of ROIs
 
 From the same notebook script, run the roi_reader which prompts the user to choose the primary and nodal GTVs for each of their DICOM files. Clicking on submit maps the GTVs to semantic codes from domain ontologies.
+</details>
 
 #### Publishing anonymous METADATA
 The user can publish their OWL files (which doesn't have patient-specific private data) to a private cloud repository, which can then be used to create a customised annotation graph for their data. The usage of metadata for the creation of annotations ensures the privacy of user data.
