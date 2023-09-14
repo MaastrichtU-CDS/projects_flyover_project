@@ -42,7 +42,7 @@ def queryresult():
 
     def queryresult(repo, query):
         try:
-            endpoint = "http://localhost:7200/repositories/" + repo
+            endpoint = "http://rdf-store:7200/repositories/" + repo
             annotationResponse = requests.post(endpoint,
                                                data="query=" + query,
                                                headers={
@@ -115,7 +115,7 @@ def equivalencies(URI, key, gtv):
             }
     """ % (URI, key, gtv)
 
-    endpoint = "http://localhost:7200/repositories/" + v.repo + "/statements"
+    endpoint = "http://rdf-store:7200/repositories/" + v.repo + "/statements"
     annotationResponse = requests.post(endpoint,
                                        data="update=" + query,
                                        headers={
