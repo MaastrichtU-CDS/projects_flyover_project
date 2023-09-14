@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -11,26 +11,26 @@
 </head>
 <body>
     <h3 class="col-lg-10 control-label">Select GTV Primary and Nodes</h3><br>
-     <form class="form-horizontal" method="POST" action="rois">
-         {% for item in id|unique %}
-         <div id="div1" class="form-group">
-             <label for= "{{ item }}"  class="col-lg-3 control-label">{{item}}</label>
-             <select id= "{{ item }}" name= "{{ item }}" class="selectpicker">
-                 <option value="">Choose GTV Primary</option>
-                 {% for var in variable %}
-                    <option value="{{ var }}">{{ var }}</option>
-                 {% endfor %}
-             </select>
-             <label for= "node_{{ item }}" class="col-lg-1 control-label"></label>
-             <select id= "node_{{ item }}" name= "node_{{ item }}" class="selectpicker">
-                 <option value="">Choose GTV Node</option>
-                 {% for var in variable %}
-                    <option value="{{ var }}">{{ var }}</option>
-                 {% endfor %}
-             </select>
-         </div>
-         {% endfor %}
-         <p><input type="submit" value="Submit"></p>
+    <form class="form-horizontal" method="POST" action="rois">
+        {% for id in id_roi_mapping.keys() %}
+        <div id="div1" class="form-group">
+            <label for="{{ id }}" class="col-lg-3 control-label">{{ id }}</label>
+            <select id="{{ id }}" name="{{ id }}" class="selectpicker">
+                <option value="">Choose GTV Primary</option>
+                {% for roi in id_roi_mapping[id] %}
+                <option value="{{ roi }}">{{ roi }}</option>
+                {% endfor %}
+            </select>
+            <label for="node_{{ id }}" class="col-lg-1 control-label"></label>
+            <select id="node_{{ id }}" name="node_{{ id }}[]" class="selectpicker" multiple data-live-search="true">
+                <option value="">Choose GTV Nodes</option>
+                {% for roi in id_roi_mapping[id] %}
+                <option value="{{ roi }}">{{ roi }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% endfor %}
+        <p><input type="submit" value="Submit"></p>
     </form>
 </body>
 </html>
