@@ -166,7 +166,7 @@ INSERT
 
      ?clinical roo:P100214 ?asa.         #has_measurement
 
-     ?clinical roo:haswhostatus ?whostatus.   #has_WHO_status
+     ?clinical roo:P100218 ?whostatus.   #has_WHO_status
 
      ?clinical roo:P100029 ?neoplasm.
 
