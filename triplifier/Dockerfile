@@ -1,6 +1,4 @@
-FROM jupyter/base-notebook
-
-USER root
+FROM ubuntu:20.04
 
 RUN apt-get update -y && \
     apt-get install -y openjdk-11-jdk && \
@@ -18,12 +16,9 @@ ENV PATH $PATH:$JAVA_HOME/bin
 ENV POST_URL https://jdbc.postgresql.org/download/postgresql-42.2.5.jar
 RUN wget ${POST_URL}
 
-COPY requirements.txt /home/jovyan/requirements.txt
+COPY requirements.txt /app/requirements.txt
+WORKDIR /app
 RUN pip3 install -r requirements.txt
+COPY . /app
 
-WORKDIR /home/jovyan
-#RUN groupadd --gid 1024 users
-#RUN adduser -u 1024 -G users -h /home/jovyan -D jovyan
-#USER jovyan
-#COPY --chown=jovyan:users data_descriptor /home/jovyan/work/user_module
-COPY data_descriptor /home/jovyan/work/user_module
+CMD ["python3", "data_descriptor_main.py"]
