@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.secret_key = "secret_key"
 # enable debugging mode
 app.config["DEBUG"] = True
-UPLOAD_FOLDER = 'static/files'
+UPLOAD_FOLDER = '/app/data_descriptor/static/files'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 class Cache:
@@ -70,7 +70,7 @@ def uploadFiles():
           v.csvPath = True
 
           try:
-              args1 = "java -jar javaTool/triplifier.jar -p triplifierCSV.properties"
+              args1 = "java -jar /app/data_descriptor/javaTool/triplifier.jar -p /app/data_descriptor/triplifierCSV.properties"
               print(args1)
               command_run = subprocess.call(args1, shell=True)
           except Exception as err:
@@ -113,11 +113,11 @@ def getCredentials():
           return render_template('index.html')
 
       try:
-          f = open("triplifierSQL.properties", "w")
+          f = open("/app/data_descriptor/triplifierSQL.properties", "w")
           f.write("jdbc.url = jdbc:postgresql://" + v.url + "/" + v.db_name + "\njdbc.user = " + v.username + "\njdbc.password = " + v.password + "\njdbc.driver = org.postgresql.Driver\n\n"
                               "repo.type = rdf4j\nrepo.url = http://rdf-store:7200\nrepo.id = userRepo")
           f.close()
-          args2 = "java -jar javaTool/triplifier.jar -p triplifierSQL.properties"
+          args2 = "java -jar /app/data_descriptor/javaTool/triplifier.jar -p /app/data_descriptor/triplifierSQL.properties"
           #args2 = "docker run --rm --hostname user_data.local --network custom_network -v $(pwd)/triplifierSQL.properties:/triplifier.properties registry.gitlab.com/um-cds/fair/tools/triplifier:1.1.0"
           print(args2)
           command_run = subprocess.call(args2, shell=True)
