@@ -21,4 +21,4 @@ WORKDIR /app
 RUN pip3 install -r requirements.txt
 COPY . /app
 
-CMD ["python3", "data_descriptor_main.py"]
+CMD ["python3", "/app/data_descriptor/data_descriptor_main.py"]

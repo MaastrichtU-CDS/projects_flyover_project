@@ -24,8 +24,8 @@ services:
       - 8881:8888
       - 8050:8050
       - 5000:5000
-    environment:
-      - JUPYTER_TOKEN=flyover-1
+    #environment:
+    #  - JUPYTER_TOKEN=flyover-1
     hostname: "data.local"
     networks:
       - proxynet
