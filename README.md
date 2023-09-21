@@ -82,16 +82,31 @@ While this SCP server is open and ready, run the notebook script "xnat_to_ldcm_s
 
 A simple graphical interface tool for structured data conversion (CSV or PostGreSQL) into RDF format is included in this workflow. From the work directory /home/jovyan/work/flyover, run the notebook script for structured data in "user_module.ipynb". 
 
-A web based GUI runs on **port 5000** prompting the user to upload their data. Upload the pyradiomic CSV file here. Triplifier runs and converts this data into RDF triples which is then uploaded to the same rdf endpoint, along with a data specific ontology (OWL) file. 
+A web based GUI runs on **port 5000** prompting the user to upload their data. Upload the pyradiomics CSV file here. Triplifier runs and converts this data into RDF triples which is then uploaded to the same rdf endpoint, along with a data specific ontology (OWL) file. 
 The next page displays the list of columns and prompts the user to give some basic information about their data which is then added back to the OWL file (Skip this step for the radiomic file as they are already standardized).
 
 #### Step 5. Clinical data as semantic data
 
 Using the same GUI, upload your clinical CSV files for them to be converted to rdf triples and pushed to the same rdf endpoint. Use the interface to provide information about your data columns which can then be used for creating custom annotations for your data.
 
-#### Step 6. Annotation of ROIs
+#### Step 6. Annotating radiomics data
 
-From the same notebook script, run the roi_reader which prompts the user to choose the primary and nodal GTVs for each of their DICOM files. Clicking on submit maps the GTVs to semantic codes from domain ontologies.
+From the work directory /home/jovyan/work/flyover, run the script "annotations_rad.py" in "add_annotations.ipynb". This will prompt you to enter the file name of your radiomics CSV file, then adds annotations for the same, mapping each radiomics feature to its relevant ontological code from the Radiomics Ontology (RO).
+
+#### Step 7. Annotating clinical data
+
+From the same notebook, run the script "annotations_clin.py", to add annotations for your clinical data. 
+**IMPORTANT: The given annotations_clin.py is only for demo, make sure to change it according to your data file**
+
+#### Step 8. Merging clinical, radiomics and Dicom data graphs
+
+From the same notebook, run the script "schema_updated.py" which merges all three graphs into one common schema.
+**Note this will only work if all the steps given above are completed**
+
+#### Step 9. Annotating ROIs
+
+From the same notebook, run the script "DICOM_ROI_reader.py" which prompts the user to choose the primary and nodal GTVs for each of their DICOM files. Clicking on submit maps the GTVs to semantic codes from domain ontologies.
+**Note this will only work if all the steps given above are completed**
 </details>
 
 #### Publishing anonymous METADATA
