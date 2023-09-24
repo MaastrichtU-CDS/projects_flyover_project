@@ -15,7 +15,7 @@
         {% for id in id_roi_mapping.keys() %}
         <div id="div1" class="form-group">
             <label for="{{ id }}" class="col-lg-3 control-label">{{ id }}</label>
-            <select id="{{ id }}" name="{{ id }}" class="selectpicker">
+            <select id="{{ id }}" name="{{ id }}" class="selectpicker" multiple data-live-search="true">
                 <option value="">Choose GTV Primary</option>
                 {% for roi in id_roi_mapping[id] %}
                 <option value="{{ roi }}">{{ roi }}</option>

@@ -42,7 +42,7 @@ def queryresult():
 
     def queryresult(repo, query):
         try:
-            endpoint = "http://rdf-store:7200/repositories/" + repo
+            endpoint = "http://localhost:7200/repositories/" + repo
             annotationResponse = requests.post(endpoint,
                                                data="query=" + query,
                                                headers={
@@ -76,12 +76,13 @@ def units():
     for key in request.form:
         if not re.search("^node_", key):
             v.mydict[key] = {}
-            if request.form.get(key):
-                primary = request.form.get(key)
+            if request.form.getlist(key):
+                primary = request.form.getlist(key)
                 v.mydict[key]['primary'] = {}
                 v.mydict[key]['primary']['ROI'] = primary
                 v.mydict[key]['primary']['URI'] = "http://www.cancerdata.org/roo/C100346"
-                equivalencies(v.mydict[key]['primary']['URI'], key, primary)
+                for primary_value in primary:
+                    equivalencies(v.mydict[key]['primary']['URI'], key, primary_value)
             if request.form.getlist('node_' + key + '[]'):
                 node = request.form.getlist('node_' + key + '[]')
                 v.mydict[key]['node'] = {}
@@ -115,7 +116,7 @@ def equivalencies(URI, key, gtv):
             }
     """ % (URI, key, gtv)
 
-    endpoint = "http://rdf-store:7200/repositories/" + v.repo + "/statements"
+    endpoint = "http://localhost:7200/repositories/" + v.repo + "/statements"
     annotationResponse = requests.post(endpoint,
                                        data="update=" + query,
                                        headers={
