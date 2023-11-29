@@ -20,7 +20,7 @@ docker-compose up -d
 ```
 
 You can find the following systems:
-* Web interface for data upload: [[http://localhost/5000]]
+* Web interface for data upload: [[http://localhost:5000]]
 * RDF repository: [[http://localhost:7200]]
 
 #### Publishing anonyous METADATA
