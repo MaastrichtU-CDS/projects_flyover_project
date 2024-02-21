@@ -1,0 +1,100 @@
+{
+  "endpoint": "http://localhost:7200/repositories/userRepo/statements",
+  "database_name": "mock",
+  "variable_info": {
+    "identifier": {
+      "predicate": "roo:P100061",
+      "class": "ncit:C25364",
+      "local_definition": "research_id"
+    },
+    "biological_sex": {
+      "predicate": "roo:P100018",
+      "class": "ncit:C28421",
+      "local_definition": "biological_sex",
+      "value_mapping": {
+        "terms": {
+          "male": {
+            "local_term": "0",
+            "target_class": "ncit:C20197"
+          },
+          "female": {
+            "local_term": "1",
+            "target_class": "ncit:C16576"
+          }
+        }
+      }
+    },
+    "age_at_diagnosis": {
+      "predicate": "roo:hasage",
+      "class": "ncit:C12345678904",
+      "local_definition": "age_at_diagnosis",
+      "schema_reconstruction": {
+        "type": "node",
+        "predicate": "roo:P100027",
+        "class": "ncit:C29848",
+        "node_label": "years",
+        "aesthetic_label": "Years"
+      }
+    },
+    "tumour_type": {
+      "predicate": "roo:hastumourtype",
+      "class": "ncit:C16899",
+      "local_definition": "tumour_type",
+      "schema_reconstruction": {
+        "type": "class",
+        "predicate": "roo:100029",
+        "class": "ncit:C3262",
+        "class_label": "neoplasmClass",
+        "aesthetic_label": "Neoplasm"
+      },
+      "value_mapping": {
+        "terms": {
+          "1": {
+            "local_term": "1",
+            "target_class": "ncit:C16899"
+          },
+          "2": {
+            "local_term": "2",
+            "target_class": "ncit:C16899"
+          },
+          "3": {
+            "local_term": "3",
+            "target_class": "ncit:C16899"
+          }
+        }
+      }
+    },
+    "tumour_stage": {
+      "predicate": "roo:hastumourstage",
+      "class": "ncit:C54179",
+      "local_definition": "tumour_stage",
+      "schema_reconstruction": {
+        "type": "class",
+        "predicate": "roo:100029",
+        "class": "ncit:C3262",
+        "class_label": "neoplasmClass",
+        "aesthetic_label": "Neoplasm"
+      },
+      "value_mapping": {
+        "terms": {
+          "1": {
+            "local_term": "1",
+            "target_class": "ncit:C125472"
+          },
+          "2": {
+            "local_term": "2",
+            "target_class": "ncit:C125474"
+          },
+          "3": {
+            "local_term": "3",
+            "target_class": "ncit:C125476"
+          },
+          "4": {
+            "local_term": "4",
+            "target_class": "ncit:C125478"
+          }
+        }
+      }
+    }
+  }
+}

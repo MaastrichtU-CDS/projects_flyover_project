@@ -1,0 +1,60 @@
+import logging
+import os
+import sys
+
+from src.miscellaneous import read_file, add_annotation, add_mapping
+
+logging.basicConfig(filename='log', filemode='a', level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+
+
+def main():
+    """
+    Main function of adding annotations to a SPARQL-endpoint.
+    Endpoint, database and annotation data are specified in the settings.
+
+    An example of the necessary settings file is:
+    {
+      "endpoint": "http://localhost:7200/repositories/userRepo/statements",
+      "database_name": "mock_data",
+      "variable_info": {
+        "identifier": {
+          "predicate": "roo:P100061",
+          "class": "ncit:C25364",
+          "local_definition": "research_id"
+        }
+      }
+    }
+    """
+    # check for command-line arguments
+    if len(sys.argv) < 2:
+        json_file_path = input("Please provide the path to your annotation settings JSON file:\n")
+    else:
+        json_file_path = sys.argv[1]
+
+    # read the settings
+    settings_content = read_file(file_name=json_file_path)
+
+    # retrieve the path, assuming the contents of the settings are located there or in a subdirectory
+    path = os.path.dirname(json_file_path)
+
+    # check for  'endpoint' key existence in settings
+    endpoint = settings_content.get("endpoint")
+    if isinstance(endpoint, str) is False:
+        logging.error("'endpoint' key not found in the settings or not provided as string, exiting.")
+        sys.exit(1)
+
+    # check for 'database_name' key existence in settings
+    database = settings_content.get("database_name")
+    if isinstance(database, str) is False:
+        logging.error("'database' key not found in the settings or not provided as string, exiting.")
+        sys.exit(1)
+
+    # run annotations if specified
+    annotations = settings_content.get("variable_info")
+    if annotations:
+        add_annotation(endpoint=endpoint, database=database, annotation_data=annotations, path=path)
+
+
+if __name__ == "__main__":
+    main()

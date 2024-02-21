@@ -1,0 +1,11 @@
+# Template to autofill where SPARQL's bind cannot and Python can.
+# That is, all strings with "REPLACEME" should be replaced as follows:
+# REPLACEME:3 actual variable predicate
+
+PREFIX roo: <http://www.cancerdata.org/roo/>
+PREFIX REPLACEME: <>
+
+
+ASK {
+    ?patient REPLACEME:3 ?variable .
+}

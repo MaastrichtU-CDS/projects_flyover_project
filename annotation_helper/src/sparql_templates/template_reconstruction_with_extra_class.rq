@@ -1,0 +1,40 @@
+# Template to autofill where SPARQL's bind cannot and Python can.
+# That is, all strings with "REPLACEME" should be replaced as follows:
+# REPLACEME1 _database name
+# REPLACEME5 class name
+# REPLACEME:6 added class predicate
+# REPLACEME8 label
+# REPLACEME9 IRI name
+
+PREFIX db: <http://data.local/rdf/ontology/>
+PREFIX dbo: <http://um-cds/ontologies/databaseontology/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX roo: <http://www.cancerdata.org/roo/>
+PREFIX REPLACEME: <>
+
+
+INSERT {
+    GRAPH <http://annotation.local/> {
+
+        db:REPLACEME1.REPLACEME5 rdf:type owl:Class.
+
+        db:REPLACEME1.REPLACEME5 dbo:table db:REPLACEME1.
+
+        db:REPLACEME1.REPLACEME5 rdfs:label "REPLACEME8".
+
+
+        ?tablerow REPLACEME:6 ?class.
+
+        ?class rdf:type db:REPLACEME1.REPLACEME5.
+
+    }
+}
+
+WHERE {
+    BIND(IRI(CONCAT(str(?tablerow), "/REPLACEME9")) as ?class) .
+
+    ?tablerow rdf:type db:REPLACEME1 .
+
+}
