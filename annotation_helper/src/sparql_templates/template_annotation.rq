@@ -1,0 +1,41 @@
+# Template that is automatically filled using Python.
+
+# Ensure that the necessary prefixes are included in the query as these are not automatically filled in.
+PREFIX db: <http://data.local/rdf/ontology/>
+PREFIX dbo: <http://um-cds/ontologies/databaseontology/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX roo: <http://www.cancerdata.org/roo/>
+PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX mesh: <http://id.nlm.nih.gov/mesh/>
+PREFIX PLACEHOLDER: <>
+
+INSERT {
+    GRAPH <http://annotation.local/> {
+
+        ?tablerow PLACEHOLDER:variablepredicate ?component0.
+
+
+        db:databasename.localvariable owl:equivalentClass PLACEHOLDER:variableclass.
+
+
+        db:databasename owl:equivalentClass ncit:C16960.
+
+        dbo:has_value owl:sameAs roo:P100042.
+
+        dbo:has_unit owl:sameAs roo:P100047.
+
+        dbo:cell_of rdf:type owl:ObjectProperty ;
+            owl:inverseOf dbo:has_cell.
+
+    }
+}
+
+WHERE {
+    ?tablerow rdf:type db:databasename .
+
+    ?tablerow dbo:has_column ?component0 .
+
+    ?component0 rdf:type db:databasename.localvariable .
+
+}

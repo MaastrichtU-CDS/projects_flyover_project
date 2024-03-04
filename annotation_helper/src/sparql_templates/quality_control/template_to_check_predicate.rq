@@ -1,0 +1,9 @@
+# Template that is automatically filled in using Python; the placeholders are substituted with values from the JSON file.
+
+# Ensure that the necessary prefixes are included in the query as these are not automatically filled in.
+PREFIX roo: <http://www.cancerdata.org/roo/>
+PREFIX PLACEHOLDER: <>
+
+ASK {
+    ?patient PLACEHOLDER:variablepredicate ?variable .
+}

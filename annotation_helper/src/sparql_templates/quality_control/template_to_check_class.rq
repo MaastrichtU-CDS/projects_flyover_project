@@ -1,0 +1,10 @@
+# Template that is automatically filled in using Python; the placeholders are substituted with values from the JSON file.
+
+# Ensure that the necessary prefixes are included in the query as these are not automatically filled in.
+PREFIX db: <http://data.local/rdf/ontology/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+ASK {
+    db:databasename.reconstructionlabel rdf:type owl:Class .
+}

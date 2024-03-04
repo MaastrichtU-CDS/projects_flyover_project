@@ -1,3 +1,6 @@
+# Template that is automatically filled in using Python; the placeholders are substituted with values from the JSON file.
+
+# Ensure that the necessary prefixes are included in the query as these are not automatically filled in.
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>

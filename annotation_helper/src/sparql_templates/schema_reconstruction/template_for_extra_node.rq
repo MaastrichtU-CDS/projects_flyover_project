@@ -1,0 +1,29 @@
+# Template that is automatically filled in using Python; the placeholders are substituted with values from the JSON file.
+
+# Ensure that the necessary prefixes are included in the query as these are not automatically filled in.
+PREFIX db: <http://data.local/rdf/ontology/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX mesh: <http://id.nlm.nih.gov/mesh/>
+PREFIX PLACEHOLDER: <>
+
+INSERT {
+    GRAPH <http://annotation.local/> {
+
+        db:databasename.reconstructionlabel rdf:type owl:Class.
+
+        db:databasename.reconstructionlabel rdfs:label "reconstructionaestheticlabel".
+
+
+        db:databasename.reconstructionlabel owl:equivalentClass PLACEHOLDER:reconstructionclass.
+
+    }
+}
+
+WHERE {
+
+    ?tablerow rdf:type db:mock .
+
+}

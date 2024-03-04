@@ -11,6 +11,15 @@
       "predicate": "roo:P100018",
       "class": "ncit:C28421",
       "local_definition": "biological_sex",
+      "schema_reconstruction": [
+        {
+          "type": "class",
+          "predicate": "roo:hassociodemographicvariable",
+          "class": "mesh:D000091569",
+          "class_label": "sociodemographicClass",
+          "aesthetic_label": "Sociodemographic"
+        }
+      ],
       "value_mapping": {
         "terms": {
           "male": {
@@ -26,27 +35,45 @@
     },
     "age_at_diagnosis": {
       "predicate": "roo:hasage",
-      "class": "ncit:C12345678904",
+      "class": "ncit:C156420",
       "local_definition": "age_at_diagnosis",
-      "schema_reconstruction": {
-        "type": "node",
-        "predicate": "roo:P100027",
-        "class": "ncit:C29848",
-        "node_label": "years",
-        "aesthetic_label": "Years"
-      }
+      "schema_reconstruction": [
+        {
+          "type": "class",
+          "predicate": "roo:hassociodemographicvariable",
+          "class": "mesh:D000091569",
+          "class_label": "sociodemographicClass",
+          "aesthetic_label": "Sociodemographic"
+        },
+        {
+          "type": "node",
+          "predicate": "roo:P100027",
+          "class": "ncit:C29848",
+          "node_label": "years",
+          "aesthetic_label": "Years"
+        }
+      ]
     },
     "tumour_type": {
       "predicate": "roo:hastumourtype",
       "class": "ncit:C16899",
       "local_definition": "tumour_type",
-      "schema_reconstruction": {
-        "type": "class",
-        "predicate": "roo:100029",
-        "class": "ncit:C3262",
-        "class_label": "neoplasmClass",
-        "aesthetic_label": "Neoplasm"
-      },
+      "schema_reconstruction": [
+        {
+          "type": "class",
+          "predicate": "roo:hasclinicalvariable",
+          "class": "ncit:C326200",
+          "class_label": "clinicalClass",
+          "aesthetic_label": "Clinical"
+        },
+        {
+          "type": "class",
+          "predicate": "roo:P100029",
+          "class": "ncit:C3262",
+          "class_label": "neoplasmClass",
+          "aesthetic_label": "Neoplasm"
+        }
+      ],
       "value_mapping": {
         "terms": {
           "1": {
@@ -66,15 +93,24 @@
     },
     "tumour_stage": {
       "predicate": "roo:hastumourstage",
-      "class": "ncit:C54179",
+      "class": "ncit:C16899",
       "local_definition": "tumour_stage",
-      "schema_reconstruction": {
-        "type": "class",
-        "predicate": "roo:100029",
-        "class": "ncit:C3262",
-        "class_label": "neoplasmClass",
-        "aesthetic_label": "Neoplasm"
-      },
+      "schema_reconstruction": [
+        {
+          "type": "class",
+          "predicate": "roo:hasclinicalvariable",
+          "class": "ncit:C326200",
+          "class_label": "clinicalClass",
+          "aesthetic_label": "Clinical"
+        },
+        {
+          "type": "class",
+          "predicate": "roo:P100029",
+          "class": "ncit:C3262",
+          "class_label": "neoplasmClass",
+          "aesthetic_label": "Neoplasm"
+        }
+      ],
       "value_mapping": {
         "terms": {
           "1": {

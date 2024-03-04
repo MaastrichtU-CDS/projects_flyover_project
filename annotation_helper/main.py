@@ -2,26 +2,23 @@ import logging
 import os
 import sys
 
-from src.miscellaneous import read_file, add_annotation, add_mapping
-
-logging.basicConfig(filename='log', filemode='a', level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
+from src.miscellaneous import read_file, add_annotation
 
 
 def main():
     """
-    Main function of adding annotations to a SPARQL-endpoint.
+    Main function of adding annotations to a SPARQL endpoint.
     Endpoint, database and annotation data are specified in the settings.
 
     An example of the necessary settings file is:
     {
       "endpoint": "http://localhost:7200/repositories/userRepo/statements",
-      "database_name": "mock_data",
-      "variable_info": {
-        "identifier": {
-          "predicate": "roo:P100061",
-          "class": "ncit:C25364",
-          "local_definition": "research_id"
+      "database_name": "my_database",
+      "biological_sex": {
+        "global_variable_name_for_readability": {
+          "predicate": "roo:P100018",
+          "class": "ncit:C28421",
+          "local_definition": "local_variable_name"
         }
       }
     }
@@ -32,13 +29,17 @@ def main():
     else:
         json_file_path = sys.argv[1]
 
-    # read the settings
-    settings_content = read_file(file_name=json_file_path)
-
     # retrieve the path, assuming the contents of the settings are located there or in a subdirectory
     path = os.path.dirname(json_file_path)
 
-    # check for  'endpoint' key existence in settings
+    # set up logging
+    logging.basicConfig(filename=f"{os.path.join(path, 'annotation_log.txt')}", filemode='a', level=logging.INFO,
+                        format='%(asctime)s - %(levelname)s - %(message)s')
+
+    # read the settings
+    settings_content = read_file(file_name=json_file_path)
+
+    # check for 'endpoint' key existence in settings
     endpoint = settings_content.get("endpoint")
     if isinstance(endpoint, str) is False:
         logging.error("'endpoint' key not found in the settings or not provided as string, exiting.")
