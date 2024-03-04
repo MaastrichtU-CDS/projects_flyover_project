@@ -152,7 +152,8 @@ scenarios of  `schema_reconstruction`.
 ## Developers
 
 - Varsha Gouthamchand
-- Leonard Wee
+- Joshi Hogenboom
 - Johan van Soest
+- Leonard Wee
 
 
