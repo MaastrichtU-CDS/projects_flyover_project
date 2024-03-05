@@ -68,11 +68,12 @@ The basic metadata should be in the following format; here with an example of a 
 {
   "endpoint": "http://localhost:7200/repositories/userRepo/statements",
   "database_name": "my_database",
-  "biological_sex": {
+  "variable_info": {
+    "biological_sex": {
       "predicate": "roo:P100018",
       "class": "ncit:C28421",
-      "local_definition": "biological_sex",
-        }
+      "local_definition": "geslacht"
+  }
 }
 ```
 
