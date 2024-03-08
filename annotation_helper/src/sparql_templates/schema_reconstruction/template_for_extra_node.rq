@@ -24,6 +24,6 @@ INSERT {
 
 WHERE {
 
-    ?tablerow rdf:type db:mock .
+    ?tablerow rdf:type db:databasename .
 
 }

@@ -307,7 +307,7 @@ def add_annotation(endpoint, database, annotation_data, path, remove_has_column=
                         # if no classes should be added, the 'zeroth' component is the variable the node should succeed
                         if len(classes_insertion) == 0:
                             nodes_insertion = (f'{nodes_insertion}\n\n        '
-                                               f'?component{components} {node_predicate} db:{database}.{node_label}.')
+                                               f'?component1 {node_predicate} db:{database}.{node_label}.')
 
                         # if classes are added, the component number is the last class and not the variable; thus +1
                         else:
