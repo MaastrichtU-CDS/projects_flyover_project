@@ -68,12 +68,11 @@ The basic metadata should be in the following format; here with an example of a 
 {
   "endpoint": "http://localhost:7200/repositories/userRepo/statements",
   "database_name": "my_database",
-  "biological_sex": {
-    "global_variable_name_for_readability": {
+  "variable_info": {
+    "biological_sex": {
       "predicate": "roo:P100018",
       "class": "ncit:C28421",
       "local_definition": "geslacht"
-    }
   }
 }
 ```
@@ -130,7 +129,7 @@ After specifying the metadata in JSON, you can run the script with the following
 python ./annotation_helper/main.py 
 ```
 
-#### Evaluation the annotation process
+#### Evaluate the annotation process
 
 By default, the script will log the annotation process and save the generated SPARQL queries in `.rq` files.
 
