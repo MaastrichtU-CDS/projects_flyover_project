@@ -14,7 +14,7 @@
       "schema_reconstruction": [
         {
           "type": "class",
-          "predicate": "roo:hassociodemographicvariable",
+          "predicate": "roo:hasdemographicvariable",
           "class": "mesh:D000091569",
           "class_label": "demographicClass",
           "aesthetic_label": "Demographic"
@@ -40,7 +40,7 @@
       "schema_reconstruction": [
         {
           "type": "class",
-          "predicate": "roo:hassociodemographicvariable",
+          "predicate": "roo:hasdemographicvariable",
           "class": "mesh:D000091569",
           "class_label": "demographicClass",
           "aesthetic_label": "Demographic"
@@ -61,7 +61,7 @@
       "schema_reconstruction": [
         {
           "type": "class",
-          "predicate": "roo:hassociodemographicvariable",
+          "predicate": "roo:hasdemographicvariable",
           "class": "mesh:D000091569",
           "class_label": "demographicClass",
           "aesthetic_label": "Demographic"
@@ -87,7 +87,7 @@
       "schema_reconstruction": [
         {
           "type": "class",
-          "predicate": "roo:hassociodemographicvariable",
+          "predicate": "roo:hasdemographicvariable",
           "class": "mesh:D000091569",
           "class_label": "demographicClass",
           "aesthetic_label": "Demographic"
