@@ -12,7 +12,7 @@
 <body>
     <h3 class="col-lg-10 control-label">Choose the type and description of your columns</h3><br>
      <form class="form-horizontal" method="POST" action="units">
-        {% for item in variable %}
+        {% for item in local_variable_names %}
          <div id="div1" class="form-group">
              <label for= "{{ item }}"  class="col-lg-4 control-label">{{item}}</label>
              <select id= "{{ item }}" name= "{{ item }}" class="selectpicker">
@@ -24,35 +24,42 @@
              </select>
              <label for= "ncit_comment_{{ item }}"></label>
              <select id= "ncit_comment_{{ item }}" name= "ncit_comment_{{ item }}" class="selectpicker">
-                    <option value="">Choose here</option>
-                    <option value="Patient Identifier">Patient Identifier</option>
-                    <option value="Age">Age</option>
-                    <option value="Gender">Gender</option>
-                    <option value="T Stage">T Stage</option>
-                    <option value="N Stage">N Stage</option>
-                    <option value="M Stage">M Stage</option>
-                    <option value="HPV Status">HPV Status</option>
-                    <option value="ASA Score">ASA Score</option>
-                    <option value="WHO/ECOG Status">WHO/ECOG Status</option>
-                    <option value="AJCC Stage">AJCC Stage</option>
-                    <option value="Tumour Site">Tumour Site</option>
-                    <option value="Metastasis">Metastasis</option>
-                    <option value="Metastasis Days">Metastasis Days</option>
-                    <option value="Event Recurrence">Event Recurrence</option>
-                    <option value="Event Recurrence Days">Event Recurrence Days</option>
-                    <option value="Local Recurrence">Local Recurrence</option>
-                    <option value="Local Recurrence Days">Local Recurrence Days</option>
-                    <option value="Regional Recurrence">Regional Recurrence</option>
-                    <option value="Regional Recurrence Days">Regional Recurrence Days</option>
-                    <option value="Event Survival">Event Survival</option>
-                    <option value="Overall Survival Days">Overall Survival Days</option>
-                    <option value="Surgery">Surgery</option>
-                    <option value="Chemotherapy">Chemotherapy</option>
-                    <option value="Radiotherapy time">Radiotherapy treatment time</option>
-                    <option value="RT Total Dose">RT Total Dose</option>
-                    <option value="RT Dose per fraction">RT Dose per fraction</option>
-                    <option value="RT Fractions">RT Fractions</option>
-                    <option value="Other">Other</option>
+                    {% if global_variable_names %}
+                        <option value="">Choose here</option>
+                        {% for value in global_variable_names %}
+                            <option>{{ value }}</option>
+                        {% endfor %}
+                    {% else %}
+                        <option value="">Choose here</option>
+                        <option value="Patient Identifier">Patient Identifier</option>
+                        <option value="Age">Age</option>
+                        <option value="Gender">Gender</option>
+                        <option value="T Stage">T Stage</option>
+                        <option value="N Stage">N Stage</option>
+                        <option value="M Stage">M Stage</option>
+                        <option value="HPV Status">HPV Status</option>
+                        <option value="ASA Score">ASA Score</option>
+                        <option value="WHO/ECOG Status">WHO/ECOG Status</option>
+                        <option value="AJCC Stage">AJCC Stage</option>
+                        <option value="Tumour Site">Tumour Site</option>
+                        <option value="Metastasis">Metastasis</option>
+                        <option value="Metastasis Days">Metastasis Days</option>
+                        <option value="Event Recurrence">Event Recurrence</option>
+                        <option value="Event Recurrence Days">Event Recurrence Days</option>
+                        <option value="Local Recurrence">Local Recurrence</option>
+                        <option value="Local Recurrence Days">Local Recurrence Days</option>
+                        <option value="Regional Recurrence">Regional Recurrence</option>
+                        <option value="Regional Recurrence Days">Regional Recurrence Days</option>
+                        <option value="Event Survival">Event Survival</option>
+                        <option value="Overall Survival Days">Overall Survival Days</option>
+                        <option value="Surgery">Surgery</option>
+                        <option value="Chemotherapy">Chemotherapy</option>
+                        <option value="Radiotherapy time">Radiotherapy treatment time</option>
+                        <option value="RT Total Dose">RT Total Dose</option>
+                        <option value="RT Dose per fraction">RT Dose per fraction</option>
+                        <option value="RT Fractions">RT Fractions</option>
+                        <option value="Other">Other</option>
+                    {% endif %}
              </select>
              <label for= "comment_{{ item }}"></label>
                 <input class="form-group" type="text" id="comment_{{ item }}" name="comment_{{ item }}" placeholder="If other, please specify" disabled='disabled'/><br>
