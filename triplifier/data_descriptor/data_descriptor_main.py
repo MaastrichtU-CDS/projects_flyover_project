@@ -3,7 +3,6 @@ import json
 import os
 import re
 import requests
-import shutil
 import subprocess
 
 import pandas as pd
@@ -13,16 +12,13 @@ from io import StringIO
 from psycopg2 import connect
 from werkzeug.utils import secure_filename
 
-# Change these names
 graphdb_url = "http://rdf-store:7200"
 
 app = Flask(__name__)
 app.secret_key = "secret_key"
 # enable debugging mode
 app.config["DEBUG"] = True
-UPLOAD_FOLDER = os.path.join('static', 'files')
-
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = os.path.join('data_descriptor', 'static', 'files')
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
 
@@ -38,10 +34,10 @@ class Cache:
         self.db_name = None
         self.conn = None
         self.col_cursor = None
-        self.csvPath = False
+        self.csvData = None
+        self.csvPath = None
         self.uploaded_file = None
         self.global_schema = None
-        self.global_schema_path = None
 
 
 session_cache = Cache()
@@ -73,25 +69,6 @@ def allowed_file(filename, allowed_extensions):
         filename.rsplit('.', 1)[1].lower() in allowed_extensions
 
 
-def file_upload_and_save(file_type):
-    # check if the upload folder is writable
-    if not os.access(app.config['UPLOAD_FOLDER'], os.W_OK):
-        flash("No write access to the upload folder. Exiting.")
-        return render_template('index.html')
-
-    session_cache.uploaded_file = request.files.get(file_type)
-
-    filename = secure_filename(session_cache.uploaded_file.filename)
-    file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-
-    try:
-        session_cache.uploaded_file.save(file_path)
-        return file_path
-    except Exception as e:
-        flash(f'Failed to save the {file_type} file. Error: {e}')
-        return render_template('index.html')
-
-
 @app.route('/upload', methods=['POST'])
 def upload_file():
     """
@@ -116,23 +93,46 @@ def upload_file():
     csv_file = request.files.get('csvFile')
 
     if json_file:
-        if allowed_file(json_file.filename, {'json'}) is False:
+        if not allowed_file(json_file.filename, {'json'}):
             flash("If opting to submit a global schema, please upload it as a '.json' file.")
             return render_template('index.html', error=True)
 
-        session_cache.global_schema_path = file_upload_and_save('jsonFile')
+        try:
+            session_cache.global_schema = json.loads(json_file.read().decode('utf-8'))
+
+            if not isinstance(session_cache.global_schema.get('variable_info'), dict):
+                flash("If opting to submit a global schema, please ensure it has a 'variable_info' field. "
+                      "Please refer to the documentation for more information.")
+                return render_template('index.html', error=True)
+
+        except Exception as e:
+            flash(f"Unexpected error attempting to cache the global schema file, error: {e}")
+            return render_template('index.html', error=True)
 
     if file_type == 'CSV' and csv_file:
         if allowed_file(csv_file.filename, {'csv'}) is False:
             flash("If opting to submit a CSV data source, please upload it as a '.csv' file.")
             return render_template('index.html', error=True)
-        session_cache.csvPath = file_upload_and_save('csvFile')
-        success, message = run_triplifier()
+
+        try:
+            session_cache.csvData = pd.read_csv(csv_file)
+
+        except Exception as e:
+            flash(f"Unexpected error attempting to cache the CSV data, error: {e}")
+            return render_template('index.html', error=True)
+
+        session_cache.csvPath = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(csv_file.filename))
+        try:
+            success, message = run_triplifier('triplifierCSV.properties')
+        finally:
+            if os.path.exists(session_cache.csvPath):
+                os.remove(session_cache.csvPath)
+
     elif file_type == 'Postgres':
         handle_postgres_data(request.form.get('username'), request.form.get('password'),
                              request.form.get('POSTGRES_URL'), request.form.get('POSTGRES_DB'),
                              request.form.get('table'))
-        success, message = run_triplifier()
+        success, message = run_triplifier('triplifierSQL.properties')
 
     if success:
         return render_template('triples.html', variable=message)
@@ -141,28 +141,36 @@ def upload_file():
         return render_template('index.html', error=True)
 
 
-def run_triplifier():
+def run_triplifier(properties_file=None):
     """
     This function runs the triplifier and checks if it ran successfully.
 
     Returns:
-        tuple: A tuple containing a boolean indicating if the triplifier ran successfully, and a string containing the error message if it did not.
+        tuple: A tuple containing a boolean indicating if the triplifier ran successfully,
+        and a string containing the error message if it did not.
     """
     try:
-        process = subprocess.Popen("java -jar /app/data_descriptor/javaTool/triplifier.jar -p /app/data_descriptor/triplifierCSV.properties",
-                                   shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        if properties_file == 'triplifierCSV.properties':
+            if not os.access(app.config['UPLOAD_FOLDER'], os.W_OK):
+                return False, "Unable to temporarily save the CSV file: no write access to the application folder."
 
-        # Print the output to the terminal
+            session_cache.csvData.to_csv(session_cache.csvPath, index=False)
+
+        process = subprocess.Popen(
+            f"java -jar /app/data_descriptor/javaTool/triplifier.jar -p /app/data_descriptor/{properties_file}",
+            shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
         output, _ = process.communicate()
-        output = output.decode()
-        print(output)
+        print(output.decode())
 
         if process.returncode == 0:
             return True, "Triplifier ran successfully!"
         else:
             return False, output
-    except Exception as err:
-        return False, str(err)
+    except OSError as e:
+        return False, f'Unexpected error attempting to create the upload folder, error: {e}'
+    except Exception as e:
+        return False, f'Unexpected error attempting to run the Triplifier, error: {e}'
 
 
 def handle_postgres_data(username, password, postgres_url, postgres_db, table):
@@ -237,25 +245,20 @@ def queryresult():
     local_column_names = local_column_names[local_column_names.columns[0]]
 
     # if a global schema was defined, read it
-    if isinstance(session_cache.global_schema_path, str) is False:
+    if isinstance(session_cache.global_schema, dict) is False:
         global_names = ['Research subject identifier', 'Biological sex', 'Age at inclusion', 'Other']
         session_cache.global_schema = None
     else:
         try:
-            with open(session_cache.global_schema_path, 'r') as file:
-                session_cache.global_schema = json.load(file)
-
             # get the global variable names
             global_names = [global_name.capitalize().replace('_', ' ')
                             for global_name in session_cache.global_schema['variable_info'].keys()]
 
             # add an option to select 'Other'
             global_names.append('Other')
-        except FileNotFoundError:
-            print("Global schema file not found")
-
-        except json.JSONDecodeError:
-            print("Global schema has an invalid JSON format")
+        except Exception as e:
+            flash(f"Failed to read the global schema. Error: {e}")
+            return render_template('index.html', error=True)
 
     return render_template('categories.html', local_variable_names=local_column_names,
                            global_variable_names=global_names)
@@ -350,6 +353,11 @@ def download_schema(filename='local_schema.json'):
     """
     try:
         modified_schema = copy.deepcopy(session_cache.global_schema)
+
+        modified_schema['variable_info'] = \
+            {variable_name: variable_info if isinstance(variable_info.get('local_definition'), str) else {
+                'local_definition': ""}
+             for variable_name, variable_info in modified_schema['variable_info'].items()}
 
         for local_variable, local_value in session_cache.mydict.items():
             global_variable = local_value['description'].lower().replace(' ', '_')
